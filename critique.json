@@ -1,0 +1,42 @@
+{
+  "kind": "critique-panel",
+  "score": 5,
+  "axes": {
+    "philosophy": {
+      "score": 5,
+      "notes": "Editorial magazine cover + ink/paper, zero radius \u2014 matches source"
+    },
+    "hierarchy": {
+      "score": 5,
+      "notes": "Hero video \u2192 quote \u2192 explain \u2192 work \u2192 course \u2192 buy"
+    },
+    "typography": {
+      "score": 5,
+      "notes": "Helvetica Neue weights/tracking from source"
+    },
+    "motion": {
+      "score": 4,
+      "notes": "Cover/example video + reveal IO preserved from source"
+    },
+    "brand": {
+      "score": 5,
+      "notes": "Tokens extracted from live :root; media local"
+    },
+    "clarity": {
+      "score": 5,
+      "notes": "Clone of live structure"
+    },
+    "execution": {
+      "score": 5,
+      "notes": "Full HTML/CSS/JS + local media"
+    },
+    "specificity": {
+      "score": 5,
+      "notes": "Real RENDER.CAMP copy and assets"
+    },
+    "restraint": {
+      "score": 5,
+      "notes": "Single live red accent; no AI chrome"
+    }
+  }
+}

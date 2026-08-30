@@ -1,0 +1,3229 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0A0A0A" />
+  <meta name="color-scheme" content="light" />
+  <title>Architectural AI Filmmaking — RENDER.CAMP Course</title>
+  <meta name="description" content="From a single architectural image — to a complete cinematic film. €79, instant access." />
+  <link rel="canonical" href="https://ai.pvrender.camp/" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png" />
+  <link rel="icon" type="image/png" sizes="512x512" href="favicon-512.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://ai.pvrender.camp/" />
+  <meta property="og:site_name" content="RENDER.CAMP" />
+  <meta property="og:title" content="Architectural AI Filmmaking — RENDER.CAMP Course" />
+  <meta property="og:description" content="From a single architectural image — to a complete cinematic film. €79, instant access." />
+  <meta property="og:image" content="media/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Architectural AI Filmmaking — RENDER.CAMP Course" />
+  <meta name="twitter:description" content="From a single architectural image — to a complete cinematic film. €79, instant access." />
+  <meta name="twitter:image" content="media/og-image.png" />
+<style>
+    /* =========================================================
+       TOKENS
+       ========================================================= */
+    :root {
+      --paper:        #FAFAFA;
+      --paper-2:      #F2F2F2;
+      --ink:          #0A0A0A;
+      --ink-2:        #1F1F1F;
+      --mute:         #707070;
+      --mute-2:       #9A9A9A;
+      --line:         #E5E5E5;
+      --line-strong:  #D0D0D0;
+      --live:         #E11D2A;
+
+      --sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      --ease: cubic-bezier(.2,.7,.2,1);
+
+      --pad-x: 20px;
+      --gap: 80px;
+    }
+    @media (min-width: 720px)  { :root { --pad-x: 40px; --gap: 112px; } }
+    @media (min-width: 1100px) { :root { --pad-x: 64px; --gap: 144px; } }
+
+    /* =========================================================
+       BASE
+       ========================================================= */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 17px;
+      line-height: 1.55;
+      letter-spacing: -.005em;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+    img, video, svg { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+    ::selection { background: var(--ink); color: var(--paper); }
+
+    .container {
+      width: 100%;
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 0 var(--pad-x);
+    }
+
+    /* =========================================================
+       TYPE
+       ========================================================= */
+    .label {
+      display: inline-flex; align-items: baseline; gap: 12px;
+      font-weight: 700; font-size: 14px;
+      letter-spacing: -.005em;
+      color: var(--ink);
+    }
+    .label .n { color: var(--mute); font-weight: 500; font-size: 13px; }
+    .label--inv { color: var(--paper); }
+    .label--inv .n { color: rgba(250,250,250,.55); }
+
+    .h-1 {
+      font-weight: 600;
+      letter-spacing: -.026em;
+      line-height: .95;
+      margin: 0;
+      font-size: 49px;
+      text-wrap: balance;
+    }
+
+    .h-2 {
+      font-weight: 600;
+      letter-spacing: -.026em;
+      line-height: 1;
+      margin: 0;
+      font-size: 49px;
+    }
+
+    .body-lg {
+      font-size: clamp(17px, 1.8vw, 20px);
+      line-height: 1.5;
+      letter-spacing: -.005em;
+      color: var(--ink-2);
+      margin: 0;
+    }
+
+    /* =========================================================
+       NAV
+       ========================================================= */
+    .nav {
+      position: absolute; top: 0; left: 0; right: 0;
+      z-index: 30;
+      background: transparent;
+      color: var(--paper);
+    }
+    .nav__inner {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 16px;
+      padding: 14px var(--pad-x);
+      min-height: 56px;
+    }
+    @media (min-width: 720px) {
+      .nav__inner { padding-top: 134px; }
+    }
+    .brand {
+      display: inline-flex; align-items: center;
+      line-height: 0;
+    }
+    .brand img {
+      height: 22px;
+      width: auto;
+      display: block;
+    }
+    @media (min-width: 720px) { .brand img { height: 28px; } }
+    @media (min-width: 1100px) { .brand img { height: 32px; } }
+
+    /* =========================================================
+       1 · COVER (magazine cover with video bg)
+       ========================================================= */
+    .cover {
+      position: relative;
+      min-height: 100vh;
+      min-height: 100svh;
+      background: #050505;
+      color: var(--paper);
+      overflow: hidden;
+    }
+    .cover__video {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center;
+      background: #050505;
+    }
+    .cover__overlay {
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(180deg,
+          rgba(0,0,0,.55) 0%,
+          rgba(0,0,0,.18) 22%,
+          rgba(0,0,0,.05) 50%,
+          rgba(0,0,0,.45) 80%,
+          rgba(0,0,0,.78) 100%);
+      pointer-events: none;
+    }
+
+    .cover__inner {
+      position: relative;
+      z-index: 2;
+      min-height: 100vh;
+      min-height: 100svh;
+      display: grid;
+      grid-template-rows: auto 1fr;
+      padding: 96px var(--pad-x) 32px;
+      gap: 24px;
+    }
+    @media (min-width: 720px) {
+      .cover__inner { padding: 240px var(--pad-x) 48px; gap: 32px; }
+    }
+
+    /* — masthead title — */
+    .cover__masthead {
+      align-self: start;
+      text-align: left;
+    }
+    .cover__title {
+      margin: 0;
+      font-weight: 600;
+      letter-spacing: -.026em;
+      line-height: .95;
+      color: var(--paper);
+      text-shadow: 0 1px 12px rgba(0,0,0,.35);
+      text-wrap: balance;
+    }
+    .cover__title span {
+      display: block;
+      font-weight: 600;
+      font-size: 49px;
+    }
+    .cover__title .cover__title-course {
+      font-weight: 100;
+      font-style: italic;
+      letter-spacing: -.026em;
+    }
+
+    /* — foot: text + controls anchored to bottom, with breathing room — */
+    .cover__foot {
+      display: flex; flex-direction: column;
+      justify-content: flex-end;
+      gap: 40px;
+    }
+    @media (min-width: 720px) { .cover__foot { gap: 56px; } }
+
+    /* — bottom row: two text columns — */
+    .cover__bottom {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      align-items: end;
+    }
+    @media (min-width: 720px) {
+      .cover__bottom { grid-template-columns: 1fr 1fr; gap: 56px; }
+    }
+    .cover__lead {
+      margin: 0;
+      font-weight: 500;
+      font-size: clamp(14px, 1.3vw, 16px);
+      line-height: 1.45;
+      letter-spacing: -.005em;
+      color: rgba(250,250,250,.95);
+      max-width: 44ch;
+      text-shadow: 0 1px 8px rgba(0,0,0,.4);
+    }
+    .cover__lead--right { text-align: left; }
+    @media (min-width: 720px) {
+      .cover__lead--right { text-align: right; justify-self: end; }
+    }
+
+    /* — controls row (sound + buy) under bottom text — */
+    .cover-controls {
+      display: flex; align-items: center; justify-content: flex-start;
+      gap: 10px;
+    }
+    @media (min-width: 720px) { .cover-controls { gap: 12px; justify-content: flex-start; } }
+
+    .sound-btn {
+      width: 57px; height: 57px;
+      display: grid; place-items: center;
+      background: rgba(250,250,250,.12);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      color: var(--paper);
+      border: 1px solid rgba(250,250,250,.28);
+      cursor: pointer;
+      flex: 0 0 auto;
+      transition: background .2s var(--ease);
+    }
+    .sound-btn:hover { background: rgba(250,250,250,.22); }
+    .sound-btn svg { width: 21px; height: 21px; display: block; }
+    .sound-btn .when-off { display: block; }
+    .sound-btn .when-on  { display: none; }
+    .sound-btn.is-on .when-off { display: none; }
+    .sound-btn.is-on .when-on  { display: block; }
+
+    .cover-buy {
+      display: inline-flex; align-items: center; justify-content: center; gap: 12px;
+      height: 57px;
+      padding: 0 24px;
+      background: rgba(250,250,250,.12);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(250,250,250,.28);
+      color: var(--paper);
+      font-weight: 800; font-size: 16px;
+      letter-spacing: .04em;
+      flex: 1 1 auto;
+      transition: background .2s var(--ease);
+    }
+    .cover-buy:hover { background: rgba(250,250,250,.22); }
+    .cover-buy svg { width: 18px; height: 18px; }
+    @media (min-width: 720px) { .cover-buy { height: 57px; padding: 0 24px; font-size: 18px; flex: 0 0 auto; } }
+
+    /* tap-anywhere hint (only when sound off) */
+    .cover__taphint {
+      display: block;
+      margin-top: 12px;
+      text-align: center;
+      font-weight: 600;
+      font-size: 11px;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: rgba(250,250,250,.55);
+      text-shadow: 0 1px 6px rgba(0,0,0,.4);
+      transition: opacity .25s var(--ease);
+    }
+    .cover.is-sound-on .cover__taphint { opacity: 0; pointer-events: none; }
+
+    /* =========================================================
+       SECTIONS
+       ========================================================= */
+    section.s {
+      padding: var(--gap) 0;
+    }
+
+    .sec-head {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      margin-bottom: 36px;
+    }
+    @media (min-width: 800px) {
+      .sec-head {
+        grid-template-columns: 1.1fr 1fr;
+        gap: 56px;
+        margin-bottom: 48px;
+        align-items: end;
+      }
+    }
+    .sec-head__title { max-width: 22ch; }
+    .sec-head__prose {
+      font-size: clamp(16px, 1.7vw, 19px);
+      line-height: 1.5;
+      color: var(--mute);
+      margin: 0;
+      max-width: 44ch;
+    }
+    .sec-head__prose b { color: var(--ink); font-weight: 700; }
+    .sec-head__prose p { margin: 0; }
+    .sec-head__prose p + p { margin-top: 14px; }
+
+    /* =========================================================
+       2 · QUOTE
+       ========================================================= */
+    .quote {
+      padding: 296px 0 96px;
+      display: flex; align-items: center;
+    }
+    @media (min-width: 720px) {
+      .quote { padding: 340px 0 140px; }
+    }
+    .quote__statement {
+      margin: 0;
+      font-weight: 600;
+      letter-spacing: -.026em;
+      line-height: 1;
+      color: var(--ink);
+      font-size: 49px;
+      text-wrap: balance;
+      white-space: pre-line;
+    }
+
+    /* =========================================================
+       2.5 · LET ME EXPLAIN (3 cols)
+       ========================================================= */
+    .explain { padding: 0 0 var(--gap); }
+    .explain__head { margin-bottom: 36px; display: flex; flex-direction: column; gap: 14px; }
+    @media (min-width: 720px) { .explain__head { margin-bottom: 48px; } }
+    .explain__title {
+      font-weight: 600;
+      font-size: 49px;
+      letter-spacing: -.026em;
+      line-height: .95;
+      margin: 0;
+    }
+    .explain__grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 28px;
+      align-items: start;
+    }
+    @media (min-width: 720px) {
+      .explain__grid { grid-template-columns: 1fr 1fr 1fr; gap: 24px; }
+    }
+    @media (min-width: 1100px) {
+      .explain__grid { gap: 32px; }
+    }
+    .explain__col { display: flex; flex-direction: column; gap: 14px; }
+
+    /* per-column step header */
+    .explain__step {
+      display: flex; flex-direction: column; gap: 4px;
+      padding-bottom: 0;
+      border-bottom: 0;
+    }
+    @media (min-width: 720px) {
+      .explain__step { min-height: 64px; }
+    }
+    .explain__step-no {
+      margin: 0;
+      font-weight: 700; font-size: 11px;
+      letter-spacing: .14em; text-transform: uppercase;
+      color: var(--mute);
+    }
+    .explain__step-title {
+      margin: 0;
+      font-weight: 600; font-size: 17px;
+      letter-spacing: -.01em; line-height: 1.3;
+      color: var(--ink);
+      text-wrap: balance;
+    }
+
+    .explain-card-img {
+      background: var(--paper-2);
+      overflow: hidden;
+      position: relative;
+    }
+    .explain-card-img img {
+      width: 100%; height: auto; display: block;
+    }
+    .explain-card-vid {
+      aspect-ratio: 9 / 16;
+      background: var(--ink);
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+    .explain-card-vid video {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%; object-fit: cover;
+    }
+    .explain-card-vid__sound {
+      position: absolute;
+      top: 12px; right: 12px;
+      width: 40px; height: 40px;
+      display: grid; place-items: center;
+      background: rgba(10,10,10,.55);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      color: var(--paper);
+      border: 1px solid rgba(250,250,250,.22);
+      cursor: pointer;
+      z-index: 2;
+      transition: background .2s var(--ease);
+      padding: 0;
+    }
+    .explain-card-vid__sound:hover { background: rgba(10,10,10,.78); }
+    .explain-card-vid__sound svg { width: 18px; height: 18px; display: block; }
+    .explain-card-vid__sound .when-off { display: block; }
+    .explain-card-vid__sound .when-on  { display: none; }
+    .explain-card-vid.is-sound-on .explain-card-vid__sound .when-off { display: none; }
+    .explain-card-vid.is-sound-on .explain-card-vid__sound .when-on  { display: block; }
+
+    .explain__credit {
+      margin: 0;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--mute);
+    }
+    .explain__credit b { color: var(--ink); font-weight: 700; }
+
+    .explain__list {
+      list-style: none;
+      padding: 0; margin: 0;
+    }
+    .explain__list li {
+      display: grid;
+      grid-template-columns: 36px 1fr;
+      gap: 12px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--line);
+      align-items: baseline;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 1.3;
+      letter-spacing: -.01em;
+      color: var(--ink);
+    }
+    @media (min-width: 720px) {
+      .explain__list li { font-size: 17px; padding: 16px 0; }
+    }
+    .explain__list .num {
+      color: var(--mute);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0;
+    }
+
+    /* =========================================================
+       3 · EXAMPLES (horizontal carousel)
+       ========================================================= */
+    .examples {
+      padding: 0 0 var(--gap);
+    }
+    .examples__head {
+      padding: 0 var(--pad-x);
+      max-width: 1320px;
+      margin: 0 auto;
+    }
+    .examples__scroller {
+      margin-top: 36px;
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: 78%;
+      gap: 10px;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scroll-snap-type: x mandatory;
+      scroll-padding-left: var(--pad-x);
+      padding: 0 var(--pad-x) 4px;
+      scrollbar-width: none;
+    }
+    .examples__scroller::-webkit-scrollbar { display: none; }
+    @media (min-width: 720px)  { .examples__scroller { grid-auto-columns: 38%; gap: 14px; } }
+    @media (min-width: 1100px) {
+      .examples__scroller {
+        grid-auto-flow: row;
+        grid-template-columns: repeat(8, 1fr);
+        grid-auto-columns: auto;
+        gap: 6px;
+        overflow-x: visible;
+        overflow-y: visible;
+        scroll-snap-type: none;
+      }
+    }
+
+    .ex-card {
+      position: relative;
+      aspect-ratio: 9 / 16;
+      background: var(--ink);
+      overflow: hidden;
+      scroll-snap-align: start;
+    }
+    .ex-card video,
+    .ex-card img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+    .ex-card.is-placeholder {
+      background:
+        repeating-linear-gradient(135deg, #1a1a1a 0 1px, #111 1px 22px);
+    }
+
+    /* native fullscreen: keep videos at their natural aspect ratio (no crop/stretch) */
+    video:fullscreen,
+    video:-webkit-full-screen {
+      object-fit: contain !important;
+      width: 100%;
+      height: 100%;
+      background: #000;
+    }
+    .ex-card.is-placeholder::after {
+      content: "9 : 16 · drop";
+      position: absolute;
+      top: 50%; left: 50%; transform: translate(-50%, -50%);
+      color: rgba(250,250,250,.35);
+      font-weight: 700; font-size: 12px;
+      white-space: nowrap;
+    }
+    .ex-card__tag {
+      position: absolute; top: 12px; left: 12px;
+      padding: 5px 9px;
+      background: var(--paper);
+      color: var(--ink);
+      font-weight: 700; font-size: 11px;
+    }
+    /* play button (centered, white minimal arrow) */
+    .ex-card__play {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 64px; height: 64px;
+      display: grid; place-items: center;
+      background: rgba(0,0,0,.25);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      color: var(--paper);
+      border: 1px solid rgba(250,250,250,.65);
+      border-radius: 50%;
+      cursor: pointer;
+      z-index: 2;
+      transition: opacity .25s var(--ease), transform .25s var(--ease), background .2s var(--ease);
+    }
+    .ex-card__play:hover {
+      background: rgba(0,0,0,.45);
+      transform: translate(-50%, -50%) scale(1.05);
+    }
+    .ex-card__play svg { width: 22px; height: 22px; margin-left: 3px; }
+    .ex-card.is-playing .ex-card__play { opacity: 0; pointer-events: none; }
+
+    .ex-card { cursor: pointer; }
+
+    /* fullscreen icon button (top-right of each card) */
+    .ex-card__fs {
+      position: absolute; top: 10px; right: 10px;
+      width: 34px; height: 34px;
+      display: grid; place-items: center;
+      background: rgba(0,0,0,.35);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      border: 1px solid rgba(250,250,250,.45);
+      color: var(--paper);
+      cursor: pointer;
+      z-index: 3;
+      transition: background .2s var(--ease);
+    }
+    .ex-card__fs:hover { background: rgba(0,0,0,.7); }
+    .ex-card__fs svg { width: 14px; height: 14px; }
+
+    .ex-card__cap {
+      position: absolute; left: 12px; bottom: 12px;
+      color: var(--paper);
+      font-weight: 700; font-size: 12px;
+      text-shadow: 0 1px 4px rgba(0,0,0,.4);
+    }
+
+    .examples__hint {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 0 var(--pad-x);
+      font-weight: 500; font-size: 13px;
+      color: var(--mute);
+    }
+    .examples__hint b { color: var(--ink); font-weight: 700; }
+
+    /* viewport-adaptive hint copy for Selected work */
+    .hint-mobile  { display: inline; }
+    .hint-desktop { display: none; }
+    @media (min-width: 1100px) {
+      .hint-mobile  { display: none; }
+      .hint-desktop { display: inline; }
+    }
+    .hint-fs-icon {
+      display: inline-block;
+      width: 12px; height: 12px;
+      vertical-align: -1px;
+      margin: 0 1px 0 2px;
+      color: var(--ink);
+    }
+
+    /* =========================================================
+       4 · COURSE (6 squares)
+       ========================================================= */
+    .course-grid {
+      margin-top: 36px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+    }
+    @media (min-width: 720px) {
+      .course-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    .course-cell {
+      background: var(--paper);
+      padding: 18px 16px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 10px;
+      transition: background .25s var(--ease), color .25s var(--ease);
+      position: relative;
+      min-height: 260px;
+      scroll-snap-align: start;
+      width: 100%;
+      text-align: left;
+      cursor: default;
+      color: inherit;
+      font: inherit;
+      border: 0;
+    }
+    @media (max-width: 759px) {
+      .course-cell { cursor: pointer; }
+    }
+    @media (min-width: 720px) {
+      .course-cell {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: stretch;
+        padding: 24px;
+        gap: 14px;
+        min-height: 320px;
+      }
+    }
+    .course-cell:hover { background: var(--ink); color: var(--paper); }
+    .course-cell:hover .course-cell__num { color: rgba(250,250,250,.5); }
+    .course-cell__num {
+      font-weight: 700; font-size: 11px;
+      color: var(--mute);
+      letter-spacing: .04em;
+      transition: color .25s var(--ease);
+      flex: 0 0 auto;
+    }
+    @media (min-width: 720px) {
+      .course-cell__num { min-width: 0; }
+    }
+    .course-cell__title {
+      font-weight: 700;
+      font-size: clamp(15px, 4.5vw, 22px);
+      letter-spacing: -.02em;
+      line-height: 1.15;
+      margin: 0;
+      text-wrap: balance;
+      flex: 0 0 auto;
+    }
+    .course-cell__list {
+      list-style: none;
+      padding: 0; margin: 0;
+      display: flex; flex-direction: column; gap: 6px;
+      flex: 1 1 auto;
+    }
+    .course-cell__list li {
+      font-weight: 500;
+      font-size: 13px;
+      line-height: 1.3;
+      letter-spacing: -.005em;
+      color: var(--ink-2);
+      transition: color .25s var(--ease);
+      display: grid;
+      grid-template-columns: 5px 1fr;
+      gap: 8px;
+      align-items: start;
+    }
+    .course-cell__list li::before {
+      content: "";
+      display: block;
+      width: 5px; height: 5px;
+      background: var(--ink);
+      margin-top: 6px;
+      transition: background .25s var(--ease);
+    }
+    .course-cell:hover .course-cell__list li::before { background: var(--paper); }
+    .course-cell:hover .course-cell__list li { color: rgba(250,250,250,.78); }
+    @media (min-width: 720px) {
+      .course-cell__list li { font-size: 15px; }
+      .course-cell__list li::before { width: 6px; height: 6px; margin-top: 7px; }
+    }
+    .course-cell__arr {
+      position: static;
+      width: 16px; height: 16px;
+      flex: 0 0 auto;
+      opacity: 1;
+      transition: opacity .25s var(--ease), transform .25s var(--ease);
+      color: var(--mute);
+    }
+    .course-cell:hover .course-cell__arr { color: var(--paper); transform: translateX(3px); }
+    @media (min-width: 720px) {
+      .course-cell__arr {
+        position: absolute;
+        bottom: 18px; right: 18px;
+        opacity: 0;
+        color: var(--paper);
+      }
+      .course-cell:hover .course-cell__arr { opacity: .8; transform: none; }
+    }
+    .course-cell__arr svg { width: 100%; height: 100%; stroke: currentColor; }
+
+    .course-closer {
+      margin: 0;
+      min-height: 66vh;
+      min-height: 66svh;
+      display: flex; align-items: center;
+      padding: 48px 0;
+    }
+    @media (min-width: 720px) {
+      .course-closer {
+        min-height: 50vh;
+        min-height: 50svh;
+        padding: 64px 0;
+      }
+    }
+    .course-closer__inner {
+      font-weight: 600;
+      font-size: 49px;
+      letter-spacing: -.026em;
+      line-height: 1;
+      max-width: 24ch;
+      text-transform: uppercase;
+      display: inline-block;
+    }
+    /* tighten the surrounding sections so the closer owns the breathing room */
+    section.s#course { padding-bottom: 0; }
+    @media (min-width: 720px) {
+      section.s#buy { padding-top: 0; }
+    }
+    /* hide the course block on mobile — already covered by "Let me explain" */
+    .course-closer .mute { color: var(--mute-2); display: block; }
+
+    /* =========================================================
+       8 · TOOLS
+       ========================================================= */
+    .tools__head {
+      display: flex; flex-direction: column;
+      gap: 18px;
+      margin-bottom: 40px;
+    }
+    .tools-grid {
+      list-style: none;
+      margin: 0; padding: 0;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px 32px;
+    }
+    @media (min-width: 720px) {
+      .tools-grid { grid-template-columns: repeat(3, 1fr); gap: 14px 40px; }
+    }
+    .tools-item {
+      padding: 14px 0;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .tools-icon {
+      width: 26px; height: 26px;
+      flex: 0 0 26px;
+      color: var(--ink);
+      display: grid;
+      place-items: center;
+    }
+    .tools-icon--wordmark {
+      width: auto; height: 14px;
+      flex: 0 0 auto;
+      min-width: 26px;
+    }
+    .tools-icon svg,
+    .tools-icon img { width: 100%; height: 100%; display: block; object-fit: contain; }
+    .tools-icon--wordmark img { width: auto; height: 100%; }
+    .tools-name {
+      font-weight: 600;
+      font-size: 17px;
+      letter-spacing: -.005em;
+      color: var(--ink);
+    }
+    .tools__note {
+      margin: 32px 0 0;
+      font-size: 15px;
+      color: var(--mute);
+      max-width: 50ch;
+      line-height: 1.45;
+    }
+    @media (max-width: 759px) {
+      .tools-item { padding: 10px 0; gap: 14px; }
+      .tools-icon { width: 22px; height: 22px; flex: 0 0 22px; }
+      .tools-icon--wordmark { width: auto; height: 12px; flex: 0 0 auto; min-width: 22px; }
+      .tools-name { font-size: 15px; }
+      .tools__note { font-size: 14px; margin-top: 24px; }
+    }
+
+    /* =========================================================
+       6 · PRICING
+       ========================================================= */
+    .pricing {
+      display: grid; grid-template-columns: 1fr;
+      gap: 32px;
+      margin-top: 36px;
+    }
+    @media (min-width: 900px) {
+      .pricing { grid-template-columns: 1.2fr 1fr; gap: 56px; align-items: start; }
+    }
+
+    .pricing__left {
+      padding-right: 0;
+    }
+    @media (min-width: 900px) {
+      .pricing__left { padding-right: 32px; border-right: 1px solid var(--line); }
+    }
+    .pricing__intro {
+      max-width: 36ch;
+      font-size: clamp(17px, 2.2vw, 22px);
+      line-height: 1.45;
+      color: var(--ink-2);
+      margin: 0 0 24px;
+    }
+    .pricing__intro b { font-weight: 800; }
+    .pricing__includes-label {
+      margin: 0 0 8px;
+      font-weight: 700; font-size: 11px;
+      letter-spacing: .18em; text-transform: uppercase;
+      color: var(--mute);
+    }
+    .pricing__includes {
+      list-style: none;
+      padding: 0; margin: 0;
+    }
+    .pricing__includes li {
+      display: flex; align-items: baseline; gap: 14px;
+      padding: 8px 0;
+      font-size: 17px;
+      font-weight: 500;
+      letter-spacing: -.01em;
+      color: var(--ink);
+    }
+    .pricing__includes li:last-child { /* no border */ }
+    .pricing__includes li::before {
+      content: "";
+      flex-shrink: 0;
+      width: 8px; height: 8px;
+      background: var(--ink);
+      transform: translateY(-2px);
+    }
+
+    .pricing__right {
+      display: flex; flex-direction: column; gap: 28px;
+    }
+
+    .offer {
+      display: flex; flex-direction: column; gap: 14px;
+      padding: 22px 24px 24px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+    }
+    .offer__label {
+      margin: 0;
+      display: flex; align-items: center; gap: 10px;
+      font-weight: 700; font-size: 12px;
+      letter-spacing: .14em; text-transform: uppercase;
+      color: var(--mute);
+    }
+    .offer__label::before {
+      content: ""; display: inline-block;
+      width: 8px; height: 8px; background: var(--live);
+      border-radius: 50%;
+      animation: pulse 1.4s ease-in-out infinite;
+      flex-shrink: 0;
+    }
+    @keyframes pulse { 50% { opacity: .3; } }
+
+    .offer__timer {
+      display: flex; align-items: baseline; gap: 16px;
+      font-variant-numeric: tabular-nums;
+    }
+    @media (min-width: 720px) { .offer__timer { gap: 22px; } }
+    .offer__timer-unit {
+      display: inline-flex; align-items: baseline; gap: 6px;
+    }
+    .offer__timer-unit b {
+      font-weight: 600;
+      font-size: clamp(40px, 6vw, 56px);
+      letter-spacing: -.028em;
+      line-height: 1;
+      color: var(--ink);
+    }
+    .offer__timer-unit i {
+      font-style: normal;
+      font-weight: 600; font-size: 12px;
+      letter-spacing: .04em;
+      color: var(--mute);
+    }
+
+    .offer__price {
+      display: flex; flex-direction: column; align-items: flex-start; gap: 8px;
+      line-height: 1;
+    }
+    .offer__price-was {
+      display: inline-flex; align-items: baseline; gap: 8px;
+      font-weight: 700; font-size: 12px;
+      letter-spacing: .14em; text-transform: uppercase;
+      color: var(--mute);
+    }
+    .offer__price-was s {
+      text-decoration: line-through;
+      text-decoration-thickness: 1px;
+      text-decoration-color: currentColor;
+      font-weight: 600;
+      letter-spacing: .04em;
+      font-variant-numeric: tabular-nums;
+    }
+    .offer__price-now {
+      display: flex; align-items: flex-start; gap: 8px;
+      line-height: .85;
+    }
+    .offer__price-now .cur {
+      font-weight: 800; font-size: 28px;
+      padding-top: 12px;
+      letter-spacing: -.02em;
+      color: var(--ink);
+    }
+    .offer__price-now .amt {
+      font-weight: 600;
+      font-size: clamp(96px, 14vw, 168px);
+      letter-spacing: -.026em;
+      line-height: .85;
+      color: var(--ink);
+      font-variant-numeric: tabular-nums;
+    }
+    .offer__price-save {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 4px 9px;
+      background: var(--ink);
+      color: var(--paper);
+      font-weight: 700; font-size: 11px;
+      letter-spacing: .14em; text-transform: uppercase;
+    }
+
+    .btn-primary {
+      display: inline-flex; align-items: center; justify-content: center; gap: 14px;
+      padding: 22px 24px;
+      background: var(--ink);
+      color: var(--paper);
+      font-weight: 800;
+      font-size: 17px;
+      letter-spacing: -.005em;
+      min-height: 64px;
+      transition: background .25s var(--ease), color .25s var(--ease);
+      width: 100%;
+    }
+    .btn-primary:hover { background: var(--mute); }
+    .btn-primary svg { width: 16px; height: 16px; }
+
+    .pricing__dm {
+      font-size: 13px;
+      color: var(--mute);
+      margin: 0;
+    }
+    .pricing__dm b { color: var(--ink); font-weight: 700; }
+
+    /* Mobile: compress block 05 so it fits one screen */
+    @media (max-width: 759px) {
+      #buy { padding-top: 48px; padding-bottom: 48px; }
+      #buy .h-1 {
+        font-size: 32px; line-height: 1.02;
+        margin-bottom: 16px !important;
+      }
+      #buy .pricing__includes-label {
+        font-size: 10px; margin-bottom: 4px;
+      }
+      #buy .pricing__includes li {
+        padding: 2px 0;
+        font-size: 13px;
+        font-weight: 400;
+        line-height: 1.3;
+        gap: 8px;
+      }
+      #buy .pricing__includes li::before {
+        width: 5px; height: 5px;
+        transform: translateY(-1px);
+      }
+      #buy .pricing__right { gap: 18px; }
+      #buy .offer__price-was { font-size: 11px; }
+      #buy .offer__price-now .cur { font-size: 24px; padding-top: 10px; }
+      #buy .offer__price-now .amt { font-size: 80px; }
+      #buy .btn-primary { min-height: 60px; padding: 18px 22px; }
+      #buy .btn-primary span { font-size: 18px !important; letter-spacing: 5px !important; }
+      #buy .pricing__dm { font-size: 11px; line-height: 1.4; }
+    }
+
+    /* =========================================================
+       6 · AUTHOR
+       ========================================================= */
+    .author {
+      display: grid; grid-template-columns: 1fr; gap: 28px;
+      margin-top: 36px;
+    }
+    @media (min-width: 760px) {
+      .author { grid-template-columns: 220px 1fr; gap: 48px; align-items: start; }
+    }
+    @media (min-width: 1024px) {
+      .author { grid-template-columns: 280px 1fr; gap: 72px; }
+    }
+    .author__photo {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      background: var(--paper-2);
+      position: relative;
+      overflow: hidden;
+    }
+    .author__photo.is-placeholder::after {
+      content: "PORTRAIT";
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      font-weight: 700; font-size: 11px;
+      color: var(--mute-2);
+    }
+    .author__role {
+      font-weight: 600; font-size: 13px;
+      color: var(--mute);
+      margin: 0 0 14px;
+    }
+    .author__name {
+      margin: 0 0 18px;
+      font-weight: 600;
+      font-size: 49px;
+      letter-spacing: -.026em;
+      line-height: 1;
+    }
+    .author p {
+      max-width: 58ch;
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--ink-2);
+      margin: 0 0 12px;
+    }
+
+    /* =========================================================
+       7 · LANGUAGES
+       ========================================================= */
+    .languages {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 28px;
+      align-items: start;
+    }
+    @media (min-width: 900px) {
+      .languages { grid-template-columns: 1fr 1.6fr; gap: 56px; }
+    }
+    .languages__head .label { margin-bottom: 14px; }
+    .languages__title {
+      margin: 0 0 14px;
+      max-width: 18ch;
+    }
+    .languages__title .mute { color: var(--mute-2); }
+    .languages__note {
+      margin: 0;
+      font-size: 13px;
+      line-height: 1.55;
+      color: var(--mute);
+      max-width: 38ch;
+    }
+    .languages__grid {
+      list-style: none;
+      padding: 0; margin: 0;
+      display: flex;
+      flex-wrap: wrap;
+      column-gap: 22px;
+      row-gap: 4px;
+    }
+    .languages__grid li {
+      display: inline-flex;
+    }
+    .languages__grid b {
+      display: inline-block;
+      padding: 8px 0;
+      font-weight: 600;
+      font-size: 16px;
+      letter-spacing: -.005em;
+      line-height: 1;
+      color: var(--ink);
+    }
+
+    /* =========================================================
+       8 · REVIEWS
+       ========================================================= */
+    .reviews {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      margin-top: 36px;
+    }
+    @media (min-width: 760px) {
+      .reviews { grid-template-columns: 1fr 1fr; gap: 24px; }
+    }
+    .review-card {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 28px;
+      padding: 26px 28px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      transition: border-color .25s var(--ease), background .25s var(--ease), transform .25s var(--ease);
+    }
+    .review-card:hover { border-color: var(--ink); }
+    @media (max-width: 759px) {
+      .review-card {
+        grid-template-columns: auto 1fr;
+        grid-template-rows: auto auto;
+        gap: 14px 20px;
+        padding: 22px;
+      }
+      .review-card__cta { grid-column: 1 / -1; justify-self: start; }
+    }
+    .review-card__score {
+      display: flex; flex-direction: column; gap: 8px;
+      min-width: 0;
+    }
+    .review-card__num {
+      font-weight: 700;
+      font-size: clamp(40px, 5vw, 56px);
+      letter-spacing: -.03em;
+      line-height: .9;
+      color: var(--ink);
+      font-variant-numeric: tabular-nums;
+    }
+    .review-card__stars {
+      display: inline-flex; align-items: center; gap: 2px;
+    }
+    .rstar { display: inline-block; line-height: 1; }
+    /* Trustpilot green tiles */
+    .review-card__stars--tp { gap: 2px; }
+    .rstar--tp {
+      width: 22px; height: 22px;
+      position: relative;
+      background: #d5dbde;
+    }
+    .rstar--tp.is-on { background: #00b67a; }
+    .rstar--tp.is-half {
+      background: linear-gradient(to right, #00b67a 50%, #d5dbde 50%);
+    }
+    .rstar--tp::after {
+      content: "";
+      position: absolute; inset: 4px;
+      background-color: #fff;
+      -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='black'><path d='M12 2l2.9 6.9 7.1.6-5.4 4.7 1.6 7.1L12 17.8 5.8 21.3l1.6-7.1L2 9.5l7.1-.6L12 2z'/></svg>") center/14px no-repeat;
+              mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='black'><path d='M12 2l2.9 6.9 7.1.6-5.4 4.7 1.6 7.1L12 17.8 5.8 21.3l1.6-7.1L2 9.5l7.1-.6L12 2z'/></svg>") center/14px no-repeat;
+    }
+    /* Google stars */
+    .review-card__stars--g { gap: 1px; font-size: 22px; }
+    .rstar--g { color: #fbbc04; }
+
+    .review-card__brand {
+      display: flex; flex-direction: column; gap: 4px;
+      min-width: 0;
+    }
+    .review-card__rating {
+      margin: 0;
+      font-weight: 800; font-size: 14px;
+      letter-spacing: .14em; text-transform: uppercase;
+      color: var(--ink);
+    }
+    .review-card__source {
+      margin: 0;
+      font-weight: 600; font-size: 12px;
+      letter-spacing: .14em; text-transform: uppercase;
+      color: var(--mute);
+    }
+    .review-card__cta {
+      font-weight: 700; font-size: 12px;
+      letter-spacing: .14em; text-transform: uppercase;
+      color: var(--mute);
+      transition: color .25s var(--ease), transform .25s var(--ease);
+      white-space: nowrap;
+    }
+    .review-card:hover .review-card__cta { color: var(--ink); transform: translateX(2px); }
+
+    /* =========================================================
+       FOOTER (RENDER.CAMP style)
+       ========================================================= */
+    footer {
+      background: var(--ink);
+      color: var(--paper);
+      padding: 64px var(--pad-x) 32px;
+      margin-top: var(--gap);
+    }
+    .footer__inner {
+      max-width: 1320px;
+      margin: 0 auto;
+    }
+    .footer__hero {
+      font-weight: 600;
+      font-size: 49px;
+      letter-spacing: -.026em;
+      line-height: 1.1;
+      margin: 0 0 48px;
+      max-width: 32ch;
+    }
+    .footer__hero a {
+      border-bottom: 1px solid currentColor;
+      transition: color .2s var(--ease);
+    }
+    .footer__hero a:hover { color: var(--mute-2); }
+
+    .footer__grid {
+      display: grid; grid-template-columns: 1fr; gap: 48px;
+      padding-top: 48px;
+      border-top: 1px solid rgba(250,250,250,.12);
+    }
+    @media (min-width: 800px) { .footer__grid { grid-template-columns: 1.4fr 1fr; gap: 56px; } }
+
+    /* mini reviews */
+    .reviews-mini { display: flex; flex-direction: column; gap: 12px; }
+    .reviews-mini h4 {
+      font-weight: 700; font-size: 13px;
+      color: rgba(250,250,250,.55);
+      letter-spacing: .14em; text-transform: uppercase;
+      margin: 0 0 12px;
+    }
+    .reviews-mini__list { display: flex; flex-direction: column; gap: 10px; }
+    .rev-mini {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      align-items: center;
+      gap: 16px;
+      padding: 12px 16px;
+      border: 1px solid rgba(250,250,250,.16);
+      transition: border-color .2s var(--ease), background .2s var(--ease);
+    }
+    .rev-mini:hover { border-color: rgba(250,250,250,.45); background: rgba(250,250,250,.04); }
+    .rev-mini__num {
+      font-weight: 700;
+      font-size: 26px;
+      letter-spacing: -.02em;
+      line-height: 1;
+      color: var(--paper);
+      font-variant-numeric: tabular-nums;
+    }
+    .rev-mini__body { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+    .rev-mini__src {
+      font-weight: 700; font-size: 11px;
+      letter-spacing: .14em; text-transform: uppercase;
+      color: rgba(250,250,250,.55);
+    }
+    .rev-mini__stars { display: inline-flex; align-items: center; gap: 2px; line-height: 1; }
+    /* Trustpilot mini tiles */
+    .rsm--tp {
+      width: 12px; height: 12px;
+      background: rgba(250,250,250,.18);
+      position: relative;
+    }
+    .rsm--tp.is-on { background: #00b67a; }
+    .rsm--tp.is-half { background: linear-gradient(to right, #00b67a 50%, rgba(250,250,250,.18) 50%); }
+    /* Google mini stars */
+    .rev-mini__stars--g { color: #fbbc04; font-size: 14px; letter-spacing: 1px; }
+
+    /* form */
+    .form-block .form-h {
+      font-weight: 800; font-size: 18px;
+      letter-spacing: -.015em;
+      margin: 0 0 6px;
+    }
+    .form-block .form-sub {
+      font-size: 13px; color: rgba(250,250,250,.55);
+      margin: 0 0 22px;
+      max-width: 44ch;
+    }
+    .form-block form {
+      display: grid; grid-template-columns: 1fr; gap: 10px;
+    }
+    @media (min-width: 600px) { .form-block form { grid-template-columns: 1fr 1fr; gap: 12px; } }
+    .form-block input,
+    .form-block textarea {
+      background: transparent;
+      border: 0;
+      border-bottom: 1px solid rgba(250,250,250,.25);
+      padding: 16px 0;
+      color: var(--paper);
+      font: inherit; font-size: 16px;
+      transition: border-color .2s var(--ease);
+      width: 100%;
+    }
+    .form-block input::placeholder,
+    .form-block textarea::placeholder {
+      color: rgba(250,250,250,.45);
+    }
+    .form-block input:focus,
+    .form-block textarea:focus {
+      outline: none;
+      border-bottom-color: var(--paper);
+    }
+    .form-block .full { grid-column: 1/-1; }
+    .form-block button {
+      grid-column: 1/-1;
+      justify-self: start;
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 14px 22px;
+      background: var(--paper);
+      color: var(--ink);
+      font-weight: 800; font-size: 14px;
+      margin-top: 6px;
+      transition: opacity .2s var(--ease);
+    }
+    .form-block button:hover { opacity: .85; }
+    .form-block .ok {
+      grid-column: 1/-1;
+      font-weight: 700; font-size: 14px;
+      color: #6CE395;
+      display: none;
+    }
+    .form-block.is-sent .ok { display: block; }
+    .form-block.is-sent .form-body { display: none; }
+
+    /* contact / socials */
+    .contact-block {
+      display: flex; flex-direction: column;
+      gap: 24px;
+    }
+    .contact-block h4 {
+      font-weight: 700; font-size: 13px;
+      color: rgba(250,250,250,.55);
+      margin: 0 0 12px;
+    }
+    .contact-block .lines {
+      list-style: none; padding: 0; margin: 0;
+      display: flex; flex-direction: column; gap: 8px;
+    }
+    .contact-block .lines li a,
+    .contact-block .lines li {
+      font-weight: 700; font-size: 16px;
+      color: var(--paper);
+      transition: color .2s var(--ease);
+    }
+    .contact-block .lines li a:hover { color: var(--mute-2); }
+
+    .socials {
+      display: flex; flex-wrap: wrap;
+      gap: 8px 14px;
+      font-weight: 700; font-size: 13px;
+    }
+    .socials a {
+      padding: 8px 12px;
+      border: 1px solid rgba(250,250,250,.2);
+      transition: background .2s var(--ease), color .2s var(--ease);
+    }
+    .socials a:hover { background: var(--paper); color: var(--ink); }
+
+    .footer__bottom {
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(250,250,250,.12);
+      display: flex; flex-wrap: wrap; gap: 16px;
+      justify-content: space-between; align-items: center;
+      font-size: 12px;
+      color: rgba(250,250,250,.5);
+    }
+    .footer__bottom a { transition: color .2s var(--ease); }
+    .footer__bottom a:hover { color: var(--paper); }
+
+    /* =========================================================
+       STICKY MOBILE CTA
+       ========================================================= */
+    .sticky-cta {
+      position: fixed; left: 0; right: 0; bottom: 0;
+      z-index: 40;
+      background: var(--ink);
+      padding: 12px 14px calc(12px + env(safe-area-inset-bottom, 0px));
+      text-decoration: none;
+      transform: translateY(110%); opacity: 0;
+      transition: transform .35s var(--ease), opacity .25s var(--ease);
+    }
+    .sticky-cta.is-visible { transform: translateY(0); opacity: 1; }
+    .sticky-cta__btn {
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px;
+      width: 100%;
+      min-height: 64px;
+      padding: 10px 20px;
+      background: var(--paper);
+      color: var(--ink);
+      letter-spacing: -.005em;
+    }
+    .sticky-cta__btn-main { font-weight: 700; font-size: 18px; }
+    .sticky-cta__btn-sub {
+      font-weight: 500; font-size: 11px;
+      color: var(--mute);
+      letter-spacing: .01em;
+      font-variant-numeric: tabular-nums;
+    }
+    .sticky-cta__btn svg { width: 14px; height: 14px; }
+    @media (min-width: 760px) { .sticky-cta { display: none; } }
+    @media (max-width: 759px) { footer { padding-bottom: calc(32px + 104px); } }
+
+    /* =========================================================
+       LIGHTBOX SLIDER (examples fullscreen viewer)
+       ========================================================= */
+    .lightbox {
+      position: fixed; inset: 0;
+      z-index: 100;
+      background: rgba(5,5,5,.96);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      display: none;
+      align-items: center; justify-content: center;
+      opacity: 0;
+      transition: opacity .25s var(--ease);
+      touch-action: pan-y;
+    }
+    .lightbox.is-open {
+      display: flex;
+      opacity: 1;
+    }
+    body.lightbox-locked { overflow: hidden; }
+
+    .lightbox__stage {
+      position: relative;
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+      padding: 64px 16px 80px;
+    }
+    @media (min-width: 720px) {
+      .lightbox__stage { padding: 72px 80px; }
+    }
+
+    .lightbox__video {
+      max-width: 100%;
+      max-height: 100%;
+      width: auto; height: auto;
+      object-fit: contain;
+      background: #000;
+      box-shadow: 0 20px 80px rgba(0,0,0,.6);
+      transition: opacity .2s var(--ease);
+    }
+    .lightbox.is-swiping .lightbox__video {
+      transition: transform 0s;
+    }
+
+    .lightbox__close,
+    .lightbox__nav {
+      position: absolute;
+      display: grid; place-items: center;
+      background: rgba(250,250,250,.08);
+      border: 1px solid rgba(250,250,250,.22);
+      color: var(--paper);
+      cursor: pointer;
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      transition: background .2s var(--ease), border-color .2s var(--ease), opacity .2s var(--ease);
+      z-index: 2;
+    }
+    .lightbox__close:hover,
+    .lightbox__nav:hover {
+      background: rgba(250,250,250,.18);
+      border-color: rgba(250,250,250,.45);
+    }
+
+    .lightbox__close {
+      top: 16px; right: 16px;
+      width: 44px; height: 44px;
+    }
+    .lightbox__close svg { width: 18px; height: 18px; }
+    @media (min-width: 720px) {
+      .lightbox__close { top: 22px; right: 22px; width: 48px; height: 48px; }
+      .lightbox__close svg { width: 20px; height: 20px; }
+    }
+
+    .lightbox__nav {
+      top: 50%;
+      transform: translateY(-50%);
+      width: 48px; height: 48px;
+    }
+    .lightbox__nav--prev { left: 12px; }
+    .lightbox__nav--next { right: 12px; }
+    .lightbox__nav svg { width: 22px; height: 22px; }
+    @media (min-width: 720px) {
+      .lightbox__nav { width: 56px; height: 56px; }
+      .lightbox__nav--prev { left: 22px; }
+      .lightbox__nav--next { right: 22px; }
+    }
+    .lightbox__nav[disabled] { opacity: .25; cursor: default; pointer-events: none; }
+
+    .lightbox__counter {
+      position: absolute;
+      top: 22px; left: 50%;
+      transform: translateX(-50%);
+      color: rgba(250,250,250,.85);
+      font-weight: 700; font-size: 12px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      font-variant-numeric: tabular-nums;
+    }
+    .lightbox__counter b { color: var(--paper); font-weight: 800; }
+
+    .lightbox__hint {
+      position: absolute;
+      bottom: 20px; left: 50%;
+      transform: translateX(-50%);
+      color: rgba(250,250,250,.55);
+      font-weight: 600; font-size: 11px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      pointer-events: none;
+    }
+    .lightbox__loading {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 32px; height: 32px;
+      border: 2px solid rgba(250,250,250,.18);
+      border-top-color: var(--paper);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      opacity: 0;
+      transition: opacity .2s var(--ease);
+      pointer-events: none;
+    }
+    .lightbox.is-loading .lightbox__loading { opacity: 1; }
+    @keyframes spin { to { transform: translate(-50%, -50%) rotate(360deg); } }
+
+    /* lightbox image variant — shares .lightbox base */
+    .lightbox__image {
+      max-width: 100%;
+      max-height: 100%;
+      width: auto; height: auto;
+      object-fit: contain;
+      box-shadow: 0 20px 80px rgba(0,0,0,.6);
+    }
+
+    /* =========================================================
+       COURSE MOBILE LIGHTBOX (slider over the 6 modules)
+       ========================================================= */
+    .course-lb {
+      position: fixed; inset: 0;
+      z-index: 100;
+      background: rgba(5,5,5,.96);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      display: none;
+      align-items: center; justify-content: center;
+      opacity: 0;
+      transition: opacity .25s var(--ease);
+      touch-action: pan-y;
+    }
+    .course-lb.is-open { display: flex; opacity: 1; }
+    .course-lb__stage {
+      position: relative;
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+      padding: 80px 24px 96px;
+    }
+    .course-lb__card {
+      width: 100%;
+      max-width: 460px;
+      color: var(--paper);
+      display: flex; flex-direction: column;
+      gap: 16px;
+    }
+    .course-lb__num {
+      font-weight: 700; font-size: 12px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: rgba(250,250,250,.5);
+    }
+    .course-lb__title {
+      margin: 0;
+      font-weight: 600;
+      font-size: clamp(32px, 7vw, 44px);
+      letter-spacing: -.026em;
+      line-height: 1;
+      text-wrap: balance;
+    }
+    .course-lb__list {
+      list-style: none;
+      padding: 0; margin: 8px 0 0;
+      display: flex; flex-direction: column;
+      gap: 0;
+      border-top: 1px solid rgba(250,250,250,.16);
+    }
+    .course-lb__list li {
+      display: grid;
+      grid-template-columns: 24px 1fr;
+      gap: 10px;
+      padding: 14px 0;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 1.35;
+      color: rgba(250,250,250,.9);
+      border-bottom: 1px solid rgba(250,250,250,.12);
+    }
+    .course-lb__list li .li-n {
+      color: rgba(250,250,250,.4);
+      font-weight: 700; font-size: 11px;
+      letter-spacing: .04em;
+      padding-top: 2px;
+    }
+
+    .course-lb__close,
+    .course-lb__nav {
+      position: absolute;
+      display: grid; place-items: center;
+      background: rgba(250,250,250,.08);
+      border: 1px solid rgba(250,250,250,.22);
+      color: var(--paper);
+      cursor: pointer;
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      transition: background .2s var(--ease), border-color .2s var(--ease), opacity .2s var(--ease);
+      z-index: 2;
+    }
+    .course-lb__close:hover,
+    .course-lb__nav:hover {
+      background: rgba(250,250,250,.18);
+      border-color: rgba(250,250,250,.45);
+    }
+    .course-lb__close { top: 16px; right: 16px; width: 44px; height: 44px; }
+    .course-lb__close svg { width: 18px; height: 18px; }
+    .course-lb__nav {
+      bottom: 24px;
+      width: 48px; height: 48px;
+    }
+    .course-lb__nav--prev { left: 24px; }
+    .course-lb__nav--next { right: 24px; }
+    .course-lb__nav svg { width: 22px; height: 22px; }
+    .course-lb__nav[disabled] { opacity: .25; pointer-events: none; }
+    .course-lb__counter {
+      position: absolute;
+      top: 22px; left: 50%;
+      transform: translateX(-50%);
+      color: rgba(250,250,250,.85);
+      font-weight: 700; font-size: 12px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      font-variant-numeric: tabular-nums;
+    }
+    .course-lb__counter b { color: var(--paper); font-weight: 800; }
+
+
+    /* =========================================================
+       LANG SWITCH
+       ========================================================= */
+    .lang-switch {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      flex: 0 0 auto;
+    }
+    .lang-switch__btn {
+      font-weight: 700;
+      font-size: 12px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: 6px 2px;
+      color: rgba(250,250,250,.45);
+      transition: color .2s var(--ease);
+      line-height: 1;
+    }
+    .lang-switch__btn:hover { color: rgba(250,250,250,.85); }
+    .lang-switch__btn.is-active { color: var(--paper); }
+    .lang-switch__sep {
+      color: rgba(250,250,250,.3);
+      font-size: 11px;
+      font-weight: 500;
+      user-select: none;
+    }
+    html[lang="vi"] .btn-primary span { letter-spacing: .06em !important; }
+    html[lang="vi"] .cover__title span { font-size: clamp(34px, 7.2vw, 49px); }
+
+    /* =========================================================
+       REVEAL
+       ========================================================= */
+    .reveal { opacity: 0; transform: translateY(10px); transition: opacity .6s var(--ease), transform .6s var(--ease); }
+    .reveal.is-in { opacity: 1; transform: none; }
+    .reveal.d1 { transition-delay: .08s; }
+    .reveal.d2 { transition-delay: .16s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+    a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visible {
+      outline: 2px solid currentColor; outline-offset: 3px;
+    }
+  </style>
+</head>
+
+<body>
+<!-- ===== NAV ===== -->
+  <header class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="https://render.camp/" target="_blank" rel="noopener" class="brand" aria-label="RENDER CAMP">
+        <img src="media/logo.png" alt="RENDER CAMP" />
+      </a>
+      <div class="lang-switch" role="group" aria-label="Language" data-i18n-aria="aria.language">
+        <button type="button" class="lang-switch__btn is-active" data-set-lang="en" aria-pressed="true">EN</button>
+        <span class="lang-switch__sep" aria-hidden="true">/</span>
+        <button type="button" class="lang-switch__btn" data-set-lang="vi" aria-pressed="false">VI</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ============ 1 · COVER (magazine) ============ -->
+    <section class="cover" id="cover" data-od-id="cover">
+      <video class="cover__video" id="coverVid" poster="media/cover-v2.jpg" autoplay muted loop playsinline webkit-playsinline preload="auto"></video>
+      <div class="cover__overlay"></div>
+
+      <div class="cover__inner">
+        <!-- masthead -->
+        <div class="cover__masthead">
+          <h1 class="cover__title">
+            <span style="font-weight: 600; letter-spacing: -2.6px" data-i18n="cover.t1">Architectural</span>
+            <span style="font-weight: 600; letter-spacing: -2.5px" data-i18n="cover.t2">AI Filmmaking</span>
+            <span class="cover__title-course" style="font-family: Helvetica; font-weight: 100" data-i18n="cover.t3">Course</span>
+          </h1>
+        </div>
+
+        <!-- foot: text + controls anchored to bottom -->
+        <div class="cover__foot">
+          <div class="cover__bottom">
+            <p class="cover__lead cover__lead--left" data-i18n="cover.leadLeft">
+              A course that teaches artists, designers, architects, and architecture lovers to create outstanding cinematic films about architecture — from nothing to breathtaking stories.
+            </p>
+            <p class="cover__lead cover__lead--right" data-i18n="cover.leadRight">
+              All you need to start is any sketch, screenshot, or simple image that describes the architecture — from any software, at any stage. No special skills or additional knowledge required.
+            </p>
+          </div>
+
+          <div class="cover-controls">
+            <button class="sound-btn" id="coverSound" type="button" aria-label="Toggle sound" data-i18n-aria="aria.toggleSound">
+              <svg class="when-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                <path d="M11 5L6 9H3v6h3l5 4z" fill="currentColor" stroke="none"/>
+                <line x1="17" y1="9" x2="22" y2="14" stroke-linecap="round"/>
+                <line x1="22" y1="9" x2="17" y2="14" stroke-linecap="round"/>
+              </svg>
+              <svg class="when-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                <path d="M11 5L6 9H3v6h3l5 4z" fill="currentColor" stroke="none"/>
+                <path d="M16 8c1.5 1 2.5 2.5 2.5 4s-1 3-2.5 4" stroke-linecap="round"/>
+                <path d="M19 5c2.5 1.6 4 4 4 7s-1.5 5.4-4 7" stroke-linecap="round"/>
+              </svg>
+            </button>
+            <a href="https://store.payproglobal.com/checkout?products[1][id]=134624&products[1][data]=3X-3IiMg5soHCbQyW6yjx2eNKpvOgKwhcFYpvxbu-914cLmLfK89d3ITPSOpVDFgulAiNe8vm7qDrEj-fbstziAxj0_vgY86oWywr3-9d4r5KriWgZo6GWGDOkFrrsz4Zgn8I7HHG6VTYv4sCP3FDVPalYN0LPMnFGK886ejr24F9-1rUBgqEsIgZn21-sijwOAgmBegQf3tgcrbRA0o0SToY6c9xpwMZ86nJ24WXcw-SjmgZnnbMJptuxbZdROKzf5ScXgg5Q191IlWUyHm9XyIn4lkehyffgxK_q43D966g6ZH_a0hdvwVYG_gDZ6wewZEn3ghhYeyryD5wAI0JGxjjT0kDn691aG9Durm9fi5Os0E9tWMrQ1KrZWhVVBiCEXfGnIqtHzTH94R0Y4y6g%3D%3D" class="cover-buy" data-cta="cover">
+              <span data-btn-text data-i18n="cta.startCreating" style="font-weight: 600; letter-spacing: -0.4px">START CREATING NOW — €79</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============ 2 · QUOTE ============ -->
+    <section class="quote" data-od-id="quote">
+      <div class="container">
+        <h2 class="quote__statement" style="text-align: center" data-i18n="quote">Not just one-click AI.
+"but" Brand + Artistic thinking + AI.</h2>
+      </div>
+    </section>
+
+
+    <!-- ============ 2.5 · LET ME EXPLAIN ============ -->
+    <section class="s explain" id="explain" data-od-id="explain">
+      <div class="container">
+        <div class="explain__head">
+          <p class="label"><span class="n">02</span><span data-i18n="explain.label">How it works</span></p>
+          <h2 class="explain__title" data-i18n="explain.title">From sketch to cinematic film.</h2>
+        </div>
+
+        <div class="explain__grid">
+          <div class="explain__col">
+            <header class="explain__step">
+              <p class="explain__step-no" data-i18n="explain.s1no">Step 01</p>
+              <h3 class="explain__step-title" data-i18n="explain.s1title">Take an image of your project.</h3>
+            </header>
+            <figure class="explain-card-img" style="margin:0;">
+              <img src="media/reference.jpg" alt="House on the Cliff by Fran Silvestre Arquitectos — the source image." data-i18n-alt="explain.imgAlt" />
+            </figure>
+            <p class="explain__credit" style="color: rgba(0,0,0,.38); font-size: 10px;"><span aria-hidden="true" style="margin-right:4px;">*</span><span data-i18n="explain.credit">Original image: Fran Silvestre Arquitectos</span></p>
+          </div>
+
+          <div class="explain__col">
+            <header class="explain__step">
+              <p class="explain__step-no" data-i18n="explain.s2no">Step 02</p>
+              <h3 class="explain__step-title" data-i18n="explain.s2title">Build a visual world for the product.</h3>
+            </header>
+            <ol class="explain__list">
+              <li><span class="num">/ 01</span><span data-i18n="explain.l1">Define the story to tell.</span></li>
+              <li><span class="num">/ 02</span><span data-i18n="explain.l2">Develop the visual concept.</span></li>
+              <li><span class="num">/ 03</span><span data-i18n="explain.l3">Build the script and storyboard.</span></li>
+              <li><span class="num">/ 04</span><span data-i18n="explain.l4">Develop setting and camera angles.</span></li>
+              <li><span class="num">/ 05</span><span data-i18n="explain.l5">Create characters that fit the brand.</span></li>
+              <li><span class="num">/ 06</span><span data-i18n="explain.l6">Place the product in the right world.</span></li>
+              <li><span class="num">/ 07</span><span data-i18n="explain.l7">Create intentional motion.</span></li>
+              <li><span class="num">/ 08</span><span data-i18n="explain.l8">Build sound and narration.</span></li>
+              <li><span class="num">/ 09</span><span data-i18n="explain.l9">Finalize the film.</span></li>
+            </ol>
+          </div>
+
+          <div class="explain__col">
+            <header class="explain__step">
+              <p class="explain__step-no" data-i18n="explain.s3no">Step 03</p>
+              <h3 class="explain__step-title" data-i18n="explain.s3title">Final result.</h3>
+            </header>
+            <figure class="explain-card-vid" id="explainCard" style="margin:0;">
+              <video id="explainVid" muted loop playsinline webkit-playsinline preload="none" poster="media/cover-v2.jpg"></video>
+              <button class="explain-card-vid__sound" id="explainSound" type="button" aria-label="Toggle sound" data-i18n-aria="aria.toggleSound">
+                <svg class="when-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                  <path d="M11 5L6 9H3v6h3l5 4z" fill="currentColor" stroke="none"/>
+                  <line x1="17" y1="9" x2="22" y2="14" stroke-linecap="round"/>
+                  <line x1="22" y1="9" x2="17" y2="14" stroke-linecap="round"/>
+                </svg>
+                <svg class="when-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                  <path d="M11 5L6 9H3v6h3l5 4z" fill="currentColor" stroke="none"/>
+                  <path d="M16 8c1.5 1 2.5 2.5 2.5 4s-1 3-2.5 4" stroke-linecap="round"/>
+                  <path d="M19 5c2.5 1.6 4 4 4 7s-1.5 5.4-4 7" stroke-linecap="round"/>
+                </svg>
+              </button>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============ 3 · EXAMPLES ============ -->
+    <section class="examples" id="work" data-od-id="work">
+      <div class="examples__head">
+        <div class="sec-head">
+          <div>
+            <p class="label"><span class="n">03</span><span data-i18n="work.label">Selected work</span></p>
+            <h2 class="h-1 sec-head__title" data-i18n="work.title">The visual worlds Wave creates.</h2>
+          </div>
+          <div class="sec-head__prose">
+            <p><span data-i18n="work.p1a">The destination isn’t just “beautifying the product.”</span> <span class="hint-mobile"><b data-i18n="work.swipe">Swipe →</b> <span data-i18n="work.p1m">tap any tile to play with sound.</span></span><span class="hint-desktop"><b data-i18n="work.click">Click any tile</b> <span data-i18n="work.p1d">to play with sound — or open it fullscreen</span> <svg class="hint-fs-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 9 4 4 9 4"></polyline><polyline points="20 9 20 4 15 4"></polyline><polyline points="4 15 4 20 9 20"></polyline><polyline points="20 15 20 20 15 20"></polyline></svg>.</span></p>
+            <p data-i18n="work.p2">We turn it into a story so customers see, feel, remember, and yearn to step into the brand’s world.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="examples__scroller" id="examplesScroller">
+        <figure class="ex-card" data-video="media/examples/ex-099.mp4" style="margin:0;">
+          <video muted loop playsinline webkit-playsinline preload="none" poster="media/examples/ex-099.jpg"></video>
+          <span class="ex-card__tag">/ 01</span>
+          <button class="ex-card__fs" type="button" aria-label="Open fullscreen" data-i18n-aria="aria.openFullscreen">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 9 4 4 9 4"/><polyline points="20 9 20 4 15 4"/><polyline points="4 15 4 20 9 20"/><polyline points="20 15 20 20 15 20"/></svg>
+          </button>
+          <button class="ex-card__play" type="button" aria-label="Play video" data-i18n-aria="aria.playVideo">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+          </button>
+        </figure>
+        <figure class="ex-card" data-video="media/examples/ex-001.mp4" style="margin:0;">
+          <video muted loop playsinline webkit-playsinline preload="none" poster="media/examples/ex-001.jpg"></video>
+          <span class="ex-card__tag">/ 02</span>
+          <button class="ex-card__fs" type="button" aria-label="Open fullscreen" data-i18n-aria="aria.openFullscreen">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 9 4 4 9 4"/><polyline points="20 9 20 4 15 4"/><polyline points="4 15 4 20 9 20"/><polyline points="20 15 20 20 15 20"/></svg>
+          </button>
+          <button class="ex-card__play" type="button" aria-label="Play video" data-i18n-aria="aria.playVideo">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+          </button>
+        </figure>
+        <figure class="ex-card" data-video="media/examples/ex-002.mp4" style="margin:0;">
+          <video muted loop playsinline webkit-playsinline preload="none" poster="media/examples/ex-002.jpg"></video>
+          <span class="ex-card__tag">/ 03</span>
+          <button class="ex-card__fs" type="button" aria-label="Open fullscreen" data-i18n-aria="aria.openFullscreen">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 9 4 4 9 4"/><polyline points="20 9 20 4 15 4"/><polyline points="4 15 4 20 9 20"/><polyline points="20 15 20 20 15 20"/></svg>
+          </button>
+          <button class="ex-card__play" type="button" aria-label="Play video" data-i18n-aria="aria.playVideo">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+          </button>
+        </figure>
+        <figure class="ex-card" data-video="media/examples/ex-003.mp4" style="margin:0;">
+          <video muted loop playsinline webkit-playsinline preload="none" poster="media/examples/ex-003.jpg"></video>
+          <span class="ex-card__tag">/ 04</span>
+          <button class="ex-card__fs" type="button" aria-label="Open fullscreen" data-i18n-aria="aria.openFullscreen">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 9 4 4 9 4"/><polyline points="20 9 20 4 15 4"/><polyline points="4 15 4 20 9 20"/><polyline points="20 15 20 20 15 20"/></svg>
+          </button>
+          <button class="ex-card__play" type="button" aria-label="Play video" data-i18n-aria="aria.playVideo">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+          </button>
+        </figure>
+        <figure class="ex-card" data-video="media/examples/ex-004.mp4" style="margin:0;">
+          <video muted loop playsinline webkit-playsinline preload="none" poster="media/examples/ex-004.jpg"></video>
+          <span class="ex-card__tag">/ 05</span>
+          <button class="ex-card__fs" type="button" aria-label="Open fullscreen" data-i18n-aria="aria.openFullscreen">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 9 4 4 9 4"/><polyline points="20 9 20 4 15 4"/><polyline points="4 15 4 20 9 20"/><polyline points="20 15 20 20 15 20"/></svg>
+          </button>
+          <button class="ex-card__play" type="button" aria-label="Play video" data-i18n-aria="aria.playVideo">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+          </button>
+        </figure>
+        <figure class="ex-card" data-video="media/examples/ex-005.mp4" style="margin:0;">
+          <video muted loop playsinline webkit-playsinline preload="none" poster="media/examples/ex-005.jpg"></video>
+          <span class="ex-card__tag">/ 06</span>
+          <button class="ex-card__fs" type="button" aria-label="Open fullscreen" data-i18n-aria="aria.openFullscreen">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 9 4 4 9 4"/><polyline points="20 9 20 4 15 4"/><polyline points="4 15 4 20 9 20"/><polyline points="20 15 20 20 15 20"/></svg>
+          </button>
+          <button class="ex-card__play" type="button" aria-label="Play video" data-i18n-aria="aria.playVideo">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+          </button>
+        </figure>
+        <figure class="ex-card" data-video="media/examples/ex-006.mp4" style="margin:0;">
+          <video muted loop playsinline webkit-playsinline preload="none" poster="media/examples/ex-006.jpg"></video>
+          <span class="ex-card__tag">/ 07</span>
+          <button class="ex-card__fs" type="button" aria-label="Open fullscreen" data-i18n-aria="aria.openFullscreen">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 9 4 4 9 4"/><polyline points="20 9 20 4 15 4"/><polyline points="4 15 4 20 9 20"/><polyline points="20 15 20 20 15 20"/></svg>
+          </button>
+          <button class="ex-card__play" type="button" aria-label="Play video" data-i18n-aria="aria.playVideo">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+          </button>
+        </figure>
+        <figure class="ex-card" data-video="media/examples/ex-007.mp4" style="margin:0;">
+          <video muted loop playsinline webkit-playsinline preload="none" poster="media/examples/ex-007.jpg"></video>
+          <span class="ex-card__tag">/ 08</span>
+          <button class="ex-card__fs" type="button" aria-label="Open fullscreen" data-i18n-aria="aria.openFullscreen">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 9 4 4 9 4"/><polyline points="20 9 20 4 15 4"/><polyline points="4 15 4 20 9 20"/><polyline points="20 15 20 20 15 20"/></svg>
+          </button>
+          <button class="ex-card__play" type="button" aria-label="Play video" data-i18n-aria="aria.playVideo">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+          </button>
+        </figure>
+      </div>
+    </section>
+
+
+    <!-- ============ 4 · COURSE ============ -->
+    <section class="s" id="course" data-od-id="course">
+      <div class="container">
+        <div class="sec-head">
+          <div>
+            <p class="label"><span class="n">04</span><span data-i18n="course.label">Services</span></p>
+            <h2 class="h-1 sec-head__title" data-i18n="course.title">A structured creative process.</h2>
+          </div>
+          <p class="sec-head__prose" data-i18n-html="course.prose">From the initial product image to a campaign-ready film.</p>
+        </div>
+
+        <div class="course-grid">
+          <button type="button" class="course-cell" data-course-idx="0">
+            <span class="course-cell__num">/ 01</span>
+            <h3 class="course-cell__title" data-i18n="course.c1.title">Creative Direction</h3>
+            <ul class="course-cell__list">
+              <li data-i18n="course.c1.l1">Analyze product and customer segments</li>
+              <li data-i18n="course.c1.l2">Define the central message</li>
+              <li data-i18n="course.c1.l3">Build visual direction</li>
+              <li data-i18n="course.c1.l4">Shape the film's emotion and style</li>
+              <li data-i18n="course.c1.l5">Choose the right storytelling approach</li>
+            </ul>
+            <span class="course-cell__arr"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </button>
+          <button type="button" class="course-cell" data-course-idx="1">
+            <span class="course-cell__num">/ 02</span>
+            <h3 class="course-cell__title" data-i18n="course.c2.title">Concept &amp; Storyboard</h3>
+            <ul class="course-cell__list">
+              <li data-i18n="course.c2.l1">Develop the film idea</li>
+              <li data-i18n="course.c2.l2">Build the script</li>
+              <li data-i18n="course.c2.l3">Design the storyboard</li>
+              <li data-i18n="course.c2.l4">Define the setting</li>
+              <li data-i18n="course.c2.l5">Build shot structure</li>
+            </ul>
+            <span class="course-cell__arr"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </button>
+          <button type="button" class="course-cell" data-course-idx="2">
+            <span class="course-cell__num">/ 03</span>
+            <h3 class="course-cell__title" data-i18n="course.c3.title">AI Visual Production</h3>
+            <ul class="course-cell__list">
+              <li data-i18n="course.c3.l1">Develop visuals from the source product</li>
+              <li data-i18n="course.c3.l2">Create settings from the concept</li>
+              <li data-i18n="course.c3.l3">Build multiple camera angles</li>
+              <li data-i18n="course.c3.l4">Control product form and detail</li>
+              <li data-i18n="course.c3.l5">Keep a consistent visual language</li>
+            </ul>
+            <span class="course-cell__arr"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </button>
+          <button type="button" class="course-cell" data-course-idx="3">
+            <span class="course-cell__num">/ 04</span>
+            <h3 class="course-cell__title" data-i18n="course.c4.title">Character Direction</h3>
+            <ul class="course-cell__list">
+              <li data-i18n="course.c4.l1">Develop customer archetypes</li>
+              <li data-i18n="course.c4.l2">Create consistent characters</li>
+              <li data-i18n="course.c4.l3">Control face and style</li>
+              <li data-i18n="course.c4.l4">Place characters in the right setting</li>
+              <li data-i18n="course.c4.l5">Express the brand spirit</li>
+            </ul>
+            <span class="course-cell__arr"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </button>
+          <button type="button" class="course-cell" data-course-idx="4">
+            <span class="course-cell__num">/ 05</span>
+            <h3 class="course-cell__title" data-i18n="course.c5.title">Cinematic Animation</h3>
+            <ul class="course-cell__list">
+              <li data-i18n="course.c5.l1">Model movement</li>
+              <li data-i18n="course.c5.l2">Product movement</li>
+              <li data-i18n="course.c5.l3">Camera movement</li>
+              <li data-i18n="course.c5.l4">Scene-transition rhythm</li>
+              <li data-i18n="course.c5.l5">Light and space effects</li>
+            </ul>
+            <span class="course-cell__arr"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </button>
+          <button type="button" class="course-cell" data-course-idx="5">
+            <span class="course-cell__num">/ 06</span>
+            <h3 class="course-cell__title" data-i18n="course.c6.title">Film Assembly</h3>
+            <ul class="course-cell__list">
+              <li data-i18n="course.c6.l1">Film editing</li>
+              <li data-i18n="course.c6.l2">Voice-over</li>
+              <li data-i18n="course.c6.l3">Music</li>
+              <li data-i18n="course.c6.l4">Sound design</li>
+              <li data-i18n="course.c6.l5">Color direction</li>
+              <li data-i18n="course.c6.l6">Finalize the master cut</li>
+              <li data-i18n="course.c6.l7">Export formats per platform</li>
+            </ul>
+            <span class="course-cell__arr"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </button>
+        </div>
+
+        <p class="course-closer"><span class="course-closer__inner" data-i18n-html="course.closer">No chaos. No endless tutorials.<br/><span class="mute">Just the workflow.</span></span></p>
+      </div>
+    </section>
+
+
+    <!-- ============ 5 · PRICING ============ -->
+    <section class="s" id="buy" data-od-id="buy">
+      <div class="container">
+        <p class="label"><span class="n">05</span><span data-i18n="buy.label">Get the course</span></p>
+
+        <div class="pricing">
+          <div class="pricing__left">
+            <h2 class="h-1" style="margin-bottom: 24px" data-i18n="buy.title">One package. Instant access by email.</h2>
+
+            <p class="pricing__includes-label" data-i18n="buy.includes">What's included</p>
+            <ul class="pricing__includes">
+              <li data-i18n="buy.i1">Course</li>
+              <li data-i18n="buy.i2">Reference collection</li>
+              <li data-i18n="buy.i3">Prompt collection</li>
+              <li data-i18n="buy.i4">20 languages translation</li>
+              <li data-i18n="buy.i5">Chat</li>
+            </ul>
+          </div>
+
+          <div class="pricing__right">
+            <div class="offer__price">
+              <p class="offer__price-was"><span data-i18n="buy.regular">Regular price</span><s>€350</s><span class="offer__price-save" data-i18n="buy.save">Save 77%</span></p>
+              <div class="offer__price-now">
+                <span class="cur">€</span><span class="amt" style="font-weight: 600; letter-spacing: -2.2px">79</span>
+              </div>
+            </div>
+
+            <a href="https://store.payproglobal.com/checkout?products[1][id]=134624&products[1][data]=3X-3IiMg5soHCbQyW6yjx2eNKpvOgKwhcFYpvxbu-914cLmLfK89d3ITPSOpVDFgulAiNe8vm7qDrEj-fbstziAxj0_vgY86oWywr3-9d4r5KriWgZo6GWGDOkFrrsz4Zgn8I7HHG6VTYv4sCP3FDVPalYN0LPMnFGK886ejr24F9-1rUBgqEsIgZn21-sijwOAgmBegQf3tgcrbRA0o0SToY6c9xpwMZ86nJ24WXcw-SjmgZnnbMJptuxbZdROKzf5ScXgg5Q191IlWUyHm9XyIn4lkehyffgxK_q43D966g6ZH_a0hdvwVYG_gDZ6wewZEn3ghhYeyryD5wAI0JGxjjT0kDn691aG9Durm9fi5Os0E9tWMrQ1KrZWhVVBiCEXfGnIqtHzTH94R0Y4y6g%3D%3D" class="btn-primary" data-cta="pricing">
+              <span data-i18n="cta.getAccess" style="font-weight: 600; text-align: center; font-size: 20px; letter-spacing: 6px">GET ACCESS NOW</span>
+            </a>
+
+            <p class="pricing__dm" data-i18n-html="buy.after">After purchase you'll get course access at the email you provide at checkout.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============ 6 · AUTHOR ============ -->
+    <section class="s" id="author" data-od-id="author">
+      <div class="container">
+        <p class="label"><span class="n">06</span><span data-i18n="author.label">Author</span></p>
+
+        <div class="author">
+          <figure class="author__photo" style="margin:0;">
+            <img src="media/author.jpg" alt="Daniel Nagaets" style="position:absolute; inset:0; width:100%; height:100%; object-fit:contain; object-position: center center;" />
+          </figure>
+          <div>
+            <p class="author__role" data-i18n="author.role">Instructor · Founder of RENDER.CAMP</p>
+            <h3 class="author__name">Daniel Nagaets</h3>
+            <p data-i18n="author.p1">Daniel Nagaets — founder of FORTES VISION and RENDER.CAMP. 20+ years of experience in architectural visualization and creative direction. Built two companies, delivered projects up to $750,000, and trained thousands of visualization artists worldwide.</p>
+            <p data-i18n="author.p2">Today, Daniel directs AI films the same way he directs renders: with intention, storytelling, and cinematic control — starting from a single image.</p>
+            <p data-i18n="author.p3">This course reveals the exact workflow he uses in professional projects: a clear sequence from idea to finished cinematic piece.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 8 · TOOLS ============ -->
+    <section class="s" id="tools" data-od-id="tools">
+      <div class="container">
+        <div class="tools__head">
+          <p class="label"><span class="n">07</span><span data-i18n="tools.label">Software</span></p>
+          <h2 class="h-1" data-i18n="tools.title">Tools used in the course</h2>
+        </div>
+
+        <ul class="tools-grid">
+          <li class="tools-item">
+            <span class="tools-icon" aria-hidden="true"><img src="media/icons/openai.svg" alt="" loading="lazy" /></span>
+            <span class="tools-name">ChatGPT</span>
+          </li>
+
+          <li class="tools-item">
+            <span class="tools-icon" aria-hidden="true"><img src="media/icons/kling.svg" alt="" loading="lazy" /></span>
+            <span class="tools-name">Kling</span>
+          </li>
+
+          <li class="tools-item">
+            <span class="tools-icon" aria-hidden="true"><img src="media/icons/suno.svg" alt="" loading="lazy" /></span>
+            <span class="tools-name">Suno</span>
+          </li>
+
+          <li class="tools-item">
+            <span class="tools-icon" aria-hidden="true"><img src="media/icons/elevenlabs.svg" alt="" loading="lazy" /></span>
+            <span class="tools-name">ElevenLabs</span>
+          </li>
+
+          <li class="tools-item">
+            <span class="tools-icon" aria-hidden="true"><img src="media/icons/epidemic-sound.png" alt="" loading="lazy" /></span>
+            <span class="tools-name">Epidemic Sound</span>
+          </li>
+
+          <li class="tools-item">
+            <span class="tools-icon" aria-hidden="true"><img src="media/icons/adobe-premiere.svg" alt="" loading="lazy" /></span>
+            <span class="tools-name">Adobe Premiere Pro</span>
+          </li>
+        </ul>
+
+        <p class="tools__note" data-i18n="tools.note">The workflow matters more than the tools. Similar alternatives can be used.</p>
+      </div>
+    </section>
+
+    <!-- ============ LIGHTBOX (examples fullscreen slider) ============ -->
+    <div class="lightbox" id="exLightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Selected work fullscreen viewer" data-i18n-aria="aria.workViewer">
+      <div class="lightbox__counter"><b id="exLbCur">01</b> <span style="opacity:.55;">/</span> <span id="exLbTotal">08</span></div>
+      <button class="lightbox__close" id="exLbClose" type="button" aria-label="Close" data-i18n-aria="aria.close">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="5" x2="19" y2="19"></line><line x1="19" y1="5" x2="5" y2="19"></line></svg>
+      </button>
+      <button class="lightbox__nav lightbox__nav--prev" id="exLbPrev" type="button" aria-label="Previous" data-i18n-aria="aria.prev">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 6 9 12 15 18"></polyline></svg>
+      </button>
+      <button class="lightbox__nav lightbox__nav--next" id="exLbNext" type="button" aria-label="Next" data-i18n-aria="aria.next">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18"></polyline></svg>
+      </button>
+      <div class="lightbox__stage">
+        <div class="lightbox__loading" aria-hidden="true"></div>
+        <video class="lightbox__video" id="exLbVideo" playsinline webkit-playsinline controls preload="auto"></video>
+        <img class="lightbox__image" id="exLbImage" alt="" style="display:none" />
+      </div>
+      <div class="lightbox__hint" data-i18n="lightbox.hint">← → to navigate · Esc to close</div>
+    </div>
+
+    <!-- ============ COURSE LIGHTBOX (mobile module slider) ============ -->
+    <div class="course-lb" id="courseLightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Course modules" data-i18n-aria="aria.courseModules">
+      <div class="course-lb__counter"><b id="courseLbCur">01</b> <span style="opacity:.55;">/</span> <span id="courseLbTotal">06</span></div>
+      <button class="course-lb__close" id="courseLbClose" type="button" aria-label="Close" data-i18n-aria="aria.close">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="5" x2="19" y2="19"></line><line x1="19" y1="5" x2="5" y2="19"></line></svg>
+      </button>
+      <button class="course-lb__nav course-lb__nav--prev" id="courseLbPrev" type="button" aria-label="Previous module" data-i18n-aria="aria.prevModule">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 6 9 12 15 18"></polyline></svg>
+      </button>
+      <button class="course-lb__nav course-lb__nav--next" id="courseLbNext" type="button" aria-label="Next module" data-i18n-aria="aria.nextModule">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18"></polyline></svg>
+      </button>
+      <div class="course-lb__stage">
+        <div class="course-lb__card">
+          <span class="course-lb__num" id="courseLbNum">/ 01</span>
+          <h3 class="course-lb__title" id="courseLbTitle"></h3>
+          <ul class="course-lb__list" id="courseLbList"></ul>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ============ 7 · LANGUAGES ============ -->
+    <section class="s" id="languages" data-od-id="languages">
+      <div class="container">
+        <div class="languages">
+          <div class="languages__head">
+            <p class="label"><span class="n">08</span><span data-i18n="langs.label">Languages we speak</span></p>
+            <h2 class="h-1 languages__title" data-i18n="langs.title">Watch in your language.</h2>
+            <p class="languages__note" data-i18n="langs.note">Every lesson is translated into 20 languages — full audio over the original. Available shortly after upload.</p>
+          </div>
+
+          <ul class="languages__grid" aria-label="Available languages" data-i18n-aria="aria.availableLangs">
+            <li><b lang="en">English</b></li>
+            <li><b lang="ar">العربية</b></li>
+            <li><b lang="de">Deutsch</b></li>
+            <li><b lang="es">Español</b></li>
+            <li><b lang="fr">Français</b></li>
+            <li><b lang="hi">हिन्दी</b></li>
+            <li><b lang="hr">Hrvatski</b></li>
+            <li><b lang="id">Bahasa</b></li>
+            <li><b lang="it">Italiano</b></li>
+            <li><b lang="ja">日本語</b></li>
+            <li><b lang="ko">한국어</b></li>
+            <li><b lang="nl">Nederlands</b></li>
+            <li><b lang="pl">Polski</b></li>
+            <li><b lang="pt">Português</b></li>
+            <li><b lang="ru">Русский</b></li>
+            <li><b lang="th">ไทย</b></li>
+            <li><b lang="tr">Türkçe</b></li>
+            <li><b lang="uk">Українська</b></li>
+            <li><b lang="vi">Tiếng Việt</b></li>
+            <li><b lang="zh">中文</b></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+
+  <!-- ============ FOOTER ============ -->
+  <footer id="contact" data-od-id="contact">
+    <div class="footer__inner">
+      <h2 class="footer__hero" data-i18n-html="footer.hero">
+        The quickest way to contact our support team is
+        <a href="https://t.me/RENDERCAMPOFFICIAL" target="_blank" rel="noopener">Telegram</a>
+        or
+        <a href="https://wa.me/351924938878" target="_blank" rel="noopener">WhatsApp</a>.
+      </h2>
+
+      <div class="footer__grid">
+
+        <div class="contact-block">
+          <div>
+            <h4 data-i18n="footer.contacts">Contacts</h4>
+            <ul class="lines">
+              <li><a href="mailto:team@render.camp">team@render.camp</a></li>
+              <li><a href="tel:+351924938878">+351 924 938 878</a></li>
+              <li><a href="tel:+380997819008">+380 99 781 9008</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 data-i18n="footer.follow">Follow</h4>
+            <div class="socials">
+              <a href="https://www.instagram.com/render.camp/" target="_blank" rel="noopener">Instagram</a>
+              <a href="https://www.youtube.com/c/rendercamp" target="_blank" rel="noopener">YouTube</a>
+              <a href="https://www.facebook.com/render.camp.portal" target="_blank" rel="noopener">Facebook</a>
+              <a href="https://www.behance.net/render_camp" target="_blank" rel="noopener">Behance</a>
+              <a href="https://www.tiktok.com/@render.camp" target="_blank" rel="noopener">TikTok</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="reviews-mini">
+          <h4 data-i18n="footer.reviewed">Reviewed where it matters</h4>
+          <div class="reviews-mini__list">
+            <a class="rev-mini" href="https://www.trustpilot.com/review/render.camp" target="_blank" rel="noopener">
+              <span class="rev-mini__num">4.4</span>
+              <span class="rev-mini__body">
+                <span class="rev-mini__stars rev-mini__stars--tp" aria-hidden="true">
+                  <span class="rsm rsm--tp is-on"></span>
+                  <span class="rsm rsm--tp is-on"></span>
+                  <span class="rsm rsm--tp is-on"></span>
+                  <span class="rsm rsm--tp is-on"></span>
+                  <span class="rsm rsm--tp is-half"></span>
+                </span>
+                <span class="rev-mini__src">Trustpilot</span>
+              </span>
+            </a>
+            <a class="rev-mini" href="https://www.google.com/maps/search/?api=1&amp;query=Render%20Camp&amp;query_place_id=ChIJ4TFP6avP1EARvzCznWQp_tU" target="_blank" rel="noopener">
+              <span class="rev-mini__num">4.8</span>
+              <span class="rev-mini__body">
+                <span class="rev-mini__stars rev-mini__stars--g" aria-hidden="true">★★★★★</span>
+                <span class="rev-mini__src">Google</span>
+              </span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="footer__bottom">
+        <span>© <span id="yr"></span> RENDER.CAMP · <span data-i18n="footer.tagline">Where architecture speaks in images</span></span>
+        <span><a href="terms.html" target="_blank" rel="noopener" data-i18n="footer.terms">Terms and Conditions</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============ STICKY MOBILE CTA ============ -->
+  <a href="https://store.payproglobal.com/checkout?products[1][id]=134624&products[1][data]=3X-3IiMg5soHCbQyW6yjx2eNKpvOgKwhcFYpvxbu-914cLmLfK89d3ITPSOpVDFgulAiNe8vm7qDrEj-fbstziAxj0_vgY86oWywr3-9d4r5KriWgZo6GWGDOkFrrsz4Zgn8I7HHG6VTYv4sCP3FDVPalYN0LPMnFGK886ejr24F9-1rUBgqEsIgZn21-sijwOAgmBegQf3tgcrbRA0o0SToY6c9xpwMZ86nJ24WXcw-SjmgZnnbMJptuxbZdROKzf5ScXgg5Q191IlWUyHm9XyIn4lkehyffgxK_q43D966g6ZH_a0hdvwVYG_gDZ6wewZEn3ghhYeyryD5wAI0JGxjjT0kDn691aG9Durm9fi5Os0E9tWMrQ1KrZWhVVBiCEXfGnIqtHzTH94R0Y4y6g%3D%3D" class="sticky-cta" id="stickyCta" aria-label="Get access — €79" data-i18n-aria="cta.stickyAria" data-cta="sticky">
+    <span class="sticky-cta__btn">
+      <span class="sticky-cta__btn-main" data-btn-text data-i18n="cta.sticky">Get Access — €79</span>
+    </span>
+  </a>
+
+
+  <!-- ============ JS ============ -->
+  <script>
+
+    /* ===== i18n EN / VI ===== */
+    const I18N = {
+      en: {
+        "meta.title": "Architectural AI Filmmaking — RENDER.CAMP Course",
+        "meta.desc": "From a single architectural image — to a complete cinematic film. €79, instant access.",
+        "aria.language": "Language",
+        "aria.toggleSound": "Toggle sound",
+        "aria.openFullscreen": "Open fullscreen",
+        "aria.playVideo": "Play video",
+        "aria.workViewer": "Selected work fullscreen viewer",
+        "aria.close": "Close",
+        "aria.prev": "Previous",
+        "aria.next": "Next",
+        "aria.courseModules": "Course modules",
+        "aria.prevModule": "Previous module",
+        "aria.nextModule": "Next module",
+        "aria.availableLangs": "Available languages",
+        "cover.t1": "Architectural",
+        "cover.t2": "AI Filmmaking",
+        "cover.t3": "Course",
+        "cover.leadLeft": "A course that teaches artists, designers, architects, and architecture lovers to create outstanding cinematic films about architecture — from nothing to breathtaking stories.",
+        "cover.leadRight": "All you need to start is any sketch, screenshot, or simple image that describes the architecture — from any software, at any stage. No special skills or additional knowledge required.",
+        "cta.startCreating": "START CREATING NOW — €79",
+        "cta.getAccess": "GET ACCESS NOW",
+        "cta.sticky": "Get Access — €79",
+        "cta.stickyAria": "Get access — €79",
+        "quote": "Not just one-click AI.\n\"but\" Brand + Artistic thinking + AI.",
+        "explain.label": "How it works",
+        "explain.title": "From sketch to cinematic film.",
+        "explain.s1no": "Step 01",
+        "explain.s1title": "Take an image of your project.",
+        "explain.imgAlt": "House on the Cliff by Fran Silvestre Arquitectos — the source image.",
+        "explain.credit": "Original image: Fran Silvestre Arquitectos",
+        "explain.s2no": "Step 02",
+        "explain.s2title": "Build a visual world for the product.",
+        "explain.l1": "Define the story to tell.",
+        "explain.l2": "Develop the visual concept.",
+        "explain.l3": "Build the script and storyboard.",
+        "explain.l4": "Develop setting and camera angles.",
+        "explain.l5": "Create characters that fit the brand.",
+        "explain.l6": "Place the product in the right world.",
+        "explain.l7": "Create intentional motion.",
+        "explain.l8": "Build sound and narration.",
+        "explain.l9": "Finalize the film.",
+        "explain.s3no": "Step 03",
+        "explain.s3title": "Final result.",
+        "work.label": "Selected work",
+        "work.title": "The visual worlds Wave creates.",
+        "work.p1a": "The destination isn’t just “beautifying the product.”",
+        "work.swipe": "Swipe →",
+        "work.p1m": "tap any tile to play with sound.",
+        "work.click": "Click any tile",
+        "work.p1d": "to play with sound — or open it fullscreen",
+        "work.p2": "We turn it into a story so customers see, feel, remember, and yearn to step into the brand’s world.",
+        "course.label": "Services",
+        "course.title": "A structured creative process.",
+        "course.prose": "From the initial product image to a campaign-ready film.",
+        "course.c1.title": "Creative Direction",
+        "course.c1.l1": "Analyze product and customer segments",
+        "course.c1.l2": "Define the central message",
+        "course.c1.l3": "Build visual direction",
+        "course.c1.l4": "Shape the film's emotion and style",
+        "course.c1.l5": "Choose the right storytelling approach",
+        "course.c2.title": "Concept & Storyboard",
+        "course.c2.l1": "Develop the film idea",
+        "course.c2.l2": "Build the script",
+        "course.c2.l3": "Design the storyboard",
+        "course.c2.l4": "Define the setting",
+        "course.c2.l5": "Build shot structure",
+        "course.c3.title": "AI Visual Production",
+        "course.c3.l1": "Develop visuals from the source product",
+        "course.c3.l2": "Create settings from the concept",
+        "course.c3.l3": "Build multiple camera angles",
+        "course.c3.l4": "Control product form and detail",
+        "course.c3.l5": "Keep a consistent visual language",
+        "course.c4.title": "Character Direction",
+        "course.c4.l1": "Develop customer archetypes",
+        "course.c4.l2": "Create consistent characters",
+        "course.c4.l3": "Control face and style",
+        "course.c4.l4": "Place characters in the right setting",
+        "course.c4.l5": "Express the brand spirit",
+        "course.c5.title": "Cinematic Animation",
+        "course.c5.l1": "Model movement",
+        "course.c5.l2": "Product movement",
+        "course.c5.l3": "Camera movement",
+        "course.c5.l4": "Scene-transition rhythm",
+        "course.c5.l5": "Light and space effects",
+        "course.c6.title": "Film Assembly",
+        "course.c6.l1": "Film editing",
+        "course.c6.l2": "Voice-over",
+        "course.c6.l3": "Music",
+        "course.c6.l4": "Sound design",
+        "course.c6.l5": "Color direction",
+        "course.c6.l6": "Finalize the master cut",
+        "course.c6.l7": "Export formats per platform",
+        "course.closer": "No chaos. No endless tutorials.<br/><span class=\"mute\">Just the workflow.</span>",
+        "buy.label": "Get the course",
+        "buy.title": "One package. Instant access by email.",
+        "buy.includes": "What's included",
+        "buy.i1": "Course",
+        "buy.i2": "Reference collection",
+        "buy.i3": "Prompt collection",
+        "buy.i4": "20 languages translation",
+        "buy.i5": "Chat",
+        "buy.regular": "Regular price",
+        "buy.save": "Save 77%",
+        "buy.after": "<b>After purchase</b> you'll get course access at the email you provide at checkout.",
+        "author.label": "Author",
+        "author.role": "Instructor · Founder of RENDER.CAMP",
+        "author.p1": "Daniel Nagaets — founder of FORTES VISION and RENDER.CAMP. 20+ years of experience in architectural visualization and creative direction. Built two companies, delivered projects up to $750,000, and trained thousands of visualization artists worldwide.",
+        "author.p2": "Today, Daniel directs AI films the same way he directs renders: with intention, storytelling, and cinematic control — starting from a single image.",
+        "author.p3": "This course reveals the exact workflow he uses in professional projects: a clear sequence from idea to finished cinematic piece.",
+        "tools.label": "Software",
+        "tools.title": "Tools used in the course",
+        "tools.note": "The workflow matters more than the tools. Similar alternatives can be used.",
+        "lightbox.hint": "← → to navigate · Esc to close",
+        "langs.label": "Languages we speak",
+        "langs.title": "Watch in your language.",
+        "langs.note": "Every lesson is translated into 20 languages — full audio over the original. Available shortly after upload.",
+        "footer.hero": "The quickest way to contact our support team is <a href=\"https://t.me/RENDERCAMPOFFICIAL\" target=\"_blank\" rel=\"noopener\">Telegram</a> or <a href=\"https://wa.me/351924938878\" target=\"_blank\" rel=\"noopener\">WhatsApp</a>.",
+        "footer.contacts": "Contacts",
+        "footer.follow": "Follow",
+        "footer.reviewed": "Reviewed where it matters",
+        "footer.tagline": "Where architecture speaks in images",
+        "footer.terms": "Terms and Conditions"
+      },
+      vi: {
+        "meta.title": "Làm phim kiến trúc bằng AI — Khóa học RENDER.CAMP",
+        "meta.desc": "Từ một hình ảnh kiến trúc — đến bộ phim điện ảnh hoàn chỉnh. €79, truy cập ngay.",
+        "aria.language": "Ngôn ngữ",
+        "aria.toggleSound": "Bật/tắt âm thanh",
+        "aria.openFullscreen": "Mở toàn màn hình",
+        "aria.playVideo": "Phát video",
+        "aria.workViewer": "Xem tác phẩm toàn màn hình",
+        "aria.close": "Đóng",
+        "aria.prev": "Trước",
+        "aria.next": "Sau",
+        "aria.courseModules": "Các module khóa học",
+        "aria.prevModule": "Module trước",
+        "aria.nextModule": "Module sau",
+        "aria.availableLangs": "Ngôn ngữ có sẵn",
+        "cover.t1": "Làm phim",
+        "cover.t2": "kiến trúc bằng AI",
+        "cover.t3": "Khóa học",
+        "cover.leadLeft": "Khóa học giúp nghệ sĩ, nhà thiết kế, kiến trúc sư và người yêu kiến trúc tạo nên những bộ phim điện ảnh ấn tượng về kiến trúc — từ con số không đến câu chuyện ngoạn mục.",
+        "cover.leadRight": "Bạn chỉ cần bất kỳ bản phác thảo, ảnh chụp màn hình hoặc hình ảnh đơn giản mô tả kiến trúc — từ phần mềm nào, ở giai đoạn nào. Không cần kỹ năng đặc biệt hay kiến thức bổ sung.",
+        "cta.startCreating": "BẮT ĐẦU SÁNG TẠO NGAY — €79",
+        "cta.getAccess": "NHẬN TRUY CẬP NGAY",
+        "cta.sticky": "Nhận truy cập — €79",
+        "cta.stickyAria": "Nhận truy cập — €79",
+        "quote": "Không chỉ là một click AI.\n\"mà là\" Thương hiệu + Tư duy nghệ thuật + AI.",
+        "explain.label": "Cách hoạt động",
+        "explain.title": "Từ bản phác đến phim điện ảnh.",
+        "explain.s1no": "Bước 01",
+        "explain.s1title": "Lấy một hình ảnh dự án của bạn.",
+        "explain.imgAlt": "House on the Cliff của Fran Silvestre Arquitectos — hình ảnh nguồn.",
+        "explain.credit": "Hình gốc: Fran Silvestre Arquitectos",
+        "explain.s2no": "Bước 02",
+        "explain.s2title": "Xây dựng thế giới hình ảnh cho sản phẩm.",
+        "explain.l1": "Xác định câu chuyện cần kể.",
+        "explain.l2": "Phát triển concept hình ảnh.",
+        "explain.l3": "Xây dựng kịch bản và storyboard.",
+        "explain.l4": "Phát triển bối cảnh và góc máy.",
+        "explain.l5": "Tạo nhân vật phù hợp với thương hiệu.",
+        "explain.l6": "Đưa sản phẩm vào đúng thế giới.",
+        "explain.l7": "Tạo chuyển động có chủ đích.",
+        "explain.l8": "Xây dựng âm thanh và giọng kể.",
+        "explain.l9": "Hoàn thiện bộ phim.",
+        "explain.s3no": "Bước 03",
+        "explain.s3title": "Kết quả cuối cùng.",
+        "work.label": "Tác phẩm chọn lọc",
+        "work.title": "Những thế giới hình ảnh Wave tạo ra.",
+        "work.p1a": "Đích đến không chỉ là “làm đẹp sản phẩm”.",
+        "work.swipe": "Vuốt →",
+        "work.p1m": "chạm ô bất kỳ để phát có âm thanh.",
+        "work.click": "Nhấp ô bất kỳ",
+        "work.p1d": "để phát có âm thanh — hoặc mở toàn màn hình",
+        "work.p2": "Chúng tôi biến nó thành câu chuyện để khách hàng nhìn thấy, cảm nhận, ghi nhớ và khao khát bước vào thế giới của thương hiệu.",
+        "course.label": "Dịch vụ",
+        "course.title": "Một quy trình sáng tạo có cấu trúc.",
+        "course.prose": "Từ hình ảnh sản phẩm ban đầu đến một bộ phim sẵn sàng cho chiến dịch.",
+        "course.c1.title": "Định hướng sáng tạo",
+        "course.c1.l1": "Phân tích sản phẩm và tệp khách hàng",
+        "course.c1.l2": "Xác định thông điệp trung tâm",
+        "course.c1.l3": "Xây dựng visual direction",
+        "course.c1.l4": "Định hình cảm xúc và phong cách bộ phim",
+        "course.c1.l5": "Lựa chọn cách kể chuyện phù hợp",
+        "course.c2.title": "Concept và kịch bản hình ảnh",
+        "course.c2.l1": "Phát triển ý tưởng phim",
+        "course.c2.l2": "Xây dựng kịch bản",
+        "course.c2.l3": "Thiết kế storyboard",
+        "course.c2.l4": "Xác định bối cảnh",
+        "course.c2.l5": "Xây dựng cấu trúc cảnh quay",
+        "course.c3.title": "Sản xuất hình ảnh AI",
+        "course.c3.l1": "Phát triển hình ảnh từ sản phẩm gốc",
+        "course.c3.l2": "Tạo bối cảnh theo concept",
+        "course.c3.l3": "Xây dựng nhiều góc máy",
+        "course.c3.l4": "Kiểm soát hình dáng và chi tiết sản phẩm",
+        "course.c3.l5": "Giữ ngôn ngữ hình ảnh nhất quán",
+        "course.c4.title": "Xây dựng nhân vật",
+        "course.c4.l1": "Phát triển hình mẫu khách hàng",
+        "course.c4.l2": "Tạo nhân vật nhất quán",
+        "course.c4.l3": "Kiểm soát gương mặt và phong cách",
+        "course.c4.l4": "Đặt nhân vật vào đúng bối cảnh",
+        "course.c4.l5": "Thể hiện đúng tinh thần thương hiệu",
+        "course.c5.title": "Chuyển động điện ảnh",
+        "course.c5.l1": "Chuyển động người mẫu",
+        "course.c5.l2": "Chuyển động sản phẩm",
+        "course.c5.l3": "Chuyển động camera",
+        "course.c5.l4": "Nhịp chuyển cảnh",
+        "course.c5.l5": "Hiệu ứng ánh sáng và không gian",
+        "course.c6.title": "Hoàn thiện bộ phim",
+        "course.c6.l1": "Dựng phim",
+        "course.c6.l2": "Voice-over",
+        "course.c6.l3": "Âm nhạc",
+        "course.c6.l4": "Sound design",
+        "course.c6.l5": "Color direction",
+        "course.c6.l6": "Hoàn thiện phiên bản cuối",
+        "course.c6.l7": "Xuất định dạng theo từng nền tảng",
+        "course.closer": "Không hỗn loạn. Không tutorial dài vô tận.<br/><span class=\"mute\">Chỉ là quy trình.</span>",
+        "buy.label": "Nhận khóa học",
+        "buy.title": "Một gói. Truy cập ngay qua email.",
+        "buy.includes": "Bao gồm",
+        "buy.i1": "Khóa học",
+        "buy.i2": "Bộ sưu tập reference",
+        "buy.i3": "Bộ sưu tập prompt",
+        "buy.i4": "Dịch 20 ngôn ngữ",
+        "buy.i5": "Chat",
+        "buy.regular": "Giá gốc",
+        "buy.save": "Tiết kiệm 77%",
+        "buy.after": "<b>Sau khi mua</b>, bạn nhận quyền truy cập khóa học qua email đã cung cấp khi thanh toán.",
+        "author.label": "Tác giả",
+        "author.role": "Giảng viên · Nhà sáng lập RENDER.CAMP",
+        "author.p1": "Daniel Nagaets — nhà sáng lập FORTES VISION và RENDER.CAMP. Hơn 20 năm kinh nghiệm visualization kiến trúc và chỉ đạo sáng tạo. Xây dựng hai công ty, thực hiện dự án tới $750,000, và đào tạo hàng nghìn nghệ sĩ visualization trên thế giới.",
+        "author.p2": "Hôm nay, Daniel đạo diễn phim AI theo cách ông đạo diễn render: có ý đồ, kể chuyện và kiểm soát điện ảnh — bắt đầu từ một hình ảnh duy nhất.",
+        "author.p3": "Khóa học tiết lộ đúng quy trình ông dùng trong dự án chuyên nghiệp: chuỗi rõ ràng từ ý tưởng đến sản phẩm điện ảnh hoàn chỉnh.",
+        "tools.label": "Phần mềm",
+        "tools.title": "Công cụ dùng trong khóa học",
+        "tools.note": "Quy trình quan trọng hơn công cụ. Có thể dùng các lựa chọn tương đương.",
+        "lightbox.hint": "← → để điều hướng · Esc để đóng",
+        "langs.label": "Ngôn ngữ chúng tôi hỗ trợ",
+        "langs.title": "Xem bằng ngôn ngữ của bạn.",
+        "langs.note": "Mỗi bài học được dịch sang 20 ngôn ngữ — audio đầy đủ trên bản gốc. Có sẵn ngay sau khi tải lên.",
+        "footer.hero": "Cách nhanh nhất để liên hệ đội hỗ trợ là <a href=\"https://t.me/RENDERCAMPOFFICIAL\" target=\"_blank\" rel=\"noopener\">Telegram</a> hoặc <a href=\"https://wa.me/351924938878\" target=\"_blank\" rel=\"noopener\">WhatsApp</a>.",
+        "footer.contacts": "Liên hệ",
+        "footer.follow": "Theo dõi",
+        "footer.reviewed": "Đánh giá nơi quan trọng",
+        "footer.tagline": "Nơi kiến trúc nói bằng hình ảnh",
+        "footer.terms": "Điều khoản và điều kiện"
+      }
+    };
+
+    let currentLang = 'en';
+
+    function detectLang() {
+      try {
+        const saved = localStorage.getItem('rc-lang');
+        if (saved === 'en' || saved === 'vi') return saved;
+      } catch (_) {}
+      const nav = (navigator.language || '').toLowerCase();
+      return nav.startsWith('vi') ? 'vi' : 'en';
+    }
+
+    function applyLanguage(lang) {
+      if (!I18N[lang]) lang = 'en';
+      currentLang = lang;
+      const dict = I18N[lang];
+      document.documentElement.lang = lang;
+
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (dict[key] != null) el.textContent = dict[key];
+      });
+      document.querySelectorAll('[data-i18n-html]').forEach(el => {
+        const key = el.getAttribute('data-i18n-html');
+        if (dict[key] != null) el.innerHTML = dict[key];
+      });
+      document.querySelectorAll('[data-i18n-aria]').forEach(el => {
+        const key = el.getAttribute('data-i18n-aria');
+        if (dict[key] != null) el.setAttribute('aria-label', dict[key]);
+      });
+      document.querySelectorAll('[data-i18n-alt]').forEach(el => {
+        const key = el.getAttribute('data-i18n-alt');
+        if (dict[key] != null) el.setAttribute('alt', dict[key]);
+      });
+
+      if (dict['meta.title']) document.title = dict['meta.title'];
+      const metaDesc = document.querySelector('meta[name="description"]');
+      if (metaDesc && dict['meta.desc']) metaDesc.setAttribute('content', dict['meta.desc']);
+      const ogTitle = document.querySelector('meta[property="og:title"]');
+      if (ogTitle && dict['meta.title']) ogTitle.setAttribute('content', dict['meta.title']);
+      const ogDesc = document.querySelector('meta[property="og:description"]');
+      if (ogDesc && dict['meta.desc']) ogDesc.setAttribute('content', dict['meta.desc']);
+      const twTitle = document.querySelector('meta[name="twitter:title"]');
+      if (twTitle && dict['meta.title']) twTitle.setAttribute('content', dict['meta.title']);
+      const twDesc = document.querySelector('meta[name="twitter:description"]');
+      if (twDesc && dict['meta.desc']) twDesc.setAttribute('content', dict['meta.desc']);
+
+      document.querySelectorAll('[data-set-lang]').forEach(btn => {
+        const active = btn.getAttribute('data-set-lang') === lang;
+        btn.classList.toggle('is-active', active);
+        btn.setAttribute('aria-pressed', active ? 'true' : 'false');
+      });
+
+      try { localStorage.setItem('rc-lang', lang); } catch (_) {}
+
+      // refresh open course lightbox from translated cells (after helpers exist)
+      try {
+        if (typeof showCourseAt === 'function' && typeof courseLbIdx === 'number' && courseLbIdx >= 0) {
+          showCourseAt(courseLbIdx);
+        }
+      } catch (_) {}
+    }
+
+    document.getElementById('yr').textContent = new Date().getFullYear();
+
+    /* ===== nav (no scroll state) ===== */
+
+    /* ===== cover video: fetch → blob → assign (iOS-safe, no Range needed) ===== */
+    const cover = document.getElementById('cover');
+    const coverSound = document.getElementById('coverSound');
+    const coverVid = document.getElementById('coverVid');
+    const SRC_MOBILE  = 'media/cover-mobile.mp4';
+    const SRC_DESKTOP = 'media/hero-film-v2.mp4';
+    const mq720 = matchMedia('(min-width: 720px)');
+
+    let currentBlobUrl = null;
+    let loadingSrc = null;
+
+    async function loadCoverVideo() {
+      if (!coverVid) return;
+      const want = mq720.matches ? SRC_DESKTOP : SRC_MOBILE;
+      if (loadingSrc === want) return;
+      loadingSrc = want;
+      try {
+        const resp = await fetch(want, { credentials: 'omit' });
+        if (!resp.ok) throw new Error('HTTP ' + resp.status);
+        const blob = await resp.blob();
+        // only apply if viewport hasn't changed mid-flight
+        const stillWant = mq720.matches ? SRC_DESKTOP : SRC_MOBILE;
+        if (stillWant !== want) return;
+        const url = URL.createObjectURL(blob);
+        if (currentBlobUrl) URL.revokeObjectURL(currentBlobUrl);
+        currentBlobUrl = url;
+        const wasMuted = coverVid.muted !== false;
+        coverVid.src = url;
+        coverVid.muted = wasMuted;
+        coverVid.load();
+        coverVid.play().catch(()=>{});
+      } catch (e) {
+        // fallback to direct src — works on any normal server
+        try {
+          coverVid.src = want;
+          coverVid.load();
+          coverVid.play().catch(()=>{});
+        } catch (_) {}
+      } finally {
+        loadingSrc = null;
+      }
+    }
+
+    loadCoverVideo();
+    if (mq720.addEventListener) mq720.addEventListener('change', loadCoverVideo);
+    else mq720.addListener(loadCoverVideo);
+
+    /* iOS-friendly: nudge playback after first interaction & on visibility */
+    function nudgePlay() {
+      if (coverVid && coverVid.paused && coverVid.src) coverVid.play().catch(()=>{});
+    }
+    document.addEventListener('touchstart', nudgePlay, { once: true, passive: true });
+    document.addEventListener('click',      nudgePlay, { once: true });
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'visible') nudgePlay();
+    });
+    if (coverVid) {
+      coverVid.addEventListener('canplay', () => coverVid.play().catch(()=>{}));
+    }
+
+    function toggleCoverSound() {
+      if (!coverVid || !cover) return;
+      const newMuted = !coverVid.muted;
+      coverVid.muted = newMuted;
+      if (!newMuted) {
+        coverVid.play().catch(()=>{});
+        // pause + mute all example videos
+        document.querySelectorAll('.ex-card').forEach(c => {
+          const v = c.querySelector('video');
+          if (v) { v.pause(); v.muted = true; }
+          c.classList.remove('is-playing');
+        });
+      }
+      cover.classList.toggle('is-sound-on', !newMuted);
+      if (coverSound) coverSound.classList.toggle('is-on', !newMuted);
+    }
+
+    if (coverSound) {
+      coverSound.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleCoverSound();
+      });
+    }
+
+    if (cover) {
+      cover.addEventListener('click', (e) => {
+        if (e.target.closest('.cover-controls')) return;
+        if (e.target.closest('a, button')) return;
+        toggleCoverSound();
+      });
+    }
+
+    /* ===== "Let me explain" inline video (always 9:16, lazy blob) ===== */
+    const explainVid = document.getElementById('explainVid');
+    if (explainVid) {
+      let explainLoaded = false;
+      async function loadExplain() {
+        if (explainLoaded) return;
+        explainLoaded = true;
+        try {
+          const resp = await fetch('media/cover-mobile.mp4', { credentials: 'omit' });
+          if (!resp.ok) throw new Error('HTTP ' + resp.status);
+          const blob = await resp.blob();
+          explainVid.src = URL.createObjectURL(blob);
+          explainVid.load();
+          explainVid.play().catch(()=>{});
+        } catch (e) {
+          explainVid.src = 'media/cover-mobile.mp4';
+          explainVid.load();
+          explainVid.play().catch(()=>{});
+        }
+      }
+      if ('IntersectionObserver' in window) {
+        const eIO = new IntersectionObserver((ents) => {
+          ents.forEach(e => { if (e.isIntersecting) { loadExplain(); eIO.disconnect(); } });
+        }, { rootMargin: '300px' });
+        eIO.observe(explainVid);
+      } else {
+        loadExplain();
+      }
+
+      /* sound toggle for explain video — tap card or button */
+      const explainCard = document.getElementById('explainCard');
+      const explainSound = document.getElementById('explainSound');
+      function toggleExplainSound() {
+        if (!explainCard || !explainVid) return;
+        const newMuted = !explainVid.muted;
+        explainVid.muted = newMuted;
+        if (!newMuted) {
+          // unmuting — make sure it's playing
+          explainVid.play().catch(() => { explainVid.muted = true; });
+        }
+        explainCard.classList.toggle('is-sound-on', !newMuted);
+      }
+      if (explainSound) {
+        explainSound.addEventListener('click', (e) => { e.stopPropagation(); toggleExplainSound(); });
+      }
+      if (explainCard) {
+        explainCard.addEventListener('click', (e) => {
+          if (e.target.closest('button')) return;
+          toggleExplainSound();
+        });
+      }
+    }
+
+    /* ===== example carousel: lazy blob-preload (no autoplay) + click-to-play-with-sound ===== */
+    const exCards = Array.from(document.querySelectorAll('.ex-card'));
+
+    async function ensureExLoaded(card) {
+      if (card.dataset.loaded) return;
+      const src = card.dataset.video;
+      const vid = card.querySelector('video');
+      if (!src || !vid) return;
+      card.dataset.loaded = '1';
+      try {
+        const resp = await fetch(src, { credentials: 'omit' });
+        if (!resp.ok) throw new Error('HTTP ' + resp.status);
+        const blob = await resp.blob();
+        vid.src = URL.createObjectURL(blob);
+        vid.load();
+      } catch (e) {
+        // fallback declarative
+        vid.src = src;
+        vid.load();
+      }
+    }
+
+    if ('IntersectionObserver' in window && exCards.length) {
+      const exIO = new IntersectionObserver((ents) => {
+        ents.forEach(e => {
+          if (e.isIntersecting) ensureExLoaded(e.target);
+        });
+      }, { rootMargin: '300px 200px' });
+      exCards.forEach(c => exIO.observe(c));
+    }
+
+    function stopAllExceptCard(except) {
+      exCards.forEach(c => {
+        if (c === except) return;
+        const v = c.querySelector('video');
+        if (v) { v.pause(); v.muted = true; }
+        c.classList.remove('is-playing');
+      });
+      // also mute the cover
+      if (coverVid && !coverVid.muted) {
+        coverVid.muted = true;
+        if (cover) cover.classList.remove('is-sound-on');
+        if (coverSound) coverSound.classList.remove('is-on');
+      }
+    }
+
+    async function playWithSound(card) {
+      await ensureExLoaded(card);
+      const vid = card.querySelector('video');
+      if (!vid) return;
+      stopAllExceptCard(card);
+      vid.muted = false;
+      try {
+        await vid.play();
+        card.classList.add('is-playing');
+      } catch (e) {
+        // sound autoplay blocked; try muted fallback
+        vid.muted = true;
+        try { await vid.play(); card.classList.add('is-playing'); } catch (_) {}
+      }
+    }
+
+    function pauseCard(card) {
+      const vid = card.querySelector('video');
+      if (!vid) return;
+      vid.pause();
+      card.classList.remove('is-playing');
+    }
+
+    exCards.forEach(card => {
+      card.addEventListener('click', (e) => {
+        if (e.target.closest('a')) return;
+        if (e.target.closest('.ex-card__fs')) return; // fullscreen handled separately
+        const vid = card.querySelector('video');
+        if (!vid) return;
+        if (vid.paused) playWithSound(card);
+        else pauseCard(card);
+      });
+
+      // fullscreen button -> opens custom lightbox slider
+      const fsBtn = card.querySelector('.ex-card__fs');
+      if (fsBtn) {
+        fsBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const idx = exCards.indexOf(card);
+          if (idx >= 0) openLightbox(idx);
+        });
+      }
+    });
+
+    /* ===== examples lightbox slider ===== */
+    const exLb = document.getElementById('exLightbox');
+    const exLbVideo = document.getElementById('exLbVideo');
+    const exLbCur = document.getElementById('exLbCur');
+    const exLbTotal = document.getElementById('exLbTotal');
+    const exLbPrev = document.getElementById('exLbPrev');
+    const exLbNext = document.getElementById('exLbNext');
+    const exLbClose = document.getElementById('exLbClose');
+
+    let exLbIndex = -1;
+
+    if (exLbTotal) exLbTotal.textContent = String(exCards.length).padStart(2, '0');
+
+    function openLightbox(index) {
+      if (!exLb || !exCards.length) return;
+      // pause all inline videos & mute cover
+      exCards.forEach(c => {
+        const v = c.querySelector('video');
+        if (v) { v.pause(); v.muted = true; }
+        c.classList.remove('is-playing');
+      });
+      if (coverVid && !coverVid.muted) {
+        coverVid.muted = true;
+        if (cover) cover.classList.remove('is-sound-on');
+        if (coverSound) coverSound.classList.remove('is-on');
+      }
+      exLb.classList.add('is-open');
+      exLb.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('lightbox-locked');
+      showLightboxAt(index);
+    }
+
+    function showLightboxAt(index) {
+      if (!exLb || !exLbVideo) return;
+      const n = exCards.length;
+      if (!n) return;
+      exLbIndex = ((index % n) + n) % n; // wrap
+      const card = exCards[exLbIndex];
+      const src = card && card.getAttribute('data-video');
+      if (!src) return;
+      exLb.classList.add('is-loading');
+      try { exLbVideo.pause(); } catch (_) {}
+      exLbVideo.src = src;
+      exLbVideo.muted = false;
+      exLbVideo.load();
+      const onReady = () => {
+        exLb.classList.remove('is-loading');
+        exLbVideo.play().catch(() => {
+          // sound autoplay blocked — try muted
+          exLbVideo.muted = true;
+          exLbVideo.play().catch(()=>{});
+        });
+        exLbVideo.removeEventListener('loadeddata', onReady);
+      };
+      exLbVideo.addEventListener('loadeddata', onReady);
+      if (exLbCur) exLbCur.textContent = String(exLbIndex + 1).padStart(2, '0');
+    }
+
+    function closeLightbox() {
+      if (!exLb) return;
+      try { exLbVideo.pause(); } catch (_) {}
+      exLbVideo.removeAttribute('src');
+      exLbVideo.load();
+      exLb.classList.remove('is-open', 'is-loading');
+      exLb.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('lightbox-locked');
+      exLbIndex = -1;
+    }
+
+    if (exLbPrev) exLbPrev.addEventListener('click', () => showLightboxAt(exLbIndex - 1));
+    if (exLbNext) exLbNext.addEventListener('click', () => showLightboxAt(exLbIndex + 1));
+    if (exLbClose) exLbClose.addEventListener('click', closeLightbox);
+
+    // click on backdrop (outside video & controls) closes
+    if (exLb) {
+      exLb.addEventListener('click', (e) => {
+        if (e.target === exLb || e.target.classList.contains('lightbox__stage')) {
+          closeLightbox();
+        }
+      });
+    }
+
+    // keyboard
+    document.addEventListener('keydown', (e) => {
+      if (!exLb || !exLb.classList.contains('is-open')) return;
+      if (e.key === 'Escape') { e.preventDefault(); closeLightbox(); }
+      else if (e.key === 'ArrowRight') { e.preventDefault(); showLightboxAt(exLbIndex + 1); }
+      else if (e.key === 'ArrowLeft')  { e.preventDefault(); showLightboxAt(exLbIndex - 1); }
+    });
+
+    // touch swipe
+    if (exLb) {
+      let tStartX = 0, tStartY = 0, tracking = false;
+      exLb.addEventListener('touchstart', (e) => {
+        if (e.touches.length !== 1) return;
+        tracking = true;
+        tStartX = e.touches[0].clientX;
+        tStartY = e.touches[0].clientY;
+      }, { passive: true });
+      exLb.addEventListener('touchend', (e) => {
+        if (!tracking) return;
+        tracking = false;
+        const t = e.changedTouches[0];
+        const dx = t.clientX - tStartX;
+        const dy = t.clientY - tStartY;
+        if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy)) {
+          if (dx < 0) showLightboxAt(exLbIndex + 1);
+          else showLightboxAt(exLbIndex - 1);
+        }
+      }, { passive: true });
+    }
+
+    /* ===== reveal ===== */
+    const prefersReduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if ('IntersectionObserver' in window && !prefersReduced) {
+      const io = new IntersectionObserver((ents) => {
+        ents.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); }});
+      }, { rootMargin: '0px 0px -8% 0px', threshold: .08 });
+      document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    } else {
+      document.querySelectorAll('.reveal').forEach(el => el.classList.add('is-in'));
+    }
+
+    /* ===== sticky mobile CTA ===== */
+    const sticky = document.getElementById('stickyCta');
+    if (sticky && cover) {
+      const update = () => {
+        const past = cover.getBoundingClientRect().bottom < 60;
+        sticky.classList.toggle('is-visible', past);
+      };
+      window.addEventListener('scroll', update, { passive: true });
+      update();
+    }
+
+    /* ===== explain cards: no fullscreen click (per user request) ===== */
+    const exLbImage = document.getElementById('exLbImage');
+    function openImageLightbox(src, alt) {
+      if (!exLb || !exLbImage) return;
+      // pause cover & example videos
+      exCards.forEach(function (c) {
+        var v = c.querySelector('video');
+        if (v) { v.pause(); v.muted = true; }
+        c.classList.remove('is-playing');
+      });
+      if (coverVid && !coverVid.muted) {
+        coverVid.muted = true;
+        if (cover) cover.classList.remove('is-sound-on');
+        if (coverSound) coverSound.classList.remove('is-on');
+      }
+      // configure as image mode
+      exLb.setAttribute('data-mode', 'image');
+      exLbVideo.style.display = 'none';
+      try { exLbVideo.pause(); } catch (_) {}
+      exLbImage.style.display = '';
+      exLbImage.alt = alt || '';
+      exLbImage.src = src;
+      // hide slider chrome for single-image mode
+      if (exLbPrev) exLbPrev.style.display = 'none';
+      if (exLbNext) exLbNext.style.display = 'none';
+      var counter = document.querySelector('.lightbox__counter');
+      if (counter) counter.style.display = 'none';
+      var hint = document.querySelector('.lightbox__hint');
+      if (hint) hint.style.display = 'none';
+      exLb.classList.add('is-open');
+      exLb.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('lightbox-locked');
+    }
+
+    // patch close to reset image-mode chrome
+    (function () {
+      var prevClose = closeLightbox;
+      closeLightbox = function () {
+        if (exLbImage) { exLbImage.removeAttribute('src'); exLbImage.style.display = 'none'; }
+        exLbVideo.style.display = '';
+        if (exLb) exLb.removeAttribute('data-mode');
+        if (exLbPrev) exLbPrev.style.display = '';
+        if (exLbNext) exLbNext.style.display = '';
+        var counter = document.querySelector('.lightbox__counter');
+        if (counter) counter.style.display = '';
+        var hint = document.querySelector('.lightbox__hint');
+        if (hint) hint.style.display = '';
+        prevClose();
+      };
+      if (exLbClose) {
+        // re-bind close with new wrapper
+        var clone = exLbClose.cloneNode(true);
+        exLbClose.parentNode.replaceChild(clone, exLbClose);
+        clone.addEventListener('click', closeLightbox);
+      }
+      // backdrop close handled by stage; patch keyboard
+      document.addEventListener('keydown', function (e) {
+        if (!exLb || !exLb.classList.contains('is-open')) return;
+        if (e.key === 'Escape' && exLb.getAttribute('data-mode') === 'image') {
+          e.preventDefault();
+          closeLightbox();
+        }
+      });
+    })();
+
+    /* ===== course mobile lightbox ===== */
+    const courseLb = document.getElementById('courseLightbox');
+    const courseLbCur = document.getElementById('courseLbCur');
+    const courseLbTotal = document.getElementById('courseLbTotal');
+    const courseLbNum = document.getElementById('courseLbNum');
+    const courseLbTitle = document.getElementById('courseLbTitle');
+    const courseLbList = document.getElementById('courseLbList');
+    const courseLbPrev = document.getElementById('courseLbPrev');
+    const courseLbNext = document.getElementById('courseLbNext');
+    const courseLbClose = document.getElementById('courseLbClose');
+    const courseCells = Array.from(document.querySelectorAll('.course-cell'));
+    let courseLbIdx = -1;
+
+    if (courseLbTotal) courseLbTotal.textContent = String(courseCells.length).padStart(2, '0');
+
+    function showCourseAt(idx) {
+      if (!courseLb || !courseCells.length) return;
+      var n = courseCells.length;
+      courseLbIdx = ((idx % n) + n) % n;
+      var cell = courseCells[courseLbIdx];
+      var num = cell.querySelector('.course-cell__num');
+      var title = cell.querySelector('.course-cell__title');
+      var listItems = cell.querySelectorAll('.course-cell__list li');
+      if (courseLbNum) courseLbNum.textContent = num ? num.textContent.trim() : '';
+      if (courseLbTitle) courseLbTitle.textContent = title ? title.textContent.trim() : '';
+      if (courseLbList) {
+        courseLbList.innerHTML = '';
+        listItems.forEach(function (li, i) {
+          var row = document.createElement('li');
+          row.innerHTML = '<span class="li-n">/ ' + String(i + 1).padStart(2, '0') + '</span><span>' + li.textContent.trim() + '</span>';
+          courseLbList.appendChild(row);
+        });
+      }
+      if (courseLbCur) courseLbCur.textContent = String(courseLbIdx + 1).padStart(2, '0');
+    }
+
+    function openCourseLb(idx) {
+      if (!courseLb) return;
+      showCourseAt(idx);
+      courseLb.classList.add('is-open');
+      courseLb.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('lightbox-locked');
+    }
+    function closeCourseLb() {
+      if (!courseLb) return;
+      courseLb.classList.remove('is-open');
+      courseLb.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('lightbox-locked');
+      courseLbIdx = -1;
+    }
+
+    courseCells.forEach(function (cell, i) {
+      cell.addEventListener('click', function () {
+        if (!matchMedia('(max-width: 759px)').matches) return; // desktop = do nothing
+        openCourseLb(i);
+      });
+    });
+
+    if (courseLbPrev) courseLbPrev.addEventListener('click', function () { showCourseAt(courseLbIdx - 1); });
+    if (courseLbNext) courseLbNext.addEventListener('click', function () { showCourseAt(courseLbIdx + 1); });
+    if (courseLbClose) courseLbClose.addEventListener('click', closeCourseLb);
+    if (courseLb) {
+      courseLb.addEventListener('click', function (e) {
+        if (e.target === courseLb || e.target.classList.contains('course-lb__stage')) closeCourseLb();
+      });
+      // swipe
+      var sx = 0, sy = 0, tracking = false;
+      courseLb.addEventListener('touchstart', function (e) {
+        if (e.touches.length !== 1) return;
+        tracking = true; sx = e.touches[0].clientX; sy = e.touches[0].clientY;
+      }, { passive: true });
+      courseLb.addEventListener('touchend', function (e) {
+        if (!tracking) return; tracking = false;
+        var t = e.changedTouches[0];
+        var dx = t.clientX - sx, dy = t.clientY - sy;
+        if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy)) {
+          if (dx < 0) showCourseAt(courseLbIdx + 1);
+          else showCourseAt(courseLbIdx - 1);
+        }
+      }, { passive: true });
+    }
+    document.addEventListener('keydown', function (e) {
+      if (!courseLb || !courseLb.classList.contains('is-open')) return;
+      if (e.key === 'Escape') { e.preventDefault(); closeCourseLb(); }
+      else if (e.key === 'ArrowRight') { e.preventDefault(); showCourseAt(courseLbIdx + 1); }
+      else if (e.key === 'ArrowLeft')  { e.preventDefault(); showCourseAt(courseLbIdx - 1); }
+    });
+
+    /* ===== checkout click tracking (Meta Pixel + GTM) ===== */
+    document.querySelectorAll('a[data-cta]').forEach(el => {
+      el.addEventListener('click', () => {
+        const source = el.getAttribute('data-cta') || 'unknown';
+        const attr = (window.rcAttribution && window.rcAttribution.get()) || {};
+        try {
+          if (window.fbq) {
+            window.fbq('track', 'InitiateCheckout', {
+              currency: 'EUR',
+              value: 79.00,
+              content_name: 'Architectural AI Filmmaking',
+              source: source
+            });
+          }
+        } catch (_) {}
+        try {
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({
+            event: 'initiate_checkout',
+            currency: 'EUR',
+            value: 79.00,
+            source: source,
+            utm_source:   attr.utm_source   || '(direct)',
+            utm_medium:   attr.utm_medium   || '(none)',
+            utm_campaign: attr.utm_campaign || '(none)',
+            utm_content:  attr.utm_content  || '',
+            country:      attr.country      || ''
+          });
+        } catch (_) {}
+      });
+    });
+
+    /* ===== i18n init (after all helpers exist) ===== */
+    document.querySelectorAll('[data-set-lang]').forEach(btn => {
+      btn.addEventListener('click', () => applyLanguage(btn.getAttribute('data-set-lang')));
+    });
+    applyLanguage(detectLang());
+
+  </script>
+
+</body>
+</html>
