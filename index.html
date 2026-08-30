@@ -147,13 +147,16 @@
       flex: 0 0 auto;
     }
     .brand img {
-      height: clamp(18px, 2.2vw, 30px);
+      height: clamp(15px, 1.5vw, 22px);
       width: auto;
-      max-width: min(64vw, 260px);
+      max-width: min(52vw, 180px);
       display: block;
       object-fit: contain;
       object-position: left center;
+      opacity: .92;
+      transition: opacity .2s var(--ease);
     }
+    .brand:hover img { opacity: 1; }
 
     /* =========================================================
        1 · COVER (magazine cover with video bg)
@@ -247,15 +250,12 @@
     }
     @media (min-width: 720px) { .cover__foot { gap: 56px; } }
 
-    /* — bottom row: two text columns — */
+    /* — bottom row — */
     .cover__bottom {
       display: grid;
       grid-template-columns: 1fr;
       gap: 20px;
       align-items: end;
-    }
-    @media (min-width: 720px) {
-      .cover__bottom { grid-template-columns: 1fr 1fr; gap: 56px; }
     }
     .cover__lead {
       margin: 0;
@@ -266,10 +266,6 @@
       color: rgba(250,250,250,.95);
       max-width: 44ch;
       text-shadow: 0 1px 8px rgba(0,0,0,.4);
-    }
-    .cover__lead--right { text-align: left; }
-    @media (min-width: 720px) {
-      .cover__lead--right { text-align: right; justify-self: end; }
     }
 
     /* — controls row (sound + buy) under bottom text — */
@@ -538,16 +534,21 @@
       scrollbar-width: none;
     }
     .examples__scroller::-webkit-scrollbar { display: none; }
-    @media (min-width: 720px)  { .examples__scroller { grid-auto-columns: 38%; gap: 14px; } }
+    @media (min-width: 720px)  { .examples__scroller { grid-auto-columns: minmax(280px, 44%); gap: 14px; } }
     @media (min-width: 1100px) {
       .examples__scroller {
-        grid-auto-flow: row;
-        grid-template-columns: repeat(8, 1fr);
-        grid-auto-columns: auto;
-        gap: 6px;
-        overflow-x: visible;
-        overflow-y: visible;
-        scroll-snap-type: none;
+        grid-auto-flow: column;
+        grid-auto-columns: minmax(300px, 22vw);
+        gap: 14px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scroll-snap-type: x mandatory;
+      }
+    }
+    @media (min-width: 1400px) {
+      .examples__scroller {
+        grid-auto-columns: minmax(340px, 20vw);
+        gap: 16px;
       }
     }
 
@@ -633,6 +634,22 @@
     }
     .ex-card__fs:hover { background: rgba(0,0,0,.7); }
     .ex-card__fs svg { width: 14px; height: 14px; }
+    @media (min-width: 1100px) {
+      .ex-card__play {
+        width: 76px; height: 76px;
+      }
+      .ex-card__play svg { width: 26px; height: 26px; }
+      .ex-card__tag {
+        top: 16px; left: 16px;
+        padding: 6px 11px;
+        font-size: 12px;
+      }
+      .ex-card__fs {
+        top: 14px; right: 14px;
+        width: 40px; height: 40px;
+      }
+      .ex-card__fs svg { width: 16px; height: 16px; }
+    }
 
     .ex-card__cap {
       position: absolute; left: 12px; bottom: 12px;
@@ -650,21 +667,6 @@
     }
     .examples__hint b { color: var(--ink); font-weight: 700; }
 
-    /* viewport-adaptive hint copy for Selected work */
-    .hint-mobile  { display: inline; }
-    .hint-desktop { display: none; }
-    @media (min-width: 1100px) {
-      .hint-mobile  { display: none; }
-      .hint-desktop { display: inline; }
-    }
-    .hint-fs-icon {
-      display: inline-block;
-      width: 12px; height: 12px;
-      vertical-align: -1px;
-      margin: 0 1px 0 2px;
-      color: var(--ink);
-    }
-
     /* =========================================================
        4 · COURSE (6 squares)
        ========================================================= */
@@ -672,6 +674,7 @@
       margin-top: 36px;
       display: grid;
       grid-template-columns: repeat(2, 1fr);
+      grid-auto-rows: 1fr;
       gap: 1px;
       background: var(--line);
       border: 1px solid var(--line);
@@ -690,16 +693,16 @@
       transition: background .25s var(--ease), color .25s var(--ease);
       position: relative;
       min-height: 260px;
+      height: 100%;
       scroll-snap-align: start;
       width: 100%;
       text-align: left;
-      cursor: default;
+      cursor: pointer;
       color: inherit;
       font: inherit;
       border: 0;
-    }
-    @media (max-width: 759px) {
-      .course-cell { cursor: pointer; }
+      appearance: none;
+      -webkit-appearance: none;
     }
     @media (min-width: 720px) {
       .course-cell {
@@ -795,7 +798,7 @@
       .course-closer {
         min-height: 50vh;
         min-height: 50svh;
-        padding: 64px 0;
+        padding: 227px 0;
       }
     }
     .course-closer__inner {
@@ -807,6 +810,9 @@
       text-transform: uppercase;
       display: inline-block;
     }
+    @media (min-width: 720px) {
+      .course-closer__inner { max-width: calc(24ch + 20px); }
+    }
     /* tighten the surrounding sections so the closer owns the breathing room */
     section.s#course { padding-bottom: 0; }
     @media (min-width: 720px) {
@@ -816,78 +822,85 @@
     .course-closer .mute { color: var(--mute-2); display: block; }
 
     /* =========================================================
-       5 · AUDIENCE (who it's for)
+       5 · AUDIENCE (who it's for) — layout aligned with FAQ
        ========================================================= */
-    .audience__head {
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
-      margin-top: 18px;
-      margin-bottom: 40px;
+    .audience {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 28px;
+      align-items: start;
     }
-    @media (min-width: 720px) {
-      .audience__head {
-        gap: 22px;
-        margin-top: 22px;
-        margin-bottom: 52px;
-        max-width: 56ch;
-      }
+    @media (min-width: 900px) {
+      .audience { grid-template-columns: 1fr 1.6fr; gap: 56px; }
     }
-    .audience__title { max-width: 16ch; }
-    .audience__intro {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
+    .audience__head .label { margin-bottom: 14px; }
+    .audience__title {
+      margin: 0 0 14px;
+      max-width: 18ch;
     }
-    .audience__intro p {
+    .audience__note {
       margin: 0;
-      font-size: clamp(16px, 1.7vw, 19px);
-      line-height: 1.5;
+      font-size: 13px;
+      line-height: 1.55;
       color: var(--mute);
+      max-width: 38ch;
     }
-    .audience__intro p.audience__intro-em {
+    .audience__note + .audience__note { margin-top: 10px; }
+    .audience__note--em {
       color: var(--ink);
       font-weight: 600;
       letter-spacing: -.01em;
     }
     .audience-list {
-      list-style: none;
-      margin: 0;
-      padding: 0;
       border-top: 1px solid var(--line);
-      display: grid;
-      grid-template-columns: 1fr;
     }
-    @media (min-width: 900px) {
-      .audience-list {
-        grid-template-columns: 1fr 1fr;
-        column-gap: 64px;
-      }
-    }
-    .audience-list__item {
-      padding: 28px 0;
+    .audience-item {
       border-bottom: 1px solid var(--line);
+    }
+    .audience-item__q {
+      padding: 20px 0;
+      font-weight: 700;
+      font-size: clamp(15px, 1.6vw, 17px);
+      letter-spacing: -.015em;
+      line-height: 1.35;
+      color: var(--ink);
+      cursor: pointer;
+      list-style: none;
       display: flex;
-      flex-direction: column;
-      gap: 10px;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 20px;
+    }
+    .audience-item__q::-webkit-details-marker { display: none; }
+    .audience-item__q::marker { content: ""; }
+    .audience-item__q::after {
+      content: "+";
+      flex: 0 0 auto;
+      font-weight: 500;
+      font-size: 20px;
+      color: var(--mute);
+      line-height: 1;
+      margin-top: 1px;
+      transition: color .25s var(--ease);
+    }
+    .audience-item[open] .audience-item__q::after { content: "−"; }
+    .audience-item__q:hover::after { color: var(--ink); }
+    @media (min-width: 720px) {
+      .audience-item__q { padding: 24px 0; }
+    }
+    .audience-item__a {
+      padding: 0 0 20px;
     }
     @media (min-width: 720px) {
-      .audience-list__item { padding: 32px 0; gap: 12px; }
+      .audience-item__a { padding: 0 0 24px; }
     }
-    .audience-list__title {
+    .audience-item__a p {
       margin: 0;
-      font-weight: 700;
-      font-size: clamp(17px, 2.2vw, 21px);
-      letter-spacing: -.02em;
-      line-height: 1.2;
-      color: var(--ink);
-    }
-    .audience-list__desc {
-      margin: 0;
-      font-size: clamp(15px, 1.5vw, 16px);
-      line-height: 1.5;
+      font-size: clamp(14px, 1.5vw, 15px);
+      line-height: 1.55;
       color: var(--mute);
       letter-spacing: -.005em;
+      max-width: 52ch;
     }
 
     /* =========================================================
@@ -951,60 +964,125 @@
     }
 
     /* =========================================================
-       6 · PRICING
+       6 · PARTNERSHIP (growth offer)
        ========================================================= */
     .pricing {
       display: grid; grid-template-columns: 1fr;
-      gap: 32px;
+      gap: 40px;
       margin-top: 36px;
     }
     @media (min-width: 900px) {
-      .pricing { grid-template-columns: 1.2fr 1fr; gap: 56px; align-items: start; }
+      .pricing {
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: 72px;
+        align-items: stretch;
+      }
     }
 
-    .pricing__left {
-      padding-right: 0;
+    #buy .pricing__title {
+      margin: 0 0 32px;
+      max-width: 13ch;
     }
     @media (min-width: 900px) {
-      .pricing__left { padding-right: 32px; border-right: 1px solid var(--line); }
+      #buy .pricing__title { margin-bottom: 44px; }
     }
-    .pricing__intro {
-      max-width: 36ch;
-      font-size: clamp(17px, 2.2vw, 22px);
-      line-height: 1.45;
-      color: var(--ink-2);
-      margin: 0 0 24px;
-    }
-    .pricing__intro b { font-weight: 800; }
+
     .pricing__includes-label {
-      margin: 0 0 8px;
+      margin: 0 0 0;
       font-weight: 700; font-size: 11px;
       letter-spacing: .18em; text-transform: uppercase;
       color: var(--mute);
     }
     .pricing__includes {
       list-style: none;
-      padding: 0; margin: 0;
+      padding: 0; margin: 12px 0 0;
+      counter-reset: scope;
+      border-top: 1px solid var(--line);
     }
     .pricing__includes li {
-      display: flex; align-items: baseline; gap: 14px;
-      padding: 8px 0;
-      font-size: 17px;
+      counter-increment: scope;
+      display: grid;
+      grid-template-columns: 44px 1fr;
+      align-items: baseline;
+      gap: 12px;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--line);
+      font-size: clamp(15px, 1.6vw, 17px);
       font-weight: 500;
       letter-spacing: -.01em;
+      line-height: 1.45;
       color: var(--ink);
     }
-    .pricing__includes li:last-child { /* no border */ }
     .pricing__includes li::before {
-      content: "";
-      flex-shrink: 0;
-      width: 8px; height: 8px;
-      background: var(--ink);
-      transform: translateY(-2px);
+      content: "/ 0" counter(scope);
+      font-weight: 700;
+      font-size: 12px;
+      letter-spacing: .02em;
+      color: var(--mute);
+      background: none;
+      width: auto;
+      height: auto;
+      transform: none;
     }
 
     .pricing__right {
+      display: flex; flex-direction: column;
+    }
+    @media (min-width: 900px) {
+      .pricing__right { min-height: 100%; }
+      .partnership-card {
+        flex: 1;
+        min-height: 100%;
+      }
+      .partnership-card__cta { margin-top: auto; }
+    }
+
+    .partnership-card {
       display: flex; flex-direction: column; gap: 28px;
+      padding: 28px 24px 32px;
+      border: 1px solid var(--line);
+      background: var(--paper);
+    }
+    @media (min-width: 720px) {
+      .partnership-card { padding: 32px 28px 36px; gap: 32px; }
+    }
+    .partnership-card__eyebrow {
+      margin: 0;
+      font-weight: 700; font-size: 11px;
+      letter-spacing: .18em; text-transform: uppercase;
+      color: var(--mute);
+    }
+    .partnership-card__stages {
+      display: flex; align-items: baseline; flex-wrap: wrap;
+      gap: 10px 14px;
+      line-height: 1;
+    }
+    .partnership-card__stage {
+      font-weight: 600;
+      font-size: clamp(32px, 4.5vw, 48px);
+      letter-spacing: -.026em;
+      text-transform: uppercase;
+      color: var(--ink);
+    }
+    .partnership-card__stage--accent { color: var(--ink); }
+    .partnership-card__arrow {
+      font-weight: 400;
+      font-size: clamp(24px, 3.5vw, 36px);
+      color: var(--mute-2);
+      line-height: 1;
+    }
+    .partnership-card__cta span {
+      font-weight: 600;
+      font-size: 15px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .partnership-card__note {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.55;
+      color: var(--mute);
+      max-width: 36ch;
     }
 
     .offer {
@@ -1070,22 +1148,13 @@
       font-variant-numeric: tabular-nums;
     }
     .offer__price-now {
-      display: flex; align-items: flex-start; gap: 8px;
-      line-height: .85;
-    }
-    .offer__price-now .cur {
-      font-weight: 800; font-size: 28px;
-      padding-top: 12px;
-      letter-spacing: -.02em;
-      color: var(--ink);
-    }
-    .offer__price-now .amt {
+      display: flex; flex-direction: column; align-items: flex-start;
       font-weight: 600;
-      font-size: clamp(96px, 14vw, 168px);
+      font-size: clamp(52px, 7vw, 88px);
       letter-spacing: -.026em;
-      line-height: .85;
+      line-height: .95;
+      text-transform: uppercase;
       color: var(--ink);
-      font-variant-numeric: tabular-nums;
     }
     .offer__price-save {
       display: inline-flex; align-items: center; gap: 6px;
@@ -1118,34 +1187,28 @@
     }
     .pricing__dm b { color: var(--ink); font-weight: 700; }
 
-    /* Mobile: compress block 05 so it fits one screen */
+    /* Mobile: partnership block */
     @media (max-width: 759px) {
-      #buy { padding-top: 48px; padding-bottom: 48px; }
-      #buy .h-1 {
+      #buy { padding-top: 48px; padding-bottom: 56px; }
+      #buy .pricing__title {
         font-size: 32px; line-height: 1.02;
-        margin-bottom: 16px !important;
+        margin-bottom: 24px !important;
       }
-      #buy .pricing__includes-label {
-        font-size: 10px; margin-bottom: 4px;
-      }
+      #buy .pricing__includes-label { font-size: 10px; }
+      #buy .pricing__includes { margin-top: 8px; }
       #buy .pricing__includes li {
-        padding: 2px 0;
-        font-size: 13px;
-        font-weight: 400;
-        line-height: 1.3;
-        gap: 8px;
+        grid-template-columns: 36px 1fr;
+        padding: 14px 0;
+        font-size: 14px;
+        gap: 10px;
       }
-      #buy .pricing__includes li::before {
-        width: 5px; height: 5px;
-        transform: translateY(-1px);
-      }
-      #buy .pricing__right { gap: 18px; }
-      #buy .offer__price-was { font-size: 11px; }
-      #buy .offer__price-now .cur { font-size: 24px; padding-top: 10px; }
-      #buy .offer__price-now .amt { font-size: 80px; }
-      #buy .btn-primary { min-height: 60px; padding: 18px 22px; }
-      #buy .btn-primary span { font-size: 18px !important; letter-spacing: 5px !important; }
-      #buy .pricing__dm { font-size: 11px; line-height: 1.4; }
+      #buy .pricing__includes li::before { font-size: 11px; }
+      #buy .partnership-card { padding: 24px 20px 28px; gap: 24px; }
+      #buy .partnership-card__stage { font-size: 28px; }
+      #buy .partnership-card__arrow { font-size: 22px; }
+      #buy .partnership-card__cta { min-height: 56px; padding: 18px 20px; }
+      #buy .partnership-card__cta span { font-size: 13px !important; letter-spacing: .1em !important; }
+      #buy .partnership-card__note { font-size: 13px; line-height: 1.45; }
     }
 
     /* =========================================================
@@ -1202,6 +1265,7 @@
       color: var(--ink-2);
       margin: 0 0 12px;
     }
+    section#author { display: none; }
 
     /* =========================================================
        9 · FAQ
@@ -1887,7 +1951,8 @@
       *, *::before, *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; }
       .reveal { opacity: 1; transform: none; }
     }
-    a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visible {
+    a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visible,
+    .course-cell:focus-visible {
       outline: 2px solid currentColor; outline-offset: 3px;
     }
   </style>
@@ -1929,10 +1994,7 @@
         <div class="cover__foot">
           <div class="cover__bottom">
             <p class="cover__lead cover__lead--left" data-i18n="cover.leadLeft">
-              Turn your product into a film that makes customers want to step into your brand's world.
-            </p>
-            <p class="cover__lead cover__lead--right" data-i18n="cover.leadRight">
-              Wave helps businesses create cinematic films — from a few simple product images to a complete visual story.
+              Turn your product into a richly cinematic film that makes customers want to step into your brand's world.
             </p>
           </div>
 
@@ -1972,7 +2034,7 @@ Brand + Art + AI.</h2>
       <div class="container">
         <div class="explain__head">
           <p class="label"><span class="n">02</span><span data-i18n="explain.label">How it works</span></p>
-          <h2 class="explain__title" data-i18n="explain.title">From sketch to cinematic film.</h2>
+          <h2 class="explain__title" data-i18n="explain.title">From image to cinematic film.</h2>
         </div>
 
         <div class="explain__grid">
@@ -1990,7 +2052,7 @@ Brand + Art + AI.</h2>
           <div class="explain__col">
             <header class="explain__step">
               <p class="explain__step-no" data-i18n="explain.s2no">Step 02</p>
-              <h3 class="explain__step-title" data-i18n="explain.s2title">Build a visual world for the product.</h3>
+              <h3 class="explain__step-title" data-i18n="explain.s2title">Build a cinematic world for the product.</h3>
             </header>
             <ol class="explain__list">
               <li><span class="num">/ 01</span><span data-i18n="explain.l1">Define the story to tell.</span></li>
@@ -2042,7 +2104,6 @@ Brand + Art + AI.</h2>
           <div class="sec-head__prose">
             <p><span data-i18n="work.p1a">The destination isn’t just “beautifying the product.”</span></p>
             <p data-i18n="work.p2">We turn it into a story so customers see, feel, remember, and yearn to step into the brand’s world.</p>
-            <p><span class="hint-mobile"><b data-i18n="work.swipe">Swipe →</b> <span data-i18n="work.p1m">tap any tile to play with sound.</span></span><span class="hint-desktop"><b data-i18n="work.click">Click any tile</b> <span data-i18n="work.p1d">to play with sound — or open it fullscreen</span> <svg class="hint-fs-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 9 4 4 9 4"></polyline><polyline points="20 9 20 4 15 4"></polyline><polyline points="4 15 4 20 9 20"></polyline><polyline points="20 15 20 20 15 20"></polyline></svg>.</span></p>
           </div>
         </div>
       </div>
@@ -2144,7 +2205,7 @@ Brand + Art + AI.</h2>
         </div>
 
         <div class="course-grid">
-          <button type="button" class="course-cell" data-course-idx="0">
+          <div class="course-cell" role="button" tabindex="0" data-course-idx="0" aria-label="Creative Direction">
             <span class="course-cell__num">/ 01</span>
             <h3 class="course-cell__title" data-i18n="course.c1.title">Creative Direction</h3>
             <ul class="course-cell__list">
@@ -2155,8 +2216,8 @@ Brand + Art + AI.</h2>
               <li data-i18n="course.c1.l5">Choose the right storytelling approach</li>
             </ul>
             <span class="course-cell__arr"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-          </button>
-          <button type="button" class="course-cell" data-course-idx="1">
+          </div>
+          <div class="course-cell" role="button" tabindex="0" data-course-idx="1" aria-label="Concept &amp; Storyboard">
             <span class="course-cell__num">/ 02</span>
             <h3 class="course-cell__title" data-i18n="course.c2.title">Concept &amp; Storyboard</h3>
             <ul class="course-cell__list">
@@ -2167,8 +2228,8 @@ Brand + Art + AI.</h2>
               <li data-i18n="course.c2.l5">Build shot structure</li>
             </ul>
             <span class="course-cell__arr"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-          </button>
-          <button type="button" class="course-cell" data-course-idx="2">
+          </div>
+          <div class="course-cell" role="button" tabindex="0" data-course-idx="2" aria-label="AI Visual Production">
             <span class="course-cell__num">/ 03</span>
             <h3 class="course-cell__title" data-i18n="course.c3.title">AI Visual Production</h3>
             <ul class="course-cell__list">
@@ -2179,8 +2240,8 @@ Brand + Art + AI.</h2>
               <li data-i18n="course.c3.l5">Keep a consistent visual language</li>
             </ul>
             <span class="course-cell__arr"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-          </button>
-          <button type="button" class="course-cell" data-course-idx="3">
+          </div>
+          <div class="course-cell" role="button" tabindex="0" data-course-idx="3" aria-label="Character Direction">
             <span class="course-cell__num">/ 04</span>
             <h3 class="course-cell__title" data-i18n="course.c4.title">Character Direction</h3>
             <ul class="course-cell__list">
@@ -2191,8 +2252,8 @@ Brand + Art + AI.</h2>
               <li data-i18n="course.c4.l5">Express the brand spirit</li>
             </ul>
             <span class="course-cell__arr"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-          </button>
-          <button type="button" class="course-cell" data-course-idx="4">
+          </div>
+          <div class="course-cell" role="button" tabindex="0" data-course-idx="4" aria-label="Cinematic Animation">
             <span class="course-cell__num">/ 05</span>
             <h3 class="course-cell__title" data-i18n="course.c5.title">Cinematic Animation</h3>
             <ul class="course-cell__list">
@@ -2203,8 +2264,8 @@ Brand + Art + AI.</h2>
               <li data-i18n="course.c5.l5">Light and space effects</li>
             </ul>
             <span class="course-cell__arr"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-          </button>
-          <button type="button" class="course-cell" data-course-idx="5">
+          </div>
+          <div class="course-cell" role="button" tabindex="0" data-course-idx="5" aria-label="Film Assembly">
             <span class="course-cell__num">/ 06</span>
             <h3 class="course-cell__title" data-i18n="course.c6.title">Film Assembly</h3>
             <ul class="course-cell__list">
@@ -2217,10 +2278,10 @@ Brand + Art + AI.</h2>
               <li data-i18n="course.c6.l7">Export formats per platform</li>
             </ul>
             <span class="course-cell__arr"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-          </button>
+          </div>
         </div>
 
-        <p class="course-closer"><span class="course-closer__inner" data-i18n-html="course.closer">One product. One team. One process.<br/><span class="mute">From idea to the final film.</span></span></p>
+        <p class="course-closer"><span class="course-closer__inner" data-i18n-html="course.closer">Not just an AI video.<br/><span class="mute">A story built around the product.</span></span></p>
       </div>
     </section>
 
@@ -2228,76 +2289,39 @@ Brand + Art + AI.</h2>
     <!-- ============ 5 · AUDIENCE ============ -->
     <section class="s" id="audience" data-od-id="audience">
       <div class="container">
-        <p class="label"><span class="n">05</span><span data-i18n="audience.label">Who it's for</span></p>
-        <div class="audience__head">
-          <h2 class="h-1 audience__title" data-i18n="audience.title">Who is it for?</h2>
-          <div class="audience__intro">
-            <p data-i18n="audience.intro1">For brands that don't just want their product to be seen.</p>
-            <p class="audience__intro-em" data-i18n="audience.intro2">They want their product to be felt.</p>
-          </div>
-        </div>
-        <ul class="audience-list">
-          <li class="audience-list__item">
-            <h3 class="audience-list__title" data-i18n="audience.i1.title">Fashion brands</h3>
-            <p class="audience-list__desc" data-i18n="audience.i1.desc">Launch collections, create lookbook films, campaign videos, and advertising content.</p>
-          </li>
-          <li class="audience-list__item">
-            <h3 class="audience-list__title" data-i18n="audience.i2.title">Beauty &amp; cosmetics brands</h3>
-            <p class="audience-list__desc" data-i18n="audience.i2.desc">Turn texture, benefits, and product experience into emotionally rich visual moments.</p>
-          </li>
-          <li class="audience-list__item">
-            <h3 class="audience-list__title" data-i18n="audience.i3.title">Jewelry &amp; accessories brands</h3>
-            <p class="audience-list__desc" data-i18n="audience.i3.desc">Highlight detail, material, and the perceived value of the product.</p>
-          </li>
-          <li class="audience-list__item">
-            <h3 class="audience-list__title" data-i18n="audience.i4.title">Interior &amp; lifestyle brands</h3>
-            <p class="audience-list__desc" data-i18n="audience.i4.desc">Place the product in a living space customers want to own.</p>
-          </li>
-          <li class="audience-list__item">
-            <h3 class="audience-list__title" data-i18n="audience.i5.title">Designers &amp; founders</h3>
-            <p class="audience-list__desc" data-i18n="audience.i5.desc">Create professional visual campaigns without organizing an oversized traditional production pipeline.</p>
-          </li>
-          <li class="audience-list__item">
-            <h3 class="audience-list__title" data-i18n="audience.i6.title">Agencies &amp; creative teams</h3>
-            <p class="audience-list__desc" data-i18n="audience.i6.desc">Expand visual production capacity, test concepts quickly, and create more campaign content.</p>
-          </li>
-        </ul>
-      </div>
-    </section>
-
-
-    <!-- ============ 6 · PRICING ============ -->
-    <section class="s" id="buy" data-od-id="buy">
-      <div class="container">
-        <p class="label"><span class="n">06</span><span data-i18n="buy.label">Get the course</span></p>
-
-        <div class="pricing">
-          <div class="pricing__left">
-            <h2 class="h-1" style="margin-bottom: 24px" data-i18n="buy.title">One package. Instant access by email.</h2>
-
-            <p class="pricing__includes-label" data-i18n="buy.includes">What's included</p>
-            <ul class="pricing__includes">
-              <li data-i18n="buy.i1">Course</li>
-              <li data-i18n="buy.i2">Reference collection</li>
-              <li data-i18n="buy.i3">Prompt collection</li>
-              <li data-i18n="buy.i4">20 languages translation</li>
-              <li data-i18n="buy.i5">Chat</li>
-            </ul>
+        <div class="audience">
+          <div class="audience__head">
+            <p class="label"><span class="n">05</span><span data-i18n="audience.label">Who it's for</span></p>
+            <h2 class="h-1 audience__title" data-i18n="audience.title">Who is it for?</h2>
+            <p class="audience__note" data-i18n="audience.intro1">For brands that don't just want their product to be seen.</p>
+            <p class="audience__note audience__note--em" data-i18n="audience.intro2">They want their product to be felt.</p>
           </div>
 
-          <div class="pricing__right">
-            <div class="offer__price">
-              <p class="offer__price-was"><span data-i18n="buy.regular">Regular price</span><s>€350</s><span class="offer__price-save" data-i18n="buy.save">Save 77%</span></p>
-              <div class="offer__price-now">
-                <span class="cur">€</span><span class="amt" style="font-weight: 600; letter-spacing: -2.2px">79</span>
-              </div>
-            </div>
-
-            <a href="https://store.payproglobal.com/checkout?products[1][id]=134624&products[1][data]=3X-3IiMg5soHCbQyW6yjx2eNKpvOgKwhcFYpvxbu-914cLmLfK89d3ITPSOpVDFgulAiNe8vm7qDrEj-fbstziAxj0_vgY86oWywr3-9d4r5KriWgZo6GWGDOkFrrsz4Zgn8I7HHG6VTYv4sCP3FDVPalYN0LPMnFGK886ejr24F9-1rUBgqEsIgZn21-sijwOAgmBegQf3tgcrbRA0o0SToY6c9xpwMZ86nJ24WXcw-SjmgZnnbMJptuxbZdROKzf5ScXgg5Q191IlWUyHm9XyIn4lkehyffgxK_q43D966g6ZH_a0hdvwVYG_gDZ6wewZEn3ghhYeyryD5wAI0JGxjjT0kDn691aG9Durm9fi5Os0E9tWMrQ1KrZWhVVBiCEXfGnIqtHzTH94R0Y4y6g%3D%3D" class="btn-primary" data-cta="pricing">
-              <span data-i18n="cta.getAccess" style="font-weight: 600; text-align: center; font-size: 20px; letter-spacing: 6px">GET ACCESS NOW</span>
-            </a>
-
-            <p class="pricing__dm" data-i18n-html="buy.after">After purchase you'll get course access at the email you provide at checkout.</p>
+          <div class="audience-list" role="list">
+            <details class="audience-item" role="listitem">
+              <summary class="audience-item__q" data-i18n="audience.i1.title">Fashion brands</summary>
+              <div class="audience-item__a"><p data-i18n="audience.i1.desc">Launch collections, create lookbook films, campaign videos, and advertising content.</p></div>
+            </details>
+            <details class="audience-item" role="listitem">
+              <summary class="audience-item__q" data-i18n="audience.i2.title">Beauty &amp; cosmetics brands</summary>
+              <div class="audience-item__a"><p data-i18n="audience.i2.desc">Turn texture, benefits, and product experience into emotionally rich visual moments.</p></div>
+            </details>
+            <details class="audience-item" role="listitem">
+              <summary class="audience-item__q" data-i18n="audience.i3.title">Jewelry &amp; accessories brands</summary>
+              <div class="audience-item__a"><p data-i18n="audience.i3.desc">Highlight detail, material, and the perceived value of the product.</p></div>
+            </details>
+            <details class="audience-item" role="listitem">
+              <summary class="audience-item__q" data-i18n="audience.i4.title">Interior &amp; lifestyle brands</summary>
+              <div class="audience-item__a"><p data-i18n="audience.i4.desc">Place the product in a living space customers want to own.</p></div>
+            </details>
+            <details class="audience-item" role="listitem">
+              <summary class="audience-item__q" data-i18n="audience.i5.title">Designers &amp; founders</summary>
+              <div class="audience-item__a"><p data-i18n="audience.i5.desc">Create professional visual campaigns without organizing an oversized traditional production pipeline.</p></div>
+            </details>
+            <details class="audience-item" role="listitem">
+              <summary class="audience-item__q" data-i18n="audience.i6.title">Agencies &amp; creative teams</summary>
+              <div class="audience-item__a"><p data-i18n="audience.i6.desc">Expand visual production capacity, test concepts quickly, and create more campaign content.</p></div>
+            </details>
           </div>
         </div>
       </div>
@@ -2324,11 +2348,11 @@ Brand + Art + AI.</h2>
       </div>
     </section>
 
-    <!-- ============ 8 · TOOLS ============ -->
+    <!-- ============ 6 · TOOLS ============ -->
     <section class="s" id="tools" data-od-id="tools">
       <div class="container">
         <div class="tools__head">
-          <p class="label"><span class="n">08</span><span data-i18n="tools.label">Software</span></p>
+          <p class="label"><span class="n">06</span><span data-i18n="tools.label">Software</span></p>
           <h2 class="h-1" data-i18n="tools.title">Tools Wave uses.</h2>
         </div>
 
@@ -2431,12 +2455,12 @@ Brand + Art + AI.</h2>
 
   </main>
 
-  <!-- ============ 9 · FAQ ============ -->
+  <!-- ============ 7 · FAQ ============ -->
     <section class="s" id="faq" data-od-id="faq">
       <div class="container">
         <div class="faq">
           <div class="faq__head">
-            <p class="label"><span class="n">09</span><span data-i18n="faq.label">FAQ</span></p>
+            <p class="label"><span class="n">07</span><span data-i18n="faq.label">FAQ</span></p>
             <h2 class="h-1 faq__title" data-i18n="faq.title">Have a question?</h2>
             <p class="faq__note" data-i18n="faq.note">What clients often ask Wave before starting a project.</p>
           </div>
@@ -2470,6 +2494,43 @@ Brand + Art + AI.</h2>
         </div>
       </div>
     </section>
+
+
+  <!-- ============ 8 · PARTNERSHIP ============ -->
+  <section class="s" id="buy" data-od-id="buy">
+    <div class="container">
+      <p class="label"><span class="n">08</span><span data-i18n="buy.label">Learn more</span></p>
+
+      <div class="pricing">
+        <div class="pricing__left">
+          <h2 class="h-1 pricing__title" data-i18n-html="buy.title">One product.<br/>One AI system.</h2>
+
+          <p class="pricing__includes-label" data-i18n="buy.includes">Extended service package</p>
+          <ul class="pricing__includes">
+            <li data-i18n="buy.i1">AI team building for product launch</li>
+            <li data-i18n="buy.i2">Conversion landing page</li>
+            <li data-i18n="buy.i3">Conversion content pillar system. (B2B, B2C)</li>
+            <li data-i18n="buy.i4">AI Agent and operations automation</li>
+          </ul>
+        </div>
+
+        <div class="pricing__right">
+          <aside class="partnership-card">
+            <p class="partnership-card__eyebrow" data-i18n="buy.regular">Stage-based partnership</p>
+            <div class="partnership-card__stages">
+              <span class="partnership-card__stage" data-i18n="buy.stage1">Launch</span>
+              <span class="partnership-card__arrow" aria-hidden="true">→</span>
+              <span class="partnership-card__stage partnership-card__stage--accent" data-i18n="buy.stage2">Growth</span>
+            </div>
+            <button type="button" class="btn-primary partnership-card__cta" data-cta="pricing">
+              <span data-i18n="buy.cta">[TALK WITH WAVE]</span>
+            </button>
+            <p class="partnership-card__note" data-i18n="buy.after">Solutions tailored to your business goals and growth stage.</p>
+          </aside>
+        </div>
+      </div>
+    </div>
+  </section>
 
 
   <!-- ============ FOOTER ============ -->
@@ -2570,21 +2631,20 @@ Brand + Art + AI.</h2>
         "cover.t1": "Elevate",
         "cover.t2": "Products with AI",
         "cover.t3": "FOR FASHION & LIFESTYLE BRANDS",
-        "cover.leadLeft": "Turn your product into a film that makes customers want to step into your brand's world.",
-        "cover.leadRight": "Wave helps businesses create cinematic films — from a few simple product images to a complete visual story.",
+        "cover.leadLeft": "Turn your product into a richly cinematic film that makes customers want to step into your brand's world.",
         "cta.startCreating": "START CREATING NOW",
         "cta.getAccess": "GET ACCESS NOW",
         "cta.sticky": "Get Access — €79",
         "cta.stickyAria": "Get access — €79",
         "quote": "Not just AI.\nBrand + Art + AI.",
         "explain.label": "How it works",
-        "explain.title": "From sketch to cinematic film.",
+        "explain.title": "From image to cinematic film.",
         "explain.s1no": "Step 01",
         "explain.s1title": "Take an image of your project.",
         "explain.imgAlt": "House on the Cliff by Fran Silvestre Arquitectos — the source image.",
         "explain.credit": "Original image: Fran Silvestre Arquitectos",
         "explain.s2no": "Step 02",
-        "explain.s2title": "Build a visual world for the product.",
+        "explain.s2title": "Build a cinematic world for the product.",
         "explain.l1": "Define the story to tell.",
         "explain.l2": "Develop the visual concept.",
         "explain.l3": "Build the script and storyboard.",
@@ -2599,10 +2659,6 @@ Brand + Art + AI.</h2>
         "work.label": "Selected work",
         "work.title": "The visual worlds Wave creates.",
         "work.p1a": "The destination isn’t just “beautifying the product.”",
-        "work.swipe": "Swipe →",
-        "work.p1m": "tap any tile to play with sound.",
-        "work.click": "Click any tile",
-        "work.p1d": "to play with sound — or open it fullscreen",
         "work.p2": "We turn it into a story so customers see, feel, remember, and yearn to step into the brand’s world.",
         "course.label": "Services",
         "course.title": "A structured creative process.",
@@ -2645,7 +2701,7 @@ Brand + Art + AI.</h2>
         "course.c6.l5": "Color direction",
         "course.c6.l6": "Finalize the master cut",
         "course.c6.l7": "Export formats per platform",
-        "course.closer": "One product. One team. One process.<br/><span class=\"mute\">From idea to the final film.</span>",
+        "course.closer": "Not just an AI video.<br/><span class=\"mute\">A story built around the product.</span>",
         "audience.label": "Who it's for",
         "audience.title": "Who is it for?",
         "audience.intro1": "For brands that don't just want their product to be seen.",
@@ -2662,17 +2718,18 @@ Brand + Art + AI.</h2>
         "audience.i5.desc": "Create professional visual campaigns without organizing an oversized traditional production pipeline.",
         "audience.i6.title": "Agencies & creative teams",
         "audience.i6.desc": "Expand visual production capacity, test concepts quickly, and create more campaign content.",
-        "buy.label": "Get the course",
-        "buy.title": "One package. Instant access by email.",
-        "buy.includes": "What's included",
-        "buy.i1": "Course",
-        "buy.i2": "Reference collection",
-        "buy.i3": "Prompt collection",
-        "buy.i4": "20 languages translation",
-        "buy.i5": "Chat",
-        "buy.regular": "Regular price",
-        "buy.save": "Save 77%",
-        "buy.after": "<b>After purchase</b> you'll get course access at the email you provide at checkout.",
+        "buy.label": "Learn more",
+        "buy.title": "One product.<br/>One AI system.",
+        "buy.includes": "Extended service package",
+        "buy.i1": "AI team building for product launch",
+        "buy.i2": "Conversion landing page",
+        "buy.i3": "Conversion content pillar system. (B2B, B2C)",
+        "buy.i4": "AI Agent and operations automation",
+        "buy.regular": "Stage-based partnership",
+        "buy.stage1": "Launch",
+        "buy.stage2": "Growth",
+        "buy.cta": "[TALK WITH WAVE]",
+        "buy.after": "Solutions tailored to your business goals and growth stage.",
         "author.label": "Author",
         "author.role": "Founder. Wave Digital x AI",
         "author.p1": "Daniel Nagaets — founder of FORTES VISION and RENDER.CAMP. 20+ years of experience in architectural visualization and creative direction. Built two companies, delivered projects up to $750,000, and trained thousands of visualization artists worldwide.",
@@ -2722,21 +2779,20 @@ Brand + Art + AI.</h2>
         "cover.t1": "Nâng tầm",
         "cover.t2": "Sản phẩm với AI",
         "cover.t3": "DÀNH CHO THƯƠNG HIỆU THỜI TRANG & LIFESTYLE",
-        "cover.leadLeft": "Biến sản phẩm thành một bộ phim khiến khách hàng muốn bước vào thế giới của thương hiệu.",
-        "cover.leadRight": "Wave giúp doanh nghiệp tạo ra những thước phim giàu tính điện ảnh — từ một vài ảnh sản phẩm đơn giản đến một câu chuyện hình ảnh hoàn chỉnh.",
+        "cover.leadLeft": "Biến sản phẩm thành một thước phim giàu tính điện ảnh, khiến khách hàng muốn bước vào thế giới của thương hiệu.",
         "cta.startCreating": "BẮT ĐẦU SÁNG TẠO NGAY",
         "cta.getAccess": "NHẬN TRUY CẬP NGAY",
         "cta.sticky": "Nhận truy cập — €79",
         "cta.stickyAria": "Nhận truy cập — €79",
         "quote": "Không chỉ là AI.\nBrand + Art + AI.",
         "explain.label": "Cách hoạt động",
-        "explain.title": "Từ bản phác đến phim điện ảnh.",
+        "explain.title": "Từ hình ảnh đến thước phim điện ảnh.",
         "explain.s1no": "Bước 01",
         "explain.s1title": "Lấy một hình ảnh dự án của bạn.",
         "explain.imgAlt": "House on the Cliff của Fran Silvestre Arquitectos — hình ảnh nguồn.",
         "explain.credit": "Hình gốc: Fran Silvestre Arquitectos",
         "explain.s2no": "Bước 02",
-        "explain.s2title": "Xây dựng thế giới hình ảnh cho sản phẩm.",
+        "explain.s2title": "Xây dựng thế giới điện ảnh cho sản phẩm.",
         "explain.l1": "Xác định câu chuyện cần kể.",
         "explain.l2": "Phát triển concept hình ảnh.",
         "explain.l3": "Xây dựng kịch bản và storyboard.",
@@ -2751,10 +2807,6 @@ Brand + Art + AI.</h2>
         "work.label": "Tác phẩm chọn lọc",
         "work.title": "Những câu chuyện Wave tạo ra.",
         "work.p1a": "Đích đến không chỉ là “làm đẹp sản phẩm”.",
-        "work.swipe": "Vuốt →",
-        "work.p1m": "chạm ô bất kỳ để phát có âm thanh.",
-        "work.click": "Nhấp ô bất kỳ",
-        "work.p1d": "để phát có âm thanh — hoặc mở toàn màn hình",
         "work.p2": "Chúng tôi biến nó thành câu chuyện để khách hàng nhìn thấy, cảm nhận, ghi nhớ và khao khát bước vào thế giới của thương hiệu.",
         "course.label": "Dịch vụ",
         "course.title": "Một quy trình sáng tạo có cấu trúc.",
@@ -2797,7 +2849,7 @@ Brand + Art + AI.</h2>
         "course.c6.l5": "Color direction",
         "course.c6.l6": "Hoàn thiện phiên bản cuối",
         "course.c6.l7": "Xuất định dạng theo từng nền tảng",
-        "course.closer": "Một sản phẩm. Một đội ngũ. Một quy trình.<br/><span class=\"mute\">Từ ý tưởng đến thước phim cuối cùng.</span>",
+        "course.closer": "Không chỉ là video AI.<br/><span class=\"mute\">Là câu chuyện xây dựng xung quanh sản phẩm.</span>",
         "audience.label": "Dành cho ai",
         "audience.title": "Dành cho ai?",
         "audience.intro1": "Dành cho những thương hiệu không chỉ muốn sản phẩm được nhìn thấy.",
@@ -2814,17 +2866,18 @@ Brand + Art + AI.</h2>
         "audience.i5.desc": "Tạo chiến dịch hình ảnh chuyên nghiệp mà không cần tổ chức một quy trình sản xuất truyền thống quá lớn.",
         "audience.i6.title": "Agency và Creative Team",
         "audience.i6.desc": "Mở rộng năng lực sản xuất visual, thử nghiệm concept nhanh và tạo thêm nội dung cho chiến dịch.",
-        "buy.label": "Nhận khóa học",
-        "buy.title": "Một gói. Truy cập ngay qua email.",
-        "buy.includes": "Bao gồm",
-        "buy.i1": "Khóa học",
-        "buy.i2": "Bộ sưu tập reference",
-        "buy.i3": "Bộ sưu tập prompt",
-        "buy.i4": "Dịch 20 ngôn ngữ",
-        "buy.i5": "Chat",
-        "buy.regular": "Giá gốc",
-        "buy.save": "Tiết kiệm 77%",
-        "buy.after": "<b>Sau khi mua</b>, bạn nhận quyền truy cập khóa học qua email đã cung cấp khi thanh toán.",
+        "buy.label": "Tham Khảo Thêm",
+        "buy.title": "Một sản phẩm.<br/>Một hệ thống AI",
+        "buy.includes": "Gói dịch vụ mở rộng",
+        "buy.i1": "Xây dựng đội ngũ AI ra mắt sản phẩm",
+        "buy.i2": "Landing page chuyển đổi",
+        "buy.i3": "Hệ thống trục nội dung chuyển đổi. (B2B, B2C)",
+        "buy.i4": "AI Agent và tự động hóa vận hành",
+        "buy.regular": "Đồng hành theo giai đoạn",
+        "buy.stage1": "Khởi tạo",
+        "buy.stage2": "Tăng trưởng",
+        "buy.cta": "[TRAO ĐỔI CÙNG WAVE]",
+        "buy.after": "Giải pháp được thiết kế theo mục tiêu và giai đoạn phát triển của doanh nghiệp.",
         "author.label": "Tác giả",
         "author.role": "Founder. Wave Digital x AI",
         "author.p1": "Daniel Nagaets — nhà sáng lập FORTES VISION và RENDER.CAMP. Hơn 20 năm kinh nghiệm visualization kiến trúc và chỉ đạo sáng tạo. Xây dựng hai công ty, thực hiện dự án tới $750,000, và đào tạo hàng nghìn nghệ sĩ visualization trên thế giới.",
@@ -3411,8 +3464,13 @@ Brand + Art + AI.</h2>
 
     courseCells.forEach(function (cell, i) {
       cell.addEventListener('click', function () {
-        if (!matchMedia('(max-width: 759px)').matches) return; // desktop = do nothing
         openCourseLb(i);
+      });
+      cell.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          openCourseLb(i);
+        }
       });
     });
 
