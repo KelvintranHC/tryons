@@ -1,12 +1,12 @@
 <!doctype html>
-<html lang="en">
+<html lang="vi">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#0A0A0A" />
   <meta name="color-scheme" content="light" />
-  <title>Architectural AI Filmmaking — RENDER.CAMP Course</title>
-  <meta name="description" content="From a single architectural image — to a complete cinematic film. €79, instant access." />
+  <title>Wave Digital × AI — Nâng tầm sản phẩm với AI</title>
+  <meta name="description" content="Thước phim sản phẩm điện ảnh cho thương hiệu thời trang và lifestyle. Tư duy thương hiệu, chỉ đạo sáng tạo và sản xuất AI." />
   <link rel="canonical" href="https://ai.pvrender.camp/" />
   <meta name="robots" content="index, follow" />
 
@@ -19,18 +19,19 @@
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://ai.pvrender.camp/" />
-  <meta property="og:site_name" content="RENDER.CAMP" />
-  <meta property="og:title" content="Architectural AI Filmmaking — RENDER.CAMP Course" />
-  <meta property="og:description" content="From a single architectural image — to a complete cinematic film. €79, instant access." />
+  <meta property="og:site_name" content="Wave Digital × AI" />
+  <meta property="og:title" content="Wave Digital × AI — Nâng tầm sản phẩm với AI" />
+  <meta property="og:description" content="Thước phim sản phẩm điện ảnh cho thương hiệu thời trang và lifestyle. Tư duy thương hiệu, chỉ đạo sáng tạo và sản xuất AI." />
   <meta property="og:image" content="media/og-image.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:locale" content="en_US" />
+  <meta property="og:locale" content="vi_VN" />
+  <meta property="og:locale:alternate" content="en_US" />
 
   <!-- Twitter / X -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Architectural AI Filmmaking — RENDER.CAMP Course" />
-  <meta name="twitter:description" content="From a single architectural image — to a complete cinematic film. €79, instant access." />
+  <meta name="twitter:title" content="Wave Digital × AI — Nâng tầm sản phẩm với AI" />
+  <meta name="twitter:description" content="Thước phim sản phẩm điện ảnh cho thương hiệu thời trang và lifestyle. Tư duy thương hiệu, chỉ đạo sáng tạo và sản xuất AI." />
   <meta name="twitter:image" content="media/og-image.png" />
 <style>
     /* =========================================================
@@ -374,11 +375,23 @@
       margin: 0;
       font-weight: 600;
       letter-spacing: -.026em;
-      line-height: 1;
+      line-height: 1.05;
       color: var(--ink);
       font-size: 49px;
-      text-wrap: balance;
-      white-space: pre-line;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .quote__line {
+      display: block;
+      white-space: nowrap;
+    }
+    @media (max-width: 719px) {
+      .quote__statement {
+        font-size: clamp(24px, 7vw, 49px);
+        letter-spacing: -.02em;
+      }
     }
 
     /* =========================================================
@@ -668,7 +681,7 @@
     .examples__hint b { color: var(--ink); font-weight: 700; }
 
     /* =========================================================
-       4 · COURSE (6 squares)
+       4 · SERVICES (6 squares)
        ========================================================= */
     .course-grid {
       margin-top: 36px;
@@ -969,7 +982,7 @@
     .pricing {
       display: grid; grid-template-columns: 1fr;
       gap: 40px;
-      margin-top: 36px;
+      margin-top: 0;
     }
     @media (min-width: 900px) {
       .pricing {
@@ -979,9 +992,10 @@
       }
     }
 
+    #buy > .container > .label { margin-bottom: 14px; }
     #buy .pricing__title {
       margin: 0 0 32px;
-      max-width: 13ch;
+      max-width: 18ch;
     }
     @media (min-width: 900px) {
       #buy .pricing__title { margin-bottom: 44px; }
@@ -1190,10 +1204,6 @@
     /* Mobile: partnership block */
     @media (max-width: 759px) {
       #buy { padding-top: 48px; padding-bottom: 56px; }
-      #buy .pricing__title {
-        font-size: 32px; line-height: 1.02;
-        margin-bottom: 24px !important;
-      }
       #buy .pricing__includes-label { font-size: 10px; }
       #buy .pricing__includes { margin-top: 8px; }
       #buy .pricing__includes li {
@@ -1212,62 +1222,6 @@
     }
 
     /* =========================================================
-       6 · AUTHOR
-       ========================================================= */
-    .author {
-      display: grid; grid-template-columns: 1fr; gap: 28px;
-      margin-top: 36px;
-    }
-    @media (min-width: 760px) {
-      .author { grid-template-columns: 220px 1fr; gap: 48px; align-items: start; }
-    }
-    @media (min-width: 1024px) {
-      .author { grid-template-columns: 280px 1fr; gap: 72px; }
-    }
-    .author__photo {
-      width: 100%;
-      aspect-ratio: 4 / 5;
-      background: var(--paper-2);
-      position: relative;
-      overflow: hidden;
-    }
-    .author__photo.is-placeholder::after {
-      content: "PORTRAIT";
-      position: absolute; top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      font-weight: 700; font-size: 11px;
-      color: var(--mute-2);
-    }
-    .author__photo img {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center top;
-    }
-    .author__role {
-      font-weight: 600; font-size: 13px;
-      color: var(--mute);
-      margin: 0 0 14px;
-    }
-    .author__name {
-      margin: 0 0 18px;
-      font-weight: 600;
-      font-size: 49px;
-      letter-spacing: -.026em;
-      line-height: 1;
-    }
-    .author p {
-      max-width: 58ch;
-      font-size: 16px;
-      line-height: 1.6;
-      color: var(--ink-2);
-      margin: 0 0 12px;
-    }
-    section#author { display: none; }
-
-    /* =========================================================
        9 · FAQ
        ========================================================= */
     .faq {
@@ -1280,9 +1234,13 @@
       .faq { grid-template-columns: 1fr 1.6fr; gap: 56px; }
     }
     .faq__head .label { margin-bottom: 14px; }
-    .faq__title {
-      margin: 0 0 14px;
+    .faq__title,
+    #buy .pricing__title {
+      margin-top: 0;
       max-width: 18ch;
+    }
+    .faq__title {
+      margin-bottom: 14px;
     }
     .faq__note {
       margin: 0;
@@ -1439,7 +1397,7 @@
     .review-card:hover .review-card__cta { color: var(--ink); transform: translateX(2px); }
 
     /* =========================================================
-       FOOTER (RENDER.CAMP style)
+       FOOTER
        ========================================================= */
     footer {
       background: var(--ink);
@@ -1622,39 +1580,6 @@
     .footer__bottom a:hover { color: var(--paper); }
 
     /* =========================================================
-       STICKY MOBILE CTA
-       ========================================================= */
-    .sticky-cta {
-      position: fixed; left: 0; right: 0; bottom: 0;
-      z-index: 40;
-      background: var(--ink);
-      padding: 12px 14px calc(12px + env(safe-area-inset-bottom, 0px));
-      text-decoration: none;
-      transform: translateY(110%); opacity: 0;
-      transition: transform .35s var(--ease), opacity .25s var(--ease);
-    }
-    .sticky-cta.is-visible { transform: translateY(0); opacity: 1; }
-    .sticky-cta__btn {
-      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px;
-      width: 100%;
-      min-height: 64px;
-      padding: 10px 20px;
-      background: var(--paper);
-      color: var(--ink);
-      letter-spacing: -.005em;
-    }
-    .sticky-cta__btn-main { font-weight: 700; font-size: 18px; }
-    .sticky-cta__btn-sub {
-      font-weight: 500; font-size: 11px;
-      color: var(--mute);
-      letter-spacing: .01em;
-      font-variant-numeric: tabular-nums;
-    }
-    .sticky-cta__btn svg { width: 14px; height: 14px; }
-    @media (min-width: 760px) { .sticky-cta { display: none; } }
-    @media (max-width: 759px) { footer { padding-bottom: calc(32px + 104px); } }
-
-    /* =========================================================
        LIGHTBOX SLIDER (examples fullscreen viewer)
        ========================================================= */
     .lightbox {
@@ -1791,7 +1716,7 @@
     }
 
     /* =========================================================
-       COURSE MOBILE LIGHTBOX (slider over the 6 modules)
+       SERVICES MOBILE LIGHTBOX (slider over the 6 modules)
        ========================================================= */
     .course-lb {
       position: fixed; inset: 0;
@@ -1965,10 +1890,10 @@
       <a href="#top" class="brand" aria-label="Wave Digital × AI">
         <img src="media/logo.png" alt="Wave Digital × AI" width="810" height="111" />
       </a>
-      <div class="lang-switch" role="group" aria-label="Language" data-i18n-aria="aria.language">
-        <button type="button" class="lang-switch__btn is-active" data-set-lang="en" aria-pressed="true">EN</button>
+      <div class="lang-switch" role="group" aria-label="Ngôn ngữ" data-i18n-aria="aria.language">
+        <button type="button" class="lang-switch__btn" data-set-lang="en" aria-pressed="false">EN</button>
         <span class="lang-switch__sep" aria-hidden="true">/</span>
-        <button type="button" class="lang-switch__btn" data-set-lang="vi" aria-pressed="false">VI</button>
+        <button type="button" class="lang-switch__btn is-active" data-set-lang="vi" aria-pressed="true">VI</button>
       </div>
     </div>
   </header>
@@ -1984,9 +1909,9 @@
         <!-- masthead -->
         <div class="cover__masthead">
           <h1 class="cover__title">
-            <span style="font-weight: 600; letter-spacing: -2.6px" data-i18n="cover.t1">Elevate</span>
-            <span style="font-weight: 600; letter-spacing: -2.5px" data-i18n="cover.t2">Products with AI</span>
-            <span class="cover__title-course" style="font-family: Helvetica; font-weight: 100" data-i18n="cover.t3">FOR FASHION &amp; LIFESTYLE BRANDS</span>
+            <span style="font-weight: 600; letter-spacing: -2.6px" data-i18n="cover.t1">Nâng tầm</span>
+            <span style="font-weight: 600; letter-spacing: -2.5px" data-i18n="cover.t2">Sản phẩm với AI</span>
+            <span class="cover__title-course" style="font-family: Helvetica; font-weight: 100" data-i18n="cover.t3">DÀNH CHO THƯƠNG HIỆU THỜI TRANG &amp; LIFESTYLE</span>
           </h1>
         </div>
 
@@ -1994,7 +1919,7 @@
         <div class="cover__foot">
           <div class="cover__bottom">
             <p class="cover__lead cover__lead--left" data-i18n="cover.leadLeft">
-              Turn your product into a richly cinematic film that makes customers want to step into your brand's world.
+              Biến sản phẩm thành một thước phim giàu tính điện ảnh, khiến khách hàng muốn bước vào thế giới của thương hiệu.
             </p>
           </div>
 
@@ -2012,7 +1937,7 @@
               </svg>
             </button>
             <a href="#contact" class="cover-buy" data-cta="cover">
-              <span data-btn-text data-i18n="cta.startCreating" style="font-weight: 600; letter-spacing: -0.4px">START CREATING NOW</span>
+              <span data-btn-text data-i18n="cta.startCreating" style="font-weight: 600; letter-spacing: -0.4px">BẮT ĐẦU SÁNG TẠO NGAY</span>
             </a>
           </div>
         </div>
@@ -2023,8 +1948,10 @@
     <!-- ============ 2 · QUOTE ============ -->
     <section class="quote" data-od-id="quote">
       <div class="container">
-        <h2 class="quote__statement" style="text-align: center" data-i18n="quote">Not just AI.
-Brand + Art + AI.</h2>
+        <h2 class="quote__statement">
+          <span class="quote__line" data-i18n="quote.l1">Không chỉ là AI.</span>
+          <span class="quote__line" data-i18n="quote.l2">Brand + Art + AI.</span>
+        </h2>
       </div>
     </section>
 
@@ -2041,12 +1968,12 @@ Brand + Art + AI.</h2>
           <div class="explain__col">
             <header class="explain__step">
               <p class="explain__step-no" data-i18n="explain.s1no">Step 01</p>
-              <h3 class="explain__step-title" data-i18n="explain.s1title">Take an image of your project.</h3>
+              <h3 class="explain__step-title" data-i18n="explain.s1title">Bắt đầu từ hình ảnh sản phẩm.</h3>
             </header>
             <figure class="explain-card-img" style="margin:0;">
-              <img src="media/reference.jpg" alt="House on the Cliff by Fran Silvestre Arquitectos — the source image." data-i18n-alt="explain.imgAlt" />
+              <img src="media/reference.jpg" alt="Source product image for cinematic production." data-i18n-alt="explain.imgAlt" />
             </figure>
-            <p class="explain__credit" style="color: rgba(0,0,0,.38); font-size: 10px;"><span aria-hidden="true" style="margin-right:4px;">*</span><span data-i18n="explain.credit">Original image: Fran Silvestre Arquitectos</span></p>
+            <p class="explain__credit" style="color: rgba(0,0,0,.38); font-size: 10px;"><span aria-hidden="true" style="margin-right:4px;">*</span><span data-i18n="explain.credit">Process demo — Wave Digital × AI</span></p>
           </div>
 
           <div class="explain__col">
@@ -2193,7 +2120,7 @@ Brand + Art + AI.</h2>
     </section>
 
 
-    <!-- ============ 4 · COURSE ============ -->
+    <!-- ============ 4 · SERVICES ============ -->
     <section class="s" id="course" data-od-id="course">
       <div class="container">
         <div class="sec-head">
@@ -2328,26 +2255,6 @@ Brand + Art + AI.</h2>
     </section>
 
 
-    <!-- ============ 7 · AUTHOR ============ -->
-    <section class="s" id="author" data-od-id="author">
-      <div class="container">
-        <p class="label"><span class="n">07</span><span data-i18n="author.label">Author</span></p>
-
-        <div class="author">
-          <figure class="author__photo" style="margin:0;">
-            <img src="media/author.jpg" alt="Kiều Trâm" />
-          </figure>
-          <div>
-            <p class="author__role" data-i18n="author.role">Founder. Wave Digital x AI</p>
-            <h3 class="author__name">Kiều Trâm</h3>
-            <p data-i18n="author.p1">Daniel Nagaets — founder of FORTES VISION and RENDER.CAMP. 20+ years of experience in architectural visualization and creative direction. Built two companies, delivered projects up to $750,000, and trained thousands of visualization artists worldwide.</p>
-            <p data-i18n="author.p2">Today, Daniel directs AI films the same way he directs renders: with intention, storytelling, and cinematic control — starting from a single image.</p>
-            <p data-i18n="author.p3">This course reveals the exact workflow he uses in professional projects: a clear sequence from idea to finished cinematic piece.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- ============ 6 · TOOLS ============ -->
     <section class="s" id="tools" data-od-id="tools">
       <div class="container">
@@ -2432,8 +2339,8 @@ Brand + Art + AI.</h2>
       <div class="lightbox__hint" data-i18n="lightbox.hint">← → to navigate · Esc to close</div>
     </div>
 
-    <!-- ============ COURSE LIGHTBOX (mobile module slider) ============ -->
-    <div class="course-lb" id="courseLightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Course modules" data-i18n-aria="aria.courseModules">
+    <!-- ============ SERVICES LIGHTBOX (mobile module slider) ============ -->
+    <div class="course-lb" id="courseLightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Service modules" data-i18n-aria="aria.courseModules">
       <div class="course-lb__counter"><b id="courseLbCur">01</b> <span style="opacity:.55;">/</span> <span id="courseLbTotal">06</span></div>
       <button class="course-lb__close" id="courseLbClose" type="button" aria-label="Close" data-i18n-aria="aria.close">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="5" x2="19" y2="19"></line><line x1="19" y1="5" x2="5" y2="19"></line></svg>
@@ -2499,13 +2406,13 @@ Brand + Art + AI.</h2>
   <!-- ============ 8 · PARTNERSHIP ============ -->
   <section class="s" id="buy" data-od-id="buy">
     <div class="container">
-      <p class="label"><span class="n">08</span><span data-i18n="buy.label">Learn more</span></p>
+      <p class="label"><span class="n">08</span><span data-i18n="buy.label">Dịch vụ mở rộng.</span></p>
 
       <div class="pricing">
         <div class="pricing__left">
           <h2 class="h-1 pricing__title" data-i18n-html="buy.title">Launch your product<br/>With an AI Team.</h2>
 
-          <p class="pricing__includes-label" data-i18n="buy.includes">Extended service package</p>
+          <p class="pricing__includes-label" data-i18n="buy.includes">Gói dịch vụ</p>
           <ul class="pricing__includes">
             <li data-i18n="buy.i1">AI team building for product launch</li>
             <li data-i18n="buy.i2">Conversion landing page</li>
@@ -2569,23 +2476,10 @@ Brand + Art + AI.</h2>
           <h4 data-i18n="footer.reviewed">Reviewed where it matters</h4>
           <div class="reviews-mini__list">
             <div class="rev-mini">
-              <span class="rev-mini__num">4.4</span>
-              <span class="rev-mini__body">
-                <span class="rev-mini__stars rev-mini__stars--tp" aria-hidden="true">
-                  <span class="rsm rsm--tp is-on"></span>
-                  <span class="rsm rsm--tp is-on"></span>
-                  <span class="rsm rsm--tp is-on"></span>
-                  <span class="rsm rsm--tp is-on"></span>
-                  <span class="rsm rsm--tp is-half"></span>
-                </span>
-                <span class="rev-mini__src">Trustpilot</span>
-              </span>
-            </div>
-            <div class="rev-mini">
               <span class="rev-mini__num">4.8</span>
               <span class="rev-mini__body">
                 <span class="rev-mini__stars rev-mini__stars--g" aria-hidden="true">★★★★★</span>
-                <span class="rev-mini__src">Google</span>
+                <span class="rev-mini__src" data-i18n="footer.reviewSrc">Đánh giá khách hàng</span>
               </span>
             </div>
           </div>
@@ -2600,22 +2494,14 @@ Brand + Art + AI.</h2>
     </div>
   </footer>
 
-  <!-- ============ STICKY MOBILE CTA ============ -->
-  <a href="https://store.payproglobal.com/checkout?products[1][id]=134624&products[1][data]=3X-3IiMg5soHCbQyW6yjx2eNKpvOgKwhcFYpvxbu-914cLmLfK89d3ITPSOpVDFgulAiNe8vm7qDrEj-fbstziAxj0_vgY86oWywr3-9d4r5KriWgZo6GWGDOkFrrsz4Zgn8I7HHG6VTYv4sCP3FDVPalYN0LPMnFGK886ejr24F9-1rUBgqEsIgZn21-sijwOAgmBegQf3tgcrbRA0o0SToY6c9xpwMZ86nJ24WXcw-SjmgZnnbMJptuxbZdROKzf5ScXgg5Q191IlWUyHm9XyIn4lkehyffgxK_q43D966g6ZH_a0hdvwVYG_gDZ6wewZEn3ghhYeyryD5wAI0JGxjjT0kDn691aG9Durm9fi5Os0E9tWMrQ1KrZWhVVBiCEXfGnIqtHzTH94R0Y4y6g%3D%3D" class="sticky-cta" id="stickyCta" aria-label="Get access — €79" data-i18n-aria="cta.stickyAria" data-cta="sticky">
-    <span class="sticky-cta__btn">
-      <span class="sticky-cta__btn-main" data-btn-text data-i18n="cta.sticky">Get Access — €79</span>
-    </span>
-  </a>
-
-
   <!-- ============ JS ============ -->
   <script>
 
     /* ===== i18n EN / VI ===== */
     const I18N = {
       en: {
-        "meta.title": "Architectural AI Filmmaking — RENDER.CAMP Course",
-        "meta.desc": "From a single architectural image — to a complete cinematic film. €79, instant access.",
+        "meta.title": "Wave Digital × AI — Elevate Products with AI",
+        "meta.desc": "Cinematic product films for fashion and lifestyle brands. Brand strategy, creative direction, and AI-powered production — from a single product image to campaign-ready film.",
         "aria.language": "Language",
         "aria.toggleSound": "Toggle sound",
         "aria.openFullscreen": "Open fullscreen",
@@ -2624,7 +2510,7 @@ Brand + Art + AI.</h2>
         "aria.close": "Close",
         "aria.prev": "Previous",
         "aria.next": "Next",
-        "aria.courseModules": "Course modules",
+        "aria.courseModules": "Service modules",
         "aria.prevModule": "Previous module",
         "aria.nextModule": "Next module",
         "aria.faqList": "Frequently asked questions",
@@ -2633,23 +2519,22 @@ Brand + Art + AI.</h2>
         "cover.t3": "FOR FASHION & LIFESTYLE BRANDS",
         "cover.leadLeft": "Turn your product into a richly cinematic film that makes customers want to step into your brand's world.",
         "cta.startCreating": "START CREATING NOW",
-        "cta.getAccess": "GET ACCESS NOW",
-        "cta.sticky": "Get Access — €79",
-        "cta.stickyAria": "Get access — €79",
-        "quote": "Not just AI.\nBrand + Art + AI.",
-        "explain.label": "How it works",
+        "cta.getAccess": "TALK WITH WAVE",
+        "quote.l1": "Not just AI.",
+        "quote.l2": "Brand + Art + AI.",
+        "explain.label": "Implementation process.",
         "explain.title": "From image to cinematic film.",
         "explain.s1no": "Step 01",
-        "explain.s1title": "Take an image of your project.",
-        "explain.imgAlt": "House on the Cliff by Fran Silvestre Arquitectos — the source image.",
-        "explain.credit": "Original image: Fran Silvestre Arquitectos",
+        "explain.s1title": "Start with your product image.",
+        "explain.imgAlt": "Source product image for cinematic production.",
+        "explain.credit": "Process demo — Wave Digital × AI",
         "explain.s2no": "Step 02",
-        "explain.s2title": "Build a cinematic world for the product.",
+        "explain.s2title": "Build a cinematic world around the product.",
         "explain.l1": "Define the story to tell.",
         "explain.l2": "Develop the visual concept.",
         "explain.l3": "Build the script and storyboard.",
         "explain.l4": "Develop setting and camera angles.",
-        "explain.l5": "Create characters that fit the brand.",
+        "explain.l5": "Create characters aligned with the brand.",
         "explain.l6": "Place the product in the right world.",
         "explain.l7": "Create intentional motion.",
         "explain.l8": "Build sound and narration.",
@@ -2657,48 +2542,48 @@ Brand + Art + AI.</h2>
         "explain.s3no": "Step 03",
         "explain.s3title": "Final result.",
         "work.label": "Selected work",
-        "work.title": "The visual worlds Wave creates.",
-        "work.p1a": "The destination isn’t just “beautifying the product.”",
+        "work.title": "Stories Wave creates.",
+        "work.p1a": "The goal isn't just \"beautifying the product.\"",
         "work.p2": "We turn it into a story so customers see, feel, remember, and yearn to step into the brand’s world.",
         "course.label": "Services",
         "course.title": "A structured creative process.",
         "course.prose": "From the initial product image to a campaign-ready film.",
         "course.c1.title": "Creative Direction",
-        "course.c1.l1": "Analyze product and customer segments",
-        "course.c1.l2": "Define the central message",
-        "course.c1.l3": "Build visual direction",
+        "course.c1.l1": "Analyze the product and target audience",
+        "course.c1.l2": "Define the core message",
+        "course.c1.l3": "Establish visual direction",
         "course.c1.l4": "Shape the film's emotion and style",
         "course.c1.l5": "Choose the right storytelling approach",
         "course.c2.title": "Concept & Storyboard",
-        "course.c2.l1": "Develop the film idea",
+        "course.c2.l1": "Develop the film concept",
         "course.c2.l2": "Build the script",
         "course.c2.l3": "Design the storyboard",
         "course.c2.l4": "Define the setting",
-        "course.c2.l5": "Build shot structure",
+        "course.c2.l5": "Structure the shot list",
         "course.c3.title": "AI Visual Production",
         "course.c3.l1": "Develop visuals from the source product",
-        "course.c3.l2": "Create settings from the concept",
+        "course.c3.l2": "Create environments from the concept",
         "course.c3.l3": "Build multiple camera angles",
         "course.c3.l4": "Control product form and detail",
-        "course.c3.l5": "Keep a consistent visual language",
+        "course.c3.l5": "Maintain a consistent visual language",
         "course.c4.title": "Character Direction",
         "course.c4.l1": "Develop customer archetypes",
         "course.c4.l2": "Create consistent characters",
-        "course.c4.l3": "Control face and style",
+        "course.c4.l3": "Control facial features and styling",
         "course.c4.l4": "Place characters in the right setting",
-        "course.c4.l5": "Express the brand spirit",
+        "course.c4.l5": "Express the brand's spirit",
         "course.c5.title": "Cinematic Animation",
         "course.c5.l1": "Model movement",
-        "course.c5.l2": "Product movement",
+        "course.c5.l2": "Product motion",
         "course.c5.l3": "Camera movement",
         "course.c5.l4": "Scene-transition rhythm",
-        "course.c5.l5": "Light and space effects",
+        "course.c5.l5": "Lighting and spatial effects",
         "course.c6.title": "Film Assembly",
         "course.c6.l1": "Film editing",
         "course.c6.l2": "Voice-over",
         "course.c6.l3": "Music",
         "course.c6.l4": "Sound design",
-        "course.c6.l5": "Color direction",
+        "course.c6.l5": "Color grading",
         "course.c6.l6": "Finalize the master cut",
         "course.c6.l7": "Export formats per platform",
         "course.closer": "Not just an AI video.<br/><span class=\"mute\">A story built around the product.</span>",
@@ -2711,37 +2596,32 @@ Brand + Art + AI.</h2>
         "audience.i2.title": "Beauty & cosmetics brands",
         "audience.i2.desc": "Turn texture, benefits, and product experience into emotionally rich visual moments.",
         "audience.i3.title": "Jewelry & accessories brands",
-        "audience.i3.desc": "Highlight detail, material, and the perceived value of the product.",
+        "audience.i3.desc": "Highlight detail, material, and perceived product value.",
         "audience.i4.title": "Interior & lifestyle brands",
-        "audience.i4.desc": "Place the product in a living space customers want to own.",
+        "audience.i4.desc": "Place the product in a living space customers aspire to own.",
         "audience.i5.title": "Designers & founders",
-        "audience.i5.desc": "Create professional visual campaigns without organizing an oversized traditional production pipeline.",
+        "audience.i5.desc": "Create professional visual campaigns without building an oversized traditional production pipeline.",
         "audience.i6.title": "Agencies & creative teams",
         "audience.i6.desc": "Expand visual production capacity, test concepts quickly, and create more campaign content.",
-        "buy.label": "Learn more",
-        "buy.title": "Launch your product<br/>With an AI Team.",
-        "buy.includes": "Extended service package",
-        "buy.i1": "AI team building for product launch",
-        "buy.i2": "Conversion landing page",
-        "buy.i3": "Conversion content pillar system. (B2B, B2C)",
-        "buy.i4": "AI Agent and operations automation",
+        "buy.label": "Extended services.",
+        "buy.title": "Launch your product<br/>with an AI team.",
+        "buy.includes": "Service package",
+        "buy.i1": "AI team setup for product launch",
+        "buy.i2": "Conversion-focused landing page",
+        "buy.i3": "Conversion content pillar system (B2B, B2C)",
+        "buy.i4": "AI agents and operations automation",
         "buy.regular": "Stage-based partnership",
         "buy.stage1": "Launch",
         "buy.stage2": "Growth",
         "buy.cta": "[TALK WITH WAVE]",
         "buy.after": "Solutions tailored to your business goals and growth stage.",
-        "author.label": "Author",
-        "author.role": "Founder. Wave Digital x AI",
-        "author.p1": "Daniel Nagaets — founder of FORTES VISION and RENDER.CAMP. 20+ years of experience in architectural visualization and creative direction. Built two companies, delivered projects up to $750,000, and trained thousands of visualization artists worldwide.",
-        "author.p2": "Today, Daniel directs AI films the same way he directs renders: with intention, storytelling, and cinematic control — starting from a single image.",
-        "author.p3": "This course reveals the exact workflow he uses in professional projects: a clear sequence from idea to finished cinematic piece.",
         "tools.label": "Software",
         "tools.title": "Tools Wave uses.",
         "tools.note": "The workflow matters more than the tools. Wave continuously researches, tests, and adopts the latest tools and technologies to deliver the best results for clients.",
         "lightbox.hint": "← → to navigate · Esc to close",
         "faq.label": "FAQ",
-        "faq.title": "Have a question?",
-        "faq.note": "What clients often ask Wave before starting a project.",
+        "faq.title": "What brand leaders ask.",
+        "faq.note": "Common questions clients ask Wave before starting a project.",
         "faq.q1": "What types of products and brands do you work with?",
         "faq.a1": "Fashion, beauty, jewelry, interior, lifestyle, and more. If your brand needs visual storytelling — from a single product image to a full campaign film — we can build the right workflow.",
         "faq.q2": "How does the production process work?",
@@ -2754,16 +2634,17 @@ Brand + Art + AI.</h2>
         "faq.a5": "You get cinematic quality without organizing a large traditional shoot. We combine brand thinking, artistic direction, and AI production — faster iteration, lower overhead, same creative control.",
         "faq.q6": "Can agencies and creative teams collaborate with Wave?",
         "faq.a6": "Yes. We work as a production partner — expanding your visual capacity, testing concepts quickly, and delivering campaign-ready content your team can present to clients.",
-        "footer.hero": "You've made it this far.<br/>Elevate your product's position.",
-        "footer.contacts": "Contacts",
+        "footer.hero": "You've made it this far.<br/>Now elevate your product's position.",
+        "footer.contacts": "Contact",
         "footer.follow": "Follow",
         "footer.reviewed": "Reviewed where it matters",
+        "footer.reviewSrc": "Customer reviews",
         "footer.tagline": "Where products are elevated.",
         "footer.terms": "Terms and Conditions"
       },
       vi: {
-        "meta.title": "Làm phim kiến trúc bằng AI — Khóa học RENDER.CAMP",
-        "meta.desc": "Từ một hình ảnh kiến trúc — đến bộ phim điện ảnh hoàn chỉnh. €79, truy cập ngay.",
+        "meta.title": "Wave Digital × AI — Nâng tầm sản phẩm với AI",
+        "meta.desc": "Thước phim sản phẩm điện ảnh cho thương hiệu thời trang và lifestyle. Tư duy thương hiệu, chỉ đạo sáng tạo và sản xuất AI — từ một hình ảnh sản phẩm đến film sẵn sàng cho chiến dịch.",
         "aria.language": "Ngôn ngữ",
         "aria.toggleSound": "Bật/tắt âm thanh",
         "aria.openFullscreen": "Mở toàn màn hình",
@@ -2772,25 +2653,24 @@ Brand + Art + AI.</h2>
         "aria.close": "Đóng",
         "aria.prev": "Trước",
         "aria.next": "Sau",
-        "aria.courseModules": "Các module khóa học",
-        "aria.prevModule": "Module trước",
-        "aria.nextModule": "Module sau",
+        "aria.courseModules": "Các hạng mục dịch vụ",
+        "aria.prevModule": "Hạng mục trước",
+        "aria.nextModule": "Hạng mục sau",
         "aria.faqList": "Câu hỏi thường gặp",
         "cover.t1": "Nâng tầm",
         "cover.t2": "Sản phẩm với AI",
         "cover.t3": "DÀNH CHO THƯƠNG HIỆU THỜI TRANG & LIFESTYLE",
         "cover.leadLeft": "Biến sản phẩm thành một thước phim giàu tính điện ảnh, khiến khách hàng muốn bước vào thế giới của thương hiệu.",
         "cta.startCreating": "BẮT ĐẦU SÁNG TẠO NGAY",
-        "cta.getAccess": "NHẬN TRUY CẬP NGAY",
-        "cta.sticky": "Nhận truy cập — €79",
-        "cta.stickyAria": "Nhận truy cập — €79",
-        "quote": "Không chỉ là AI.\nBrand + Art + AI.",
-        "explain.label": "Cách hoạt động",
+        "cta.getAccess": "TRAO ĐỔI CÙNG WAVE",
+        "quote.l1": "Không chỉ là AI.",
+        "quote.l2": "Brand + Art + AI.",
+        "explain.label": "Quy trình triển khai.",
         "explain.title": "Từ hình ảnh đến thước phim điện ảnh.",
         "explain.s1no": "Bước 01",
-        "explain.s1title": "Lấy một hình ảnh dự án của bạn.",
-        "explain.imgAlt": "House on the Cliff của Fran Silvestre Arquitectos — hình ảnh nguồn.",
-        "explain.credit": "Hình gốc: Fran Silvestre Arquitectos",
+        "explain.s1title": "Bắt đầu từ hình ảnh sản phẩm.",
+        "explain.imgAlt": "Hình ảnh sản phẩm nguồn cho sản xuất điện ảnh.",
+        "explain.credit": "Ảnh minh họa quy trình — Wave Digital × AI",
         "explain.s2no": "Bước 02",
         "explain.s2title": "Xây dựng thế giới điện ảnh cho sản phẩm.",
         "explain.l1": "Xác định câu chuyện cần kể.",
@@ -2866,9 +2746,9 @@ Brand + Art + AI.</h2>
         "audience.i5.desc": "Tạo chiến dịch hình ảnh chuyên nghiệp mà không cần tổ chức một quy trình sản xuất truyền thống quá lớn.",
         "audience.i6.title": "Agency và Creative Team",
         "audience.i6.desc": "Mở rộng năng lực sản xuất visual, thử nghiệm concept nhanh và tạo thêm nội dung cho chiến dịch.",
-        "buy.label": "Tham Khảo Thêm",
+        "buy.label": "Dịch vụ mở rộng.",
         "buy.title": "Tung sản phẩm<br/>Với AI Team.",
-        "buy.includes": "Gói dịch vụ mở rộng",
+        "buy.includes": "Gói dịch vụ",
         "buy.i1": "Xây dựng đội ngũ AI ra mắt sản phẩm",
         "buy.i2": "Landing page chuyển đổi",
         "buy.i3": "Hệ thống trục nội dung chuyển đổi. (B2B, B2C)",
@@ -2878,11 +2758,6 @@ Brand + Art + AI.</h2>
         "buy.stage2": "Tăng trưởng",
         "buy.cta": "[TRAO ĐỔI CÙNG WAVE]",
         "buy.after": "Giải pháp được thiết kế theo mục tiêu và giai đoạn phát triển của doanh nghiệp.",
-        "author.label": "Tác giả",
-        "author.role": "Founder. Wave Digital x AI",
-        "author.p1": "Daniel Nagaets — nhà sáng lập FORTES VISION và RENDER.CAMP. Hơn 20 năm kinh nghiệm visualization kiến trúc và chỉ đạo sáng tạo. Xây dựng hai công ty, thực hiện dự án tới $750,000, và đào tạo hàng nghìn nghệ sĩ visualization trên thế giới.",
-        "author.p2": "Hôm nay, Daniel đạo diễn phim AI theo cách ông đạo diễn render: có ý đồ, kể chuyện và kiểm soát điện ảnh — bắt đầu từ một hình ảnh duy nhất.",
-        "author.p3": "Khóa học tiết lộ đúng quy trình ông dùng trong dự án chuyên nghiệp: chuỗi rõ ràng từ ý tưởng đến sản phẩm điện ảnh hoàn chỉnh.",
         "tools.label": "Phần mềm",
         "tools.title": "Công cụ Wave đang dùng.",
         "tools.note": "Quy trình quan trọng hơn công cụ. Wave luôn nghiên cứu, thử nghiệm và cập nhật các công cụ và công nghệ mới nhất để ra kết quả tốt nhất cho khách hàng.",
@@ -2906,24 +2781,24 @@ Brand + Art + AI.</h2>
         "footer.contacts": "Liên hệ",
         "footer.follow": "Theo dõi",
         "footer.reviewed": "Đánh giá nơi quan trọng",
+        "footer.reviewSrc": "Đánh giá khách hàng",
         "footer.tagline": "Nơi nâng tầm sản phẩm.",
         "footer.terms": "Điều khoản và điều kiện"
       }
     };
 
-    let currentLang = 'en';
+    let currentLang = 'vi';
 
     function detectLang() {
       try {
         const saved = localStorage.getItem('rc-lang');
         if (saved === 'en' || saved === 'vi') return saved;
       } catch (_) {}
-      const nav = (navigator.language || '').toLowerCase();
-      return nav.startsWith('vi') ? 'vi' : 'en';
+      return 'vi';
     }
 
     function applyLanguage(lang) {
-      if (!I18N[lang]) lang = 'en';
+      if (!I18N[lang]) lang = 'vi';
       currentLang = lang;
       const dict = I18N[lang];
       document.documentElement.lang = lang;
@@ -3335,17 +3210,6 @@ Brand + Art + AI.</h2>
       document.querySelectorAll('.reveal').forEach(el => el.classList.add('is-in'));
     }
 
-    /* ===== sticky mobile CTA ===== */
-    const sticky = document.getElementById('stickyCta');
-    if (sticky && cover) {
-      const update = () => {
-        const past = cover.getBoundingClientRect().bottom < 60;
-        sticky.classList.toggle('is-visible', past);
-      };
-      window.addEventListener('scroll', update, { passive: true });
-      update();
-    }
-
     /* ===== explain cards: no fullscreen click (per user request) ===== */
     const exLbImage = document.getElementById('exLbImage');
     function openImageLightbox(src, alt) {
@@ -3504,17 +3368,15 @@ Brand + Art + AI.</h2>
       else if (e.key === 'ArrowLeft')  { e.preventDefault(); showCourseAt(courseLbIdx - 1); }
     });
 
-    /* ===== checkout click tracking (Meta Pixel + GTM) ===== */
-    document.querySelectorAll('a[data-cta]').forEach(el => {
+    /* ===== CTA click tracking (Meta Pixel + GTM) ===== */
+    document.querySelectorAll('[data-cta]').forEach(el => {
       el.addEventListener('click', () => {
         const source = el.getAttribute('data-cta') || 'unknown';
         const attr = (window.rcAttribution && window.rcAttribution.get()) || {};
         try {
           if (window.fbq) {
-            window.fbq('track', 'InitiateCheckout', {
-              currency: 'EUR',
-              value: 79.00,
-              content_name: 'Architectural AI Filmmaking',
+            window.fbq('track', 'Lead', {
+              content_name: 'Wave Digital × AI',
               source: source
             });
           }
@@ -3522,9 +3384,8 @@ Brand + Art + AI.</h2>
         try {
           window.dataLayer = window.dataLayer || [];
           window.dataLayer.push({
-            event: 'initiate_checkout',
-            currency: 'EUR',
-            value: 79.00,
+            event: 'wave_cta_click',
+            content_name: 'Wave Digital × AI',
             source: source,
             utm_source:   attr.utm_source   || '(direct)',
             utm_medium:   attr.utm_medium   || '(none)',

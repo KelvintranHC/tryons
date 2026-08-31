@@ -1,4 +1,6 @@
-# 3b1824cf-5cb4-4d03-b3f4-6ccbd2c9fc65 implementation handoff
+# Wave Digital × AI — implementation handoff
+
+Brand: **Wave Digital × AI** — cinematic product films for fashion & lifestyle brands. Default language: Vietnamese (VI).
 
 This archive is the source of truth for turning the design into production code. Start from `index.html`, then preserve the visual system, responsive behavior, and interactions found in the exported files.
 

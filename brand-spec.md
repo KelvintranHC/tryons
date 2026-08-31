@@ -1,7 +1,8 @@
-# Brand spec — RENDER.CAMP / Architectural AI Filmmaking
-Source: https://ai.pvrender.camp/ (extracted from live CSS `:root`)
+# Brand spec — Wave Digital × AI
 
-## Color tokens (mapped to OD six + observed extras)
+Landing page for cinematic product films for fashion & lifestyle brands.
+
+## Color tokens
 
 | Token | Hex (source) | OKLch approx |
 |---|---|---|
@@ -12,20 +13,26 @@ Source: https://ai.pvrender.camp/ (extracted from live CSS `:root`)
 | `--border` / `--line` | `#E5E5E5` | `oklch(92% 0 0)` |
 | `--accent` / `--live` | `#E11D2A` | `oklch(55% 0.22 25)` |
 
-Supporting: `--ink-2` `#1F1F1F`, `--mute-2` `#9A9A9A`, `--line-strong` `#D0D0D0`, cover shell `#050505`, Trustpilot green `#00b67a`, Google star `#fbbc04`.
+Supporting: `--ink-2` `#1F1F1F`, `--mute-2` `#9A9A9A`, `--line-strong` `#D0D0D0`, cover shell `#050505`, Google star `#fbbc04`.
 
 ## Typography
 
 - Display + body: `"Helvetica Neue", Helvetica, Arial, sans-serif` (single family; weight does hierarchy)
 - Display weight 600, tracking `-.026em`, line-height ~0.95–1; display size ~49px
-- Course italic line: Helvetica weight 100 italic
+- Cover subtitle line: Helvetica weight 100
 - Labels: 11–14px, uppercase tracking `.08em`–`.14em` where used
 - Body ~17px / 1.55, tracking `-.005em`
 
-## Layout posture (observed)
+## Layout posture
 
 1. Magazine cover hero: full-bleed video, dark overlay gradient, glass CTA (blur + 1px light border), zero radius.
 2. Hairline borders (`1px` `--line`), no card shadows, no rounded corners — editorial/brutal restraint.
 3. Container max-width `1320px`; fluid pad `--pad-x` 20 → 40 → 64; section gap 80 → 112 → 144.
-4. Accent red (`--live`) is rare (price/save moments); most UI is ink-on-paper.
-5. Breakpoints: 720px tablet+, 1100px desktop grid for examples (8-col), sticky mobile CTA below cover.
+4. Accent red (`--live`) is rare; most UI is ink-on-paper.
+5. Breakpoints: 720px tablet+, 1100px desktop grid for examples (8-col).
+
+## Brand voice
+
+- **VI default:** professional, direct, fashion/lifestyle domain
+- **EN:** equivalent professional tone — not literal translation of Vietnamese idioms
+- Positioning: Brand + Art + AI — cinematic product storytelling, not generic AI video or course sales

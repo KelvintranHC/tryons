@@ -4,27 +4,27 @@
   "axes": {
     "philosophy": {
       "score": 5,
-      "notes": "Editorial magazine cover + ink/paper, zero radius \u2014 matches source"
+      "notes": "Editorial magazine cover + ink/paper, zero radius — Wave brand system"
     },
     "hierarchy": {
       "score": 5,
-      "notes": "Hero video \u2192 quote \u2192 explain \u2192 work \u2192 course \u2192 buy"
+      "notes": "Hero video → quote → explain → work → services → audience → tools → FAQ → partnership → footer"
     },
     "typography": {
       "score": 5,
-      "notes": "Helvetica Neue weights/tracking from source"
+      "notes": "Helvetica Neue weights/tracking; VI default with EN i18n"
     },
     "motion": {
       "score": 4,
-      "notes": "Cover/example video + reveal IO preserved from source"
+      "notes": "Cover/example video + reveal IO preserved"
     },
     "brand": {
       "score": 5,
-      "notes": "Tokens extracted from live :root; media local"
+      "notes": "Wave Digital × AI tokens and copy; local media"
     },
     "clarity": {
       "score": 5,
-      "notes": "Clone of live structure"
+      "notes": "Service-led landing for fashion & lifestyle brands"
     },
     "execution": {
       "score": 5,
@@ -32,7 +32,7 @@
     },
     "specificity": {
       "score": 5,
-      "notes": "Real RENDER.CAMP copy and assets"
+      "notes": "Wave Digital × AI copy and assets"
     },
     "restraint": {
       "score": 5,
