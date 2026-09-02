@@ -829,95 +829,13 @@
     /* tighten the surrounding sections so the closer owns the breathing room */
     section.s#course { padding-bottom: 0; }
     @media (min-width: 720px) {
-      section.s#audience { padding-top: 0; }
+      section.s#tools { padding-top: 0; }
     }
     /* hide the course block on mobile — already covered by "Let me explain" */
     .course-closer .mute { color: var(--mute-2); display: block; }
 
     /* =========================================================
-       5 · AUDIENCE (who it's for) — layout aligned with FAQ
-       ========================================================= */
-    .audience {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 28px;
-      align-items: start;
-    }
-    @media (min-width: 900px) {
-      .audience { grid-template-columns: 1fr 1.6fr; gap: 56px; }
-    }
-    .audience__head .label { margin-bottom: 14px; }
-    .audience__title {
-      margin: 0 0 14px;
-      max-width: 18ch;
-    }
-    .audience__note {
-      margin: 0;
-      font-size: 13px;
-      line-height: 1.55;
-      color: var(--mute);
-      max-width: 38ch;
-    }
-    .audience__note + .audience__note { margin-top: 10px; }
-    .audience__note--em {
-      color: var(--ink);
-      font-weight: 600;
-      letter-spacing: -.01em;
-    }
-    .audience-list {
-      border-top: 1px solid var(--line);
-    }
-    .audience-item {
-      border-bottom: 1px solid var(--line);
-    }
-    .audience-item__q {
-      padding: 20px 0;
-      font-weight: 700;
-      font-size: clamp(15px, 1.6vw, 17px);
-      letter-spacing: -.015em;
-      line-height: 1.35;
-      color: var(--ink);
-      cursor: pointer;
-      list-style: none;
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 20px;
-    }
-    .audience-item__q::-webkit-details-marker { display: none; }
-    .audience-item__q::marker { content: ""; }
-    .audience-item__q::after {
-      content: "+";
-      flex: 0 0 auto;
-      font-weight: 500;
-      font-size: 20px;
-      color: var(--mute);
-      line-height: 1;
-      margin-top: 1px;
-      transition: color .25s var(--ease);
-    }
-    .audience-item[open] .audience-item__q::after { content: "−"; }
-    .audience-item__q:hover::after { color: var(--ink); }
-    @media (min-width: 720px) {
-      .audience-item__q { padding: 24px 0; }
-    }
-    .audience-item__a {
-      padding: 0 0 20px;
-    }
-    @media (min-width: 720px) {
-      .audience-item__a { padding: 0 0 24px; }
-    }
-    .audience-item__a p {
-      margin: 0;
-      font-size: clamp(14px, 1.5vw, 15px);
-      line-height: 1.55;
-      color: var(--mute);
-      letter-spacing: -.005em;
-      max-width: 52ch;
-    }
-
-    /* =========================================================
-       8 · TOOLS
+       5 · TOOLS
        ========================================================= */
     .tools__head {
       display: flex; flex-direction: column;
@@ -977,126 +895,356 @@
     }
 
     /* =========================================================
-       6 · PARTNERSHIP (growth offer)
+       7 · TRUST (client feedback marquee)
        ========================================================= */
-    .pricing {
-      display: grid; grid-template-columns: 1fr;
-      gap: 40px;
-      margin-top: 0;
+    .trust__head {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 40px;
+      max-width: 52ch;
     }
-    @media (min-width: 900px) {
-      .pricing {
-        grid-template-columns: 1.15fr 0.85fr;
-        gap: 72px;
-        align-items: stretch;
-      }
+    @media (min-width: 720px) {
+      .trust__head { margin-bottom: 56px; }
     }
-
-    #buy > .container > .label { margin-bottom: 14px; }
-    #buy .pricing__title {
-      margin: 0 0 32px;
+    .trust__title {
+      margin: 0;
       max-width: 18ch;
     }
-    @media (min-width: 900px) {
-      #buy .pricing__title { margin-bottom: 44px; }
+    .trust__note {
+      margin: 0;
+      font-size: clamp(15px, 1.6vw, 17px);
+      line-height: 1.55;
+      letter-spacing: -.005em;
+      color: var(--mute);
+      max-width: 42ch;
     }
 
-    .pricing__includes-label {
-      margin: 0 0 0;
-      font-weight: 700; font-size: 11px;
-      letter-spacing: .18em; text-transform: uppercase;
-      color: var(--mute);
-    }
-    .pricing__includes {
-      list-style: none;
-      padding: 0; margin: 12px 0 0;
-      counter-reset: scope;
-      border-top: 1px solid var(--line);
-    }
-    .pricing__includes li {
-      counter-increment: scope;
-      display: grid;
-      grid-template-columns: 44px 1fr;
-      align-items: baseline;
+    .trust-marquee {
+      display: flex;
+      flex-direction: column;
       gap: 12px;
-      padding: 18px 0;
-      border-bottom: 1px solid var(--line);
-      font-size: clamp(15px, 1.6vw, 17px);
-      font-weight: 500;
+      margin: 0 calc(-1 * var(--pad-x));
+      overflow: hidden;
+      touch-action: pan-y;
+      -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+              mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+    }
+    @media (min-width: 720px) {
+      .trust-marquee { gap: 16px; }
+    }
+
+    .trust-marquee__row {
+      overflow: hidden;
+      width: 100%;
+    }
+    .trust-marquee__track {
+      display: flex;
+      width: max-content;
+      gap: 12px;
+      will-change: transform;
+      backface-visibility: hidden;
+    }
+    @media (min-width: 720px) {
+      .trust-marquee__track { gap: 16px; }
+    }
+
+    /* Row 1 & 3: phải → trái | Row 2: trái → phải — tự chạy, không cần user scroll */
+    .trust-marquee__row--left .trust-marquee__track {
+      animation: trust-marquee-left 42s linear infinite;
+    }
+    .trust-marquee__row--right .trust-marquee__track {
+      animation: trust-marquee-right 48s linear infinite;
+    }
+    .trust-marquee__row--left:nth-child(3) .trust-marquee__track {
+      animation-duration: 52s;
+      animation-delay: -8s;
+    }
+    .trust-marquee__row.is-paused .trust-marquee__track,
+    .trust-marquee__row:hover .trust-marquee__track {
+      animation-play-state: paused !important;
+    }
+
+    @keyframes trust-marquee-left {
+      from { transform: translate3d(0, 0, 0); }
+      to   { transform: translate3d(-50%, 0, 0); }
+    }
+    @keyframes trust-marquee-right {
+      from { transform: translate3d(-50%, 0, 0); }
+      to   { transform: translate3d(0, 0, 0); }
+    }
+
+    .trust-card {
+      flex: 0 0 auto;
+      width: min(78vw, 340px);
+      padding: 20px 18px 22px;
+      border: 1px solid var(--line);
+      background: var(--paper);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    @media (min-width: 720px) {
+      .trust-card {
+        width: 360px;
+        padding: 24px 22px 26px;
+        gap: 18px;
+      }
+    }
+    .trust-card__person {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+    .trust-card__avatar {
+      flex: 0 0 auto;
+      width: 40px;
+      height: 40px;
+      display: block;
+      overflow: hidden;
+      background: var(--paper-2);
+      border: 0;
+      padding: 0;
+      border-radius: 0;
+    }
+    .trust-card__avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+    .trust-card__meta { min-width: 0; }
+    .trust-card__name {
+      margin: 0;
+      font-weight: 700;
+      font-size: 14px;
       letter-spacing: -.01em;
-      line-height: 1.45;
+      line-height: 1.25;
       color: var(--ink);
     }
-    .pricing__includes li::before {
-      content: "/ 0" counter(scope);
-      font-weight: 700;
+    .trust-card__role {
+      margin: 3px 0 0;
+      font-weight: 500;
       font-size: 12px;
-      letter-spacing: .02em;
+      letter-spacing: -.005em;
+      line-height: 1.35;
       color: var(--mute);
-      background: none;
-      width: auto;
-      height: auto;
-      transform: none;
+    }
+    .trust-card__quote {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.5;
+      letter-spacing: -.005em;
+      color: var(--ink-2);
     }
 
-    .pricing__right {
-      display: flex; flex-direction: column;
+    /* =========================================================
+       8 · CONSULT (centered lead form)
+       ========================================================= */
+    #buy {
+      background: var(--paper-2);
+      padding-top: var(--gap);
+      padding-bottom: var(--gap);
     }
-    @media (min-width: 900px) {
-      .pricing__right { min-height: 100%; }
-      .partnership-card {
-        flex: 1;
-        min-height: 100%;
-      }
-      .partnership-card__cta { margin-top: auto; }
+    .buy__inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 720px;
+    }
+    .buy__head {
+      text-align: center;
+      margin: 0 0 28px;
+      max-width: 36ch;
+    }
+    @media (min-width: 720px) {
+      .buy__head { margin-bottom: 36px; }
+    }
+    .buy__head .label {
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+    .buy__title {
+      margin: 0 0 12px;
+      font-weight: 600;
+      font-size: clamp(32px, 5vw, 44px);
+      letter-spacing: -.026em;
+      line-height: 1.05;
+      color: var(--ink);
+      text-wrap: balance;
+    }
+    .buy__sub {
+      margin: 0;
+      font-size: clamp(15px, 1.6vw, 17px);
+      line-height: 1.5;
+      letter-spacing: -.005em;
+      color: var(--mute);
     }
 
-    .partnership-card {
-      display: flex; flex-direction: column; gap: 28px;
-      padding: 28px 24px 32px;
+    .consult-form {
+      width: 100%;
+      max-width: 640px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      padding: 28px 20px 24px;
       border: 1px solid var(--line);
       background: var(--paper);
     }
     @media (min-width: 720px) {
-      .partnership-card { padding: 32px 28px 36px; gap: 32px; }
+      .consult-form { padding: 40px 40px 32px; }
     }
-    .partnership-card__eyebrow {
+    .consult-form__body {
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+    .consult-field {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .consult-field__label {
       margin: 0;
-      font-weight: 700; font-size: 11px;
-      letter-spacing: .18em; text-transform: uppercase;
-      color: var(--mute);
-    }
-    .partnership-card__stages {
-      display: flex; align-items: baseline; flex-wrap: wrap;
-      gap: 10px 14px;
-      line-height: 1;
-    }
-    .partnership-card__stage {
-      font-weight: 600;
-      font-size: clamp(32px, 4.5vw, 48px);
-      letter-spacing: -.026em;
-      text-transform: uppercase;
+      font-weight: 700;
+      font-size: 15px;
+      letter-spacing: -.01em;
       color: var(--ink);
     }
-    .partnership-card__stage--accent { color: var(--ink); }
-    .partnership-card__arrow {
-      font-weight: 400;
-      font-size: clamp(24px, 3.5vw, 36px);
-      color: var(--mute-2);
-      line-height: 1;
+    .consult-field__label .req {
+      color: var(--live);
+      margin-left: 1px;
     }
-    .partnership-card__cta span {
+    .consult-field__input {
+      width: 100%;
+      appearance: none;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 0;
+      padding: 14px 16px;
+      font: inherit;
+      font-size: 15px;
+      letter-spacing: -.005em;
+      color: var(--ink);
+      transition: border-color .2s var(--ease);
+    }
+    .consult-field__input::placeholder { color: var(--mute-2); }
+    .consult-field__input:focus {
+      outline: none;
+      border-color: var(--ink);
+    }
+
+    .consult-services {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+    @media (min-width: 640px) {
+      .consult-services { grid-template-columns: 1fr 1fr; gap: 14px; }
+    }
+    .consult-service {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      min-height: 72px;
+      padding: 14px 14px;
+      border: 1px solid var(--line);
+      background: var(--paper);
+      cursor: pointer;
+      transition: border-color .2s var(--ease), background .2s var(--ease);
+    }
+    .consult-service:hover { border-color: var(--line-strong); }
+    .consult-service:has(input[type="checkbox"]:checked) {
+      border-color: var(--ink);
+      background: var(--paper-2);
+    }
+    .consult-service > input[type="checkbox"] {
+      margin: 3px 0 0;
+      accent-color: var(--ink);
+      flex: 0 0 auto;
+    }
+    .consult-service__text {
+      font-size: 14px;
+      line-height: 1.4;
+      letter-spacing: -.005em;
+      color: var(--ink-2);
+    }
+    .consult-service--other {
+      flex-direction: column;
+      gap: 10px;
+      min-height: 0;
+    }
+    .consult-service--other .consult-service__row {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      width: 100%;
+    }
+    .consult-service--other .consult-other-input {
+      width: 100%;
+      padding: 10px 12px;
+      font-size: 13px;
+    }
+
+    .consult-form__cta {
+      width: 100%;
+      margin-top: 6px;
+      justify-content: center;
+      min-height: 52px;
+    }
+    .consult-form__cta span {
       font-weight: 600;
       font-size: 15px;
-      letter-spacing: .12em;
-      text-transform: uppercase;
+      letter-spacing: .04em;
     }
-    .partnership-card__note {
+    .consult-form__ok {
+      display: none;
       margin: 0;
-      font-size: 14px;
+      padding: 8px 0 4px;
+      font-weight: 600;
+      font-size: 15px;
+      line-height: 1.5;
+      color: var(--ink);
+      text-align: center;
+    }
+    .consult-form.is-sent .consult-form__body { display: none; }
+    .consult-form.is-sent .consult-form__ok { display: block; }
+
+    .buy__legal {
+      margin: 20px 0 0;
+      max-width: 42ch;
+      text-align: center;
+      font-size: 13px;
       line-height: 1.55;
       color: var(--mute);
-      max-width: 36ch;
+    }
+    .buy__legal a {
+      color: var(--ink-2);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+    .buy__legal a:hover { color: var(--ink); }
+
+    .consult-field__error {
+      margin: 0;
+      font-size: 12px;
+      color: var(--live);
+      display: none;
+    }
+    .consult-field.is-invalid .consult-field__error { display: block; }
+    .consult-field.is-invalid .consult-field__input {
+      border-color: var(--live);
+    }
+    .consult-field.is-invalid .consult-service {
+      border-color: color-mix(in srgb, var(--live) 55%, var(--line));
+    }
+
+    @media (max-width: 759px) {
+      #buy { padding-top: 56px; padding-bottom: 56px; }
+      .consult-form { padding: 24px 16px 20px; }
+      .consult-form__cta { min-height: 50px; }
     }
 
     .offer {
@@ -1194,33 +1342,6 @@
     .btn-primary:hover { background: var(--mute); }
     .btn-primary svg { width: 16px; height: 16px; }
 
-    .pricing__dm {
-      font-size: 13px;
-      color: var(--mute);
-      margin: 0;
-    }
-    .pricing__dm b { color: var(--ink); font-weight: 700; }
-
-    /* Mobile: partnership block */
-    @media (max-width: 759px) {
-      #buy { padding-top: 48px; padding-bottom: 56px; }
-      #buy .pricing__includes-label { font-size: 10px; }
-      #buy .pricing__includes { margin-top: 8px; }
-      #buy .pricing__includes li {
-        grid-template-columns: 36px 1fr;
-        padding: 14px 0;
-        font-size: 14px;
-        gap: 10px;
-      }
-      #buy .pricing__includes li::before { font-size: 11px; }
-      #buy .partnership-card { padding: 24px 20px 28px; gap: 24px; }
-      #buy .partnership-card__stage { font-size: 28px; }
-      #buy .partnership-card__arrow { font-size: 22px; }
-      #buy .partnership-card__cta { min-height: 56px; padding: 18px 20px; }
-      #buy .partnership-card__cta span { font-size: 13px !important; letter-spacing: .1em !important; }
-      #buy .partnership-card__note { font-size: 13px; line-height: 1.45; }
-    }
-
     /* =========================================================
        9 · FAQ
        ========================================================= */
@@ -1234,8 +1355,7 @@
       .faq { grid-template-columns: 1fr 1.6fr; gap: 56px; }
     }
     .faq__head .label { margin-bottom: 14px; }
-    .faq__title,
-    #buy .pricing__title {
+    .faq__title {
       margin-top: 0;
       max-width: 18ch;
     }
@@ -1403,7 +1523,7 @@
       background: var(--ink);
       color: var(--paper);
       padding: 64px var(--pad-x) 32px;
-      margin-top: var(--gap);
+      margin-top: 0;
     }
     .footer__inner {
       max-width: 1320px;
@@ -1875,6 +1995,26 @@
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; }
       .reveal { opacity: 1; transform: none; }
+      /* Giữ marquee trust chạy nhẹ — không đổi sang scroll tay */
+      .trust-marquee__row--left .trust-marquee__track {
+        animation-name: trust-marquee-left !important;
+        animation-duration: 90s !important;
+        animation-timing-function: linear !important;
+        animation-iteration-count: infinite !important;
+      }
+      .trust-marquee__row--right .trust-marquee__track {
+        animation-name: trust-marquee-right !important;
+        animation-duration: 100s !important;
+        animation-timing-function: linear !important;
+        animation-iteration-count: infinite !important;
+      }
+      .trust-marquee__row--left:nth-child(3) .trust-marquee__track {
+        animation-duration: 110s !important;
+      }
+      .trust-marquee__row.is-paused .trust-marquee__track,
+      .trust-marquee__row:hover .trust-marquee__track {
+        animation-play-state: paused !important;
+      }
     }
     a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visible,
     .course-cell:focus-visible {
@@ -1961,7 +2101,7 @@
       <div class="container">
         <div class="explain__head">
           <p class="label"><span class="n">02</span><span data-i18n="explain.label">How it works</span></p>
-          <h2 class="explain__title" data-i18n="explain.title">From image to cinematic film.</h2>
+          <h2 class="explain__title" data-i18n-html="explain.title">Từ hình ảnh đến<br/>thước phim điện ảnh.</h2>
         </div>
 
         <div class="explain__grid">
@@ -2213,53 +2353,11 @@
     </section>
 
 
-    <!-- ============ 5 · AUDIENCE ============ -->
-    <section class="s" id="audience" data-od-id="audience">
-      <div class="container">
-        <div class="audience">
-          <div class="audience__head">
-            <p class="label"><span class="n">05</span><span data-i18n="audience.label">Who it's for</span></p>
-            <h2 class="h-1 audience__title" data-i18n="audience.title">Who is it for?</h2>
-            <p class="audience__note" data-i18n="audience.intro1">For brands that don't just want their product to be seen.</p>
-            <p class="audience__note audience__note--em" data-i18n="audience.intro2">They want their product to be felt.</p>
-          </div>
-
-          <div class="audience-list" role="list">
-            <details class="audience-item" role="listitem">
-              <summary class="audience-item__q" data-i18n="audience.i1.title">Fashion brands</summary>
-              <div class="audience-item__a"><p data-i18n="audience.i1.desc">Launch collections, create lookbook films, campaign videos, and advertising content.</p></div>
-            </details>
-            <details class="audience-item" role="listitem">
-              <summary class="audience-item__q" data-i18n="audience.i2.title">Beauty &amp; cosmetics brands</summary>
-              <div class="audience-item__a"><p data-i18n="audience.i2.desc">Turn texture, benefits, and product experience into emotionally rich visual moments.</p></div>
-            </details>
-            <details class="audience-item" role="listitem">
-              <summary class="audience-item__q" data-i18n="audience.i3.title">Jewelry &amp; accessories brands</summary>
-              <div class="audience-item__a"><p data-i18n="audience.i3.desc">Highlight detail, material, and the perceived value of the product.</p></div>
-            </details>
-            <details class="audience-item" role="listitem">
-              <summary class="audience-item__q" data-i18n="audience.i4.title">Interior &amp; lifestyle brands</summary>
-              <div class="audience-item__a"><p data-i18n="audience.i4.desc">Place the product in a living space customers want to own.</p></div>
-            </details>
-            <details class="audience-item" role="listitem">
-              <summary class="audience-item__q" data-i18n="audience.i5.title">Designers &amp; founders</summary>
-              <div class="audience-item__a"><p data-i18n="audience.i5.desc">Create professional visual campaigns without organizing an oversized traditional production pipeline.</p></div>
-            </details>
-            <details class="audience-item" role="listitem">
-              <summary class="audience-item__q" data-i18n="audience.i6.title">Agencies &amp; creative teams</summary>
-              <div class="audience-item__a"><p data-i18n="audience.i6.desc">Expand visual production capacity, test concepts quickly, and create more campaign content.</p></div>
-            </details>
-          </div>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- ============ 6 · TOOLS ============ -->
+    <!-- ============ 5 · TOOLS ============ -->
     <section class="s" id="tools" data-od-id="tools">
       <div class="container">
         <div class="tools__head">
-          <p class="label"><span class="n">06</span><span data-i18n="tools.label">Software</span></p>
+          <p class="label"><span class="n">05</span><span data-i18n="tools.label">Software</span></p>
           <h2 class="h-1" data-i18n="tools.title">Wave uses.</h2>
         </div>
 
@@ -2362,12 +2460,12 @@
 
   </main>
 
-  <!-- ============ 7 · FAQ ============ -->
+  <!-- ============ 6 · FAQ ============ -->
     <section class="s" id="faq" data-od-id="faq">
       <div class="container">
         <div class="faq">
           <div class="faq__head">
-            <p class="label"><span class="n">07</span><span data-i18n="faq.label">FAQ</span></p>
+            <p class="label"><span class="n">06</span><span data-i18n="faq.label">FAQ</span></p>
             <h2 class="h-1 faq__title" data-i18n="faq.title">Have a question?</h2>
             <p class="faq__note" data-i18n="faq.note">What clients often ask Wave before starting a project.</p>
           </div>
@@ -2403,39 +2501,192 @@
     </section>
 
 
-  <!-- ============ 8 · PARTNERSHIP ============ -->
-  <section class="s" id="buy" data-od-id="buy">
+  <!-- ============ 7 · TRUST ============ -->
+  <section class="s trust" id="trust" data-od-id="trust">
     <div class="container">
-      <p class="label"><span class="n">08</span><span data-i18n="buy.label">Dịch vụ mở rộng.</span></p>
+      <div class="trust__head">
+        <p class="label"><span class="n">07</span><span data-i18n="trust.label">Khách hàng tin tưởng</span></p>
+        <h2 class="h-1 trust__title" data-i18n-html="trust.title">Đồng hành cùng<br/>Wave</h2>
+        <p class="trust__note" data-i18n="trust.note">Phản hồi từ khách hàng.</p>
+      </div>
+    </div>
 
-      <div class="pricing">
-        <div class="pricing__left">
-          <h2 class="h-1 pricing__title" data-i18n-html="buy.title">Launch your product<br/>With an AI Team.</h2>
-
-          <p class="pricing__includes-label" data-i18n="buy.includes">Gói dịch vụ</p>
-          <ul class="pricing__includes">
-            <li data-i18n="buy.i1">AI team building for product launch</li>
-            <li data-i18n="buy.i2">Conversion landing page</li>
-            <li data-i18n="buy.i3">Conversion content pillar system. (B2B, B2C)</li>
-            <li data-i18n="buy.i4">AI Agent and operations automation</li>
-          </ul>
-        </div>
-
-        <div class="pricing__right">
-          <aside class="partnership-card">
-            <p class="partnership-card__eyebrow" data-i18n="buy.regular">Stage-based partnership</p>
-            <div class="partnership-card__stages">
-              <span class="partnership-card__stage" data-i18n="buy.stage1">Launch</span>
-              <span class="partnership-card__arrow" aria-hidden="true">→</span>
-              <span class="partnership-card__stage partnership-card__stage--accent" data-i18n="buy.stage2">Growth</span>
+    <div class="trust-marquee" role="region" aria-label="Client feedback" data-i18n-aria="aria.trustMarquee">
+      <!-- Row 1 → phải sang trái -->
+      <div class="trust-marquee__row trust-marquee__row--left">
+        <div class="trust-marquee__track">
+          <article class="trust-card">
+            <div class="trust-card__person">
+              <span class="trust-card__avatar" aria-hidden="true"><img src="media/avatars/thao.jpg?v=2" alt="" width="128" height="128" loading="lazy" decoding="async" /></span>
+              <div class="trust-card__meta">
+                <p class="trust-card__name">Lê Phương Thảo</p>
+                <p class="trust-card__role" data-i18n="trust.r1.role">Marketing Director @ Maison Atelier</p>
+              </div>
             </div>
-            <button type="button" class="btn-primary partnership-card__cta" data-cta="pricing">
-              <span data-i18n="buy.cta">[TALK WITH WAVE]</span>
-            </button>
-            <p class="partnership-card__note" data-i18n="buy.after">Solutions tailored to your business goals and growth stage.</p>
-          </aside>
+            <p class="trust-card__quote" data-i18n="trust.r1.q">From a single product image, Wave built a cinematic film that makes customers want to step into our brand world.</p>
+          </article>
+          <article class="trust-card">
+            <div class="trust-card__person">
+              <span class="trust-card__avatar" aria-hidden="true"><img src="media/avatars/huy.jpg?v=2" alt="" width="128" height="128" loading="lazy" decoding="async" /></span>
+              <div class="trust-card__meta">
+                <p class="trust-card__name">Phạm Quang Huy</p>
+                <p class="trust-card__role" data-i18n="trust.r2.role">Creative Director @ Form &amp; Fabric</p>
+              </div>
+            </div>
+            <p class="trust-card__quote" data-i18n="trust.r2.q">Tiết kiệm 120 triệu chỉ trong 1 tháng. Cắt giảm chi phí chụp ảnh, thuê studio và người mẫu. Thời gian sản xuất giảm một nửa.</p>
+          </article>
+          <article class="trust-card">
+            <div class="trust-card__person">
+              <span class="trust-card__avatar" aria-hidden="true"><img src="media/avatars/dat.jpg?v=2" alt="" width="128" height="128" loading="lazy" decoding="async" /></span>
+              <div class="trust-card__meta">
+                <p class="trust-card__name">Trương Văn Đạt</p>
+                <p class="trust-card__role" data-i18n="trust.r3.role">Founder @ Loom House</p>
+              </div>
+            </div>
+            <p class="trust-card__quote" data-i18n="trust.r3.q">Our collection lookbook film shipped far faster than a traditional shoot — still cinematic.</p>
+          </article>
         </div>
       </div>
+
+      <!-- Row 2 → trái sang phải -->
+      <div class="trust-marquee__row trust-marquee__row--right">
+        <div class="trust-marquee__track">
+          <article class="trust-card">
+            <div class="trust-card__person">
+              <span class="trust-card__avatar" aria-hidden="true"><img src="media/avatars/linh.jpg?v=2" alt="" width="128" height="128" loading="lazy" decoding="async" /></span>
+              <div class="trust-card__meta">
+                <p class="trust-card__name">Vũ Mai Linh</p>
+                <p class="trust-card__role" data-i18n="trust.r4.role">Brand Manager @ Lumière Beauty</p>
+              </div>
+            </div>
+            <p class="trust-card__quote" data-i18n="trust.r4.q">Texture and product emotion are told with real finesse. Our campaign stands out across every channel.</p>
+          </article>
+          <article class="trust-card">
+            <div class="trust-card__person">
+              <span class="trust-card__avatar" aria-hidden="true"><img src="media/avatars/chau.jpg?v=2" alt="" width="128" height="128" loading="lazy" decoding="async" /></span>
+              <div class="trust-card__meta">
+                <p class="trust-card__name">Hoàng Bảo Châu</p>
+                <p class="trust-card__role" data-i18n="trust.r5.role">Head of Content @ North &amp; Co.</p>
+              </div>
+            </div>
+            <p class="trust-card__quote" data-i18n="trust.r5.q">Wave understands fashion storytelling. Not just beautifying the product — creating visual memory.</p>
+          </article>
+          <article class="trust-card">
+            <div class="trust-card__person">
+              <span class="trust-card__avatar" aria-hidden="true"><img src="media/avatars/bao.jpg?v=2" alt="" width="128" height="128" loading="lazy" decoding="async" /></span>
+              <div class="trust-card__meta">
+                <p class="trust-card__name">Lý Quốc Bảo</p>
+                <p class="trust-card__role" data-i18n="trust.r6.role">Founder @ Atelier Object</p>
+              </div>
+            </div>
+            <p class="trust-card__quote" data-i18n="trust.r6.q">Tăng x3 lần tương tác cho các đợt ra mắt sản phẩm, hình ảnh chân thực từ phom dáng, ánh sáng đến chuyển động chất liệu mà không cần một buổi photoshoot.</p>
+          </article>
+        </div>
+      </div>
+
+      <!-- Row 3 → phải sang trái -->
+      <div class="trust-marquee__row trust-marquee__row--left">
+        <div class="trust-marquee__track">
+          <article class="trust-card">
+            <div class="trust-card__person">
+              <span class="trust-card__avatar" aria-hidden="true"><img src="media/avatars/ha.jpg?v=2" alt="" width="128" height="128" loading="lazy" decoding="async" /></span>
+              <div class="trust-card__meta">
+                <p class="trust-card__name">Nguyễn Thu Hà</p>
+                <p class="trust-card__role" data-i18n="trust.r7.role">Marketing Lead @ Habitat Living</p>
+              </div>
+            </div>
+            <p class="trust-card__quote" data-i18n="trust.r7.q">Làm lookbook từ 1 tuần xuống chỉ còn 1 giờ. Mình thấy chuyên nghiệp hơn, ra mắt nhanh hơn và tỷ lệ chuyển đổi tăng hơn trước nhiều.</p>
+          </article>
+          <article class="trust-card">
+            <div class="trust-card__person">
+              <span class="trust-card__avatar" aria-hidden="true"><img src="media/avatars/quan.jpg?v=2" alt="" width="128" height="128" loading="lazy" decoding="async" /></span>
+              <div class="trust-card__meta">
+                <p class="trust-card__name">Đặng Minh Quân</p>
+                <p class="trust-card__role" data-i18n="trust.r8.role">Partner @ Studio Collective</p>
+              </div>
+            </div>
+            <p class="trust-card__quote" data-i18n="trust.r8.q">A smooth production partner for agencies — fast iteration, on-time campaign delivery.</p>
+          </article>
+          <article class="trust-card">
+            <div class="trust-card__person">
+              <span class="trust-card__avatar" aria-hidden="true"><img src="media/avatars/chi.jpg?v=2" alt="" width="128" height="128" loading="lazy" decoding="async" /></span>
+              <div class="trust-card__meta">
+                <p class="trust-card__name">Trần Khánh Chi</p>
+                <p class="trust-card__role" data-i18n="trust.r9.role">CEO @ Silk Route</p>
+              </div>
+            </div>
+            <p class="trust-card__quote" data-i18n="trust.r9.q">One product image became an ads-ready film. Faster turnaround without losing creative control.</p>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============ 8 · CONSULT ============ -->
+  <section class="s buy" id="buy" data-od-id="buy">
+    <div class="container buy__inner">
+      <header class="buy__head">
+        <p class="label"><span class="n">08</span><span data-i18n="buy.label">Tư vấn</span></p>
+        <h2 class="buy__title" data-i18n="buy.title">Nhận tư vấn miễn phí</h2>
+        <p class="buy__sub" data-i18n="buy.sub">Điền thông tin, Wave sẽ liên hệ với bạn sớm nhất.</p>
+      </header>
+
+      <div class="consult-form" id="consultFormWrap">
+        <form class="consult-form__body" id="consultForm" novalidate>
+          <div class="consult-field" data-field="name">
+            <label class="consult-field__label" for="consultName"><span data-i18n="buy.fieldName">1. Họ tên</span><span class="req" aria-hidden="true">*</span></label>
+            <input class="consult-field__input" id="consultName" name="name" type="text" autocomplete="name" required data-i18n-placeholder="buy.phName" placeholder="Nhập họ và tên" />
+            <p class="consult-field__error" data-i18n="buy.errName">Vui lòng nhập họ tên.</p>
+          </div>
+
+          <div class="consult-field" data-field="email">
+            <label class="consult-field__label" for="consultEmail"><span data-i18n="buy.fieldEmail">2. Email</span><span class="req" aria-hidden="true">*</span></label>
+            <input class="consult-field__input" id="consultEmail" name="email" type="email" autocomplete="email" required data-i18n-placeholder="buy.phEmail" placeholder="Nhập email của bạn" />
+            <p class="consult-field__error" data-i18n="buy.errEmail">Vui lòng nhập email hợp lệ.</p>
+          </div>
+
+          <div class="consult-field" data-field="phone">
+            <label class="consult-field__label" for="consultPhone"><span data-i18n="buy.fieldPhone">3. Số điện thoại</span><span class="req" aria-hidden="true">*</span></label>
+            <input class="consult-field__input" id="consultPhone" name="phone" type="tel" autocomplete="tel" required data-i18n-placeholder="buy.phPhone" placeholder="Nhập số điện thoại" />
+            <p class="consult-field__error" data-i18n="buy.errPhone">Vui lòng nhập số điện thoại.</p>
+          </div>
+
+          <div class="consult-field" data-field="service">
+            <p class="consult-field__label" id="consultServiceLabel"><span data-i18n="buy.fieldService">4. Dịch vụ quan tâm</span><span class="req" aria-hidden="true">*</span></p>
+            <div class="consult-services" role="group" aria-labelledby="consultServiceLabel">
+              <label class="consult-service">
+                <input type="checkbox" name="service" value="visual" />
+                <span class="consult-service__text" data-i18n="buy.svcVisual">Tạo hình ảnh/ video chuyển đổi với AI</span>
+              </label>
+              <label class="consult-service">
+                <input type="checkbox" name="service" value="team" />
+                <span class="consult-service__text" data-i18n="buy.svcTeam">Tư vấn triển khai team AI Marketing</span>
+              </label>
+              <label class="consult-service">
+                <input type="checkbox" name="service" value="landing" />
+                <span class="consult-service__text" data-i18n="buy.svcLanding">Thiết kế Landingpage chuyển đổi.</span>
+              </label>
+              <label class="consult-service consult-service--other">
+                <span class="consult-service__row">
+                  <input type="checkbox" name="service" value="other" id="consultServiceOther" />
+                  <span class="consult-service__text" data-i18n="buy.svcOther">Khác</span>
+                </span>
+                <input class="consult-field__input consult-other-input" id="consultOtherText" name="other" type="text" data-i18n-placeholder="buy.phOther" placeholder="Nhập nội dung khác" />
+              </label>
+            </div>
+            <p class="consult-field__error" data-i18n="buy.errService">Vui lòng chọn dịch vụ quan tâm.</p>
+          </div>
+
+          <button type="submit" class="btn-primary consult-form__cta" data-cta="consult">
+            <span data-i18n="buy.cta">Tư vấn 1:1 trong vòng 30 phút.</span>
+          </button>
+        </form>
+
+        <p class="consult-form__ok" data-i18n="buy.formOk">Cảm ơn — Wave đã nhận thông tin và sẽ liên hệ sớm.</p>
+      </div>
+
+      <p class="buy__legal" data-i18n-html="buy.legal">Bằng việc gửi thông tin, bạn đồng ý với <a href="terms.html" target="_blank" rel="noopener">Điều khoản dịch vụ</a> và <a href="terms.html" target="_blank" rel="noopener">Chính sách bảo mật</a>.</p>
     </div>
   </section>
 
@@ -2514,6 +2765,7 @@
         "aria.prevModule": "Previous module",
         "aria.nextModule": "Next module",
         "aria.faqList": "Frequently asked questions",
+        "aria.trustMarquee": "Client feedback",
         "cover.t1": "Elevate",
         "cover.t2": "Products with AI",
         "cover.t3": "FOR FASHION & LIFESTYLE BRANDS",
@@ -2523,7 +2775,7 @@
         "quote.l1": "Not just AI.",
         "quote.l2": "Brand + Art + AI.",
         "explain.label": "Implementation process.",
-        "explain.title": "From image to cinematic film.",
+        "explain.title": "From image to<br/>cinematic film.",
         "explain.s1no": "Step 01",
         "explain.s1title": "Start with your product image.",
         "explain.imgAlt": "Source product image for cinematic production.",
@@ -2587,34 +2839,29 @@
         "course.c6.l6": "Finalize the master cut",
         "course.c6.l7": "Export formats per platform",
         "course.closer": "Not just an AI video.<br/><span class=\"mute\">A story built around the product.</span>",
-        "audience.label": "Who it's for",
-        "audience.title": "Who is it for?",
-        "audience.intro1": "For brands that don't just want their product to be seen.",
-        "audience.intro2": "They want their product to be felt.",
-        "audience.i1.title": "Fashion brands",
-        "audience.i1.desc": "Launch collections, create lookbook films, campaign videos, and advertising content.",
-        "audience.i2.title": "Beauty & cosmetics brands",
-        "audience.i2.desc": "Turn texture, benefits, and product experience into emotionally rich visual moments.",
-        "audience.i3.title": "Jewelry & accessories brands",
-        "audience.i3.desc": "Highlight detail, material, and perceived product value.",
-        "audience.i4.title": "Interior & lifestyle brands",
-        "audience.i4.desc": "Place the product in a living space customers aspire to own.",
-        "audience.i5.title": "Designers & founders",
-        "audience.i5.desc": "Create professional visual campaigns without building an oversized traditional production pipeline.",
-        "audience.i6.title": "Agencies & creative teams",
-        "audience.i6.desc": "Expand visual production capacity, test concepts quickly, and create more campaign content.",
-        "buy.label": "Extended services.",
-        "buy.title": "Launch your product<br/>with an AI team.",
-        "buy.includes": "Service package",
-        "buy.i1": "AI team setup for product launch",
-        "buy.i2": "Conversion-focused landing page",
-        "buy.i3": "Conversion content pillar system (B2B, B2C)",
-        "buy.i4": "AI agents and operations automation",
-        "buy.regular": "Stage-based partnership",
-        "buy.stage1": "Launch",
-        "buy.stage2": "Growth",
-        "buy.cta": "[TALK WITH WAVE]",
-        "buy.after": "Solutions tailored to your business goals and growth stage.",
+        "buy.label": "Consultation",
+        "buy.title": "Get a free consultation",
+        "buy.sub": "Fill in your details — Wave will contact you shortly.",
+        "buy.fieldName": "1. Full name",
+        "buy.fieldEmail": "2. Email",
+        "buy.fieldPhone": "3. Phone number",
+        "buy.fieldService": "4. Service of interest",
+        "buy.phName": "Enter your full name",
+        "buy.phEmail": "Enter your email",
+        "buy.phPhone": "Enter your phone number",
+        "buy.phOther": "Enter other details",
+        "buy.svcVisual": "Create conversion images/videos with AI",
+        "buy.svcTeam": "AI Marketing team implementation consulting",
+        "buy.svcLanding": "Conversion landing page design.",
+        "buy.svcOther": "Other",
+        "buy.errName": "Please enter your full name.",
+        "buy.errEmail": "Please enter a valid email.",
+        "buy.errPhone": "Please enter your phone number.",
+        "buy.errService": "Please select a service.",
+        "buy.errOther": "Please describe the service you need.",
+        "buy.cta": "1:1 consultation within 30 minutes.",
+        "buy.formOk": "Thanks — Wave received your request and will contact you soon.",
+        "buy.legal": "By submitting, you agree to our <a href=\"terms.html\" target=\"_blank\" rel=\"noopener\">Terms of Service</a> and <a href=\"terms.html\" target=\"_blank\" rel=\"noopener\">Privacy Policy</a>.",
         "tools.label": "Software",
         "tools.title": "Wave uses.",
         "tools.note": "The workflow matters more than the tools. Wave continuously researches, tests, and adopts the latest tools and technologies to deliver the best results for clients.",
@@ -2634,6 +2881,27 @@
         "faq.a5": "You get cinematic quality without organizing a large traditional shoot. We combine brand thinking, artistic direction, and AI production — faster iteration, lower overhead, same creative control.",
         "faq.q6": "Can agencies and creative teams collaborate with Wave?",
         "faq.a6": "Yes. We work as a production partner — expanding your visual capacity, testing concepts quickly, and delivering campaign-ready content your team can present to clients.",
+        "trust.label": "Trusted clients",
+        "trust.title": "Partnering with<br/>Wave",
+        "trust.note": "Feedback from clients.",
+        "trust.r1.role": "Marketing Director @ Maison Atelier",
+        "trust.r1.q": "From a single product image, Wave built a cinematic film that makes customers want to step into our brand world.",
+        "trust.r2.role": "Creative Director @ Form & Fabric",
+        "trust.r2.q": "Saved 120 million in just one month. Cut costs for photography, studio rental, and models. Production time cut in half.",
+        "trust.r3.role": "Founder @ Loom House",
+        "trust.r3.q": "Our collection lookbook film shipped far faster than a traditional shoot — still cinematic.",
+        "trust.r4.role": "Brand Manager @ Lumière Beauty",
+        "trust.r4.q": "Texture and product emotion are told with real finesse. Our campaign stands out across every channel.",
+        "trust.r5.role": "Head of Content @ North & Co.",
+        "trust.r5.q": "Wave understands fashion storytelling. Not just beautifying the product — creating visual memory.",
+        "trust.r6.role": "Founder @ Atelier Object",
+        "trust.r6.q": "3x more engagement on product launches — authentic imagery from silhouette and lighting to fabric motion, without a photoshoot.",
+        "trust.r7.role": "Marketing Lead @ Habitat Living",
+        "trust.r7.q": "Lookbooks went from one week down to one hour. More professional, faster launches, and conversion rates up a lot versus before.",
+        "trust.r8.role": "Partner @ Studio Collective",
+        "trust.r8.q": "A smooth production partner for agencies — fast iteration, on-time campaign delivery.",
+        "trust.r9.role": "CEO @ Silk Route",
+        "trust.r9.q": "One product image became an ads-ready film. Faster turnaround without losing creative control.",
         "footer.hero": "You've made it this far.<br/>Now elevate your product's position.",
         "footer.contacts": "Contact",
         "footer.follow": "Follow",
@@ -2657,6 +2925,7 @@
         "aria.prevModule": "Hạng mục trước",
         "aria.nextModule": "Hạng mục sau",
         "aria.faqList": "Câu hỏi thường gặp",
+        "aria.trustMarquee": "Phản hồi khách hàng",
         "cover.t1": "Nâng tầm",
         "cover.t2": "Sản phẩm với AI",
         "cover.t3": "DÀNH CHO THƯƠNG HIỆU THỜI TRANG & LIFESTYLE",
@@ -2666,7 +2935,7 @@
         "quote.l1": "Không chỉ là AI.",
         "quote.l2": "Brand + Art + AI.",
         "explain.label": "Quy trình triển khai.",
-        "explain.title": "Từ hình ảnh đến thước phim điện ảnh.",
+        "explain.title": "Từ hình ảnh đến<br/>thước phim điện ảnh.",
         "explain.s1no": "Bước 01",
         "explain.s1title": "Bắt đầu từ hình ảnh sản phẩm.",
         "explain.imgAlt": "Hình ảnh sản phẩm nguồn cho sản xuất điện ảnh.",
@@ -2730,34 +2999,29 @@
         "course.c6.l6": "Hoàn thiện phiên bản cuối",
         "course.c6.l7": "Xuất định dạng theo từng nền tảng",
         "course.closer": "Không chỉ là video AI.<br/><span class=\"mute\">Là câu chuyện xây dựng xung quanh sản phẩm.</span>",
-        "audience.label": "Dành cho ai",
-        "audience.title": "Dành cho ai?",
-        "audience.intro1": "Dành cho những thương hiệu không chỉ muốn sản phẩm được nhìn thấy.",
-        "audience.intro2": "Mà muốn sản phẩm được cảm nhận.",
-        "audience.i1.title": "Thương hiệu thời trang",
-        "audience.i1.desc": "Ra mắt bộ sưu tập, tạo lookbook film, campaign video và nội dung quảng cáo.",
-        "audience.i2.title": "Thương hiệu mỹ phẩm và làm đẹp",
-        "audience.i2.desc": "Biến kết cấu, công dụng và trải nghiệm sản phẩm thành những khoảnh khắc trực quan giàu cảm xúc.",
-        "audience.i3.title": "Thương hiệu trang sức và phụ kiện",
-        "audience.i3.desc": "Làm nổi bật chi tiết, chất liệu và giá trị cảm nhận của sản phẩm.",
-        "audience.i4.title": "Thương hiệu nội thất và lifestyle",
-        "audience.i4.desc": "Đặt sản phẩm vào một không gian sống mà khách hàng muốn sở hữu.",
-        "audience.i5.title": "Nhà thiết kế và Founder",
-        "audience.i5.desc": "Tạo chiến dịch hình ảnh chuyên nghiệp mà không cần tổ chức một quy trình sản xuất truyền thống quá lớn.",
-        "audience.i6.title": "Agency và Creative Team",
-        "audience.i6.desc": "Mở rộng năng lực sản xuất visual, thử nghiệm concept nhanh và tạo thêm nội dung cho chiến dịch.",
-        "buy.label": "Dịch vụ mở rộng.",
-        "buy.title": "Tung sản phẩm<br/>Với AI Team.",
-        "buy.includes": "Gói dịch vụ",
-        "buy.i1": "Xây dựng đội ngũ AI ra mắt sản phẩm",
-        "buy.i2": "Landing page chuyển đổi",
-        "buy.i3": "Hệ thống trục nội dung chuyển đổi. (B2B, B2C)",
-        "buy.i4": "AI Agent và tự động hóa vận hành",
-        "buy.regular": "Đồng hành theo giai đoạn",
-        "buy.stage1": "Khởi tạo",
-        "buy.stage2": "Tăng trưởng",
-        "buy.cta": "[TRAO ĐỔI CÙNG WAVE]",
-        "buy.after": "Giải pháp được thiết kế theo mục tiêu và giai đoạn phát triển của doanh nghiệp.",
+        "buy.label": "Tư vấn",
+        "buy.title": "Nhận tư vấn miễn phí",
+        "buy.sub": "Điền thông tin, Wave sẽ liên hệ với bạn sớm nhất.",
+        "buy.fieldName": "1. Họ tên",
+        "buy.fieldEmail": "2. Email",
+        "buy.fieldPhone": "3. Số điện thoại",
+        "buy.fieldService": "4. Dịch vụ quan tâm",
+        "buy.phName": "Nhập họ và tên",
+        "buy.phEmail": "Nhập email của bạn",
+        "buy.phPhone": "Nhập số điện thoại",
+        "buy.phOther": "Nhập nội dung khác",
+        "buy.svcVisual": "Tạo hình ảnh/ video chuyển đổi với AI",
+        "buy.svcTeam": "Tư vấn triển khai team AI Marketing",
+        "buy.svcLanding": "Thiết kế Landingpage chuyển đổi.",
+        "buy.svcOther": "Khác",
+        "buy.errName": "Vui lòng nhập họ tên.",
+        "buy.errEmail": "Vui lòng nhập email hợp lệ.",
+        "buy.errPhone": "Vui lòng nhập số điện thoại.",
+        "buy.errService": "Vui lòng chọn dịch vụ quan tâm.",
+        "buy.errOther": "Vui lòng mô tả dịch vụ bạn cần.",
+        "buy.cta": "Tư vấn 1:1 trong vòng 30 phút.",
+        "buy.formOk": "Cảm ơn — Wave đã nhận thông tin và sẽ liên hệ sớm.",
+        "buy.legal": "Bằng việc gửi thông tin, bạn đồng ý với <a href=\"terms.html\" target=\"_blank\" rel=\"noopener\">Điều khoản dịch vụ</a> và <a href=\"terms.html\" target=\"_blank\" rel=\"noopener\">Chính sách bảo mật</a>.",
         "tools.label": "Phần mềm",
         "tools.title": "Wave đang dùng.",
         "tools.note": "Quy trình quan trọng hơn công cụ. Wave luôn nghiên cứu, thử nghiệm và cập nhật các công cụ và công nghệ mới nhất để ra kết quả tốt nhất cho khách hàng.",
@@ -2777,6 +3041,27 @@
         "faq.a5": "Bạn có chất lượng điện ảnh mà không cần tổ chức một buổi quay truyền thống quy mô lớn. Chúng tôi kết hợp tư duy thương hiệu, chỉ đạo nghệ thuật và sản xuất AI — lặp nhanh hơn, chi phí tối ưu hơn, vẫn giữ kiểm soát sáng tạo.",
         "faq.q6": "Agency và creative team có thể hợp tác với Wave không?",
         "faq.a6": "Có. Chúng tôi làm đối tác sản xuất — mở rộng năng lực visual, thử nghiệm concept nhanh và giao nội dung sẵn sàng cho campaign mà team bạn có thể trình bày với khách hàng.",
+        "trust.label": "Khách hàng tin tưởng",
+        "trust.title": "Đồng hành cùng<br/>Wave",
+        "trust.note": "Phản hồi từ khách hàng.",
+        "trust.r1.role": "Marketing Director @ Maison Atelier",
+        "trust.r1.q": "Từ một ảnh sản phẩm, Wave dựng thành thước phim điện ảnh khiến khách muốn bước vào thế giới thương hiệu.",
+        "trust.r2.role": "Creative Director @ Form & Fabric",
+        "trust.r2.q": "Tiết kiệm 120 triệu chỉ trong 1 tháng. Cắt giảm chi phí chụp ảnh, thuê studio và người mẫu. Thời gian sản xuất giảm một nửa.",
+        "trust.r3.role": "Founder @ Loom House",
+        "trust.r3.q": "Lookbook film launch BST nhanh hơn hẳn so với setup quay truyền thống, vẫn giữ chất cinematic.",
+        "trust.r4.role": "Brand Manager @ Lumière Beauty",
+        "trust.r4.q": "Texture và cảm xúc sản phẩm được kể rất tinh. Campaign của chúng tôi nổi bật hơn trên mọi kênh.",
+        "trust.r5.role": "Head of Content @ North & Co.",
+        "trust.r5.q": "Wave hiểu fashion storytelling. Không chỉ làm đẹp sản phẩm — mà tạo ký ức hình ảnh.",
+        "trust.r6.role": "Founder @ Atelier Object",
+        "trust.r6.q": "Tăng x3 lần tương tác cho các đợt ra mắt sản phẩm, hình ảnh chân thực từ phom dáng, ánh sáng đến chuyển động chất liệu mà không cần một buổi photoshoot.",
+        "trust.r7.role": "Marketing Lead @ Habitat Living",
+        "trust.r7.q": "Làm lookbook từ 1 tuần xuống chỉ còn 1 giờ. Mình thấy chuyên nghiệp hơn, ra mắt nhanh hơn và tỷ lệ chuyển đổi tăng hơn trước nhiều.",
+        "trust.r8.role": "Partner @ Studio Collective",
+        "trust.r8.q": "Đối tác production cho agency rất mượt — iterate nhanh, giao đúng timeline campaign.",
+        "trust.r9.role": "CEO @ Silk Route",
+        "trust.r9.q": "Một ảnh sản phẩm thành film sẵn sàng chạy ads. Tiết kiệm thời gian mà vẫn giữ kiểm soát sáng tạo.",
         "footer.hero": "Các Sếp đã đọc đến đây.<br/>Hãy nâng vị thế sản phẩm của mình.",
         "footer.contacts": "Liên hệ",
         "footer.follow": "Theo dõi",
@@ -2818,6 +3103,10 @@
       document.querySelectorAll('[data-i18n-alt]').forEach(el => {
         const key = el.getAttribute('data-i18n-alt');
         if (dict[key] != null) el.setAttribute('alt', dict[key]);
+      });
+      document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+        const key = el.getAttribute('data-i18n-placeholder');
+        if (dict[key] != null) el.setAttribute('placeholder', dict[key]);
       });
 
       if (dict['meta.title']) document.title = dict['meta.title'];
@@ -3398,9 +3687,178 @@
     });
 
     /* ===== i18n init (after all helpers exist) ===== */
+    /* ===== Consultation form ===== */
+    (function initConsultForm() {
+      const wrap = document.getElementById('consultFormWrap');
+      const form = document.getElementById('consultForm');
+      const otherText = document.getElementById('consultOtherText');
+      const otherCheck = document.getElementById('consultServiceOther');
+      if (!wrap || !form) return;
+
+      const serviceField = form.querySelector('[data-field="service"]');
+
+      function selectedServices() {
+        return Array.from(form.querySelectorAll('input[name="service"]:checked'));
+      }
+
+      function syncOther() {
+        const otherOn = !!form.querySelector('#consultServiceOther:checked');
+        otherText.required = otherOn;
+        if (!otherOn) {
+          otherText.value = '';
+          serviceField?.classList.remove('is-invalid');
+        }
+      }
+
+      form.querySelectorAll('input[name="service"]').forEach(input => {
+        input.addEventListener('change', () => {
+          serviceField.classList.remove('is-invalid');
+          const err = serviceField.querySelector('.consult-field__error');
+          const dict = I18N[currentLang] || I18N.vi;
+          if (err && dict['buy.errService']) err.textContent = dict['buy.errService'];
+          syncOther();
+        });
+      });
+
+      if (otherText) {
+        otherText.addEventListener('focus', () => {
+          if (otherCheck) otherCheck.checked = true;
+          syncOther();
+        });
+        otherText.addEventListener('input', () => {
+          if (otherCheck) otherCheck.checked = true;
+          serviceField?.classList.remove('is-invalid');
+          syncOther();
+        });
+      }
+
+      form.querySelectorAll('.consult-field__input:not(.consult-other-input)').forEach(el => {
+        el.addEventListener('input', () => {
+          el.closest('.consult-field')?.classList.remove('is-invalid');
+        });
+      });
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        let ok = true;
+        const dict = I18N[currentLang] || I18N.vi;
+
+        const nameEl = form.name;
+        const emailEl = form.email;
+        const phoneEl = form.phone;
+        const services = selectedServices();
+
+        form.querySelectorAll('.consult-field').forEach(f => f.classList.remove('is-invalid'));
+        const errEl = serviceField.querySelector('.consult-field__error');
+        if (errEl && dict['buy.errService']) errEl.textContent = dict['buy.errService'];
+
+        if (!nameEl.value.trim()) {
+          form.querySelector('[data-field="name"]').classList.add('is-invalid');
+          ok = false;
+        }
+        if (!emailEl.value.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailEl.value.trim())) {
+          form.querySelector('[data-field="email"]').classList.add('is-invalid');
+          ok = false;
+        }
+        if (!phoneEl.value.trim()) {
+          form.querySelector('[data-field="phone"]').classList.add('is-invalid');
+          ok = false;
+        }
+        if (!services.length) {
+          serviceField.classList.add('is-invalid');
+          ok = false;
+        } else if (services.some(s => s.value === 'other') && !otherText.value.trim()) {
+          if (errEl && dict['buy.errOther']) errEl.textContent = dict['buy.errOther'];
+          serviceField.classList.add('is-invalid');
+          ok = false;
+        }
+
+        if (!ok) return;
+
+        const serviceDetail = services.map(el => {
+          const label = el.closest('label')?.querySelector('.consult-service__text')?.textContent?.trim() || el.value;
+          return el.value === 'other' ? `${label}: ${otherText.value.trim()}` : label;
+        }).join('; ');
+
+        const subject = encodeURIComponent(`[Wave] Consultation — ${nameEl.value.trim()}`);
+        const body = encodeURIComponent(
+          [
+            `Họ tên / Name: ${nameEl.value.trim()}`,
+            `Email: ${emailEl.value.trim()}`,
+            `Điện thoại / Phone: ${phoneEl.value.trim()}`,
+            `Dịch vụ / Service: ${serviceDetail}`,
+            '',
+            `Lang: ${currentLang}`
+          ].join('\n')
+        );
+
+        wrap.classList.add('is-sent');
+        window.location.href = `mailto:info@waveai.vn?subject=${subject}&body=${body}`;
+      });
+
+      syncOther();
+    })();
+
+    /* ===== Trust marquee: phủ kín chiều ngang + loop mượt ===== */
+    function buildTrustTracks() {
+      document.querySelectorAll('.trust-marquee__track').forEach(track => {
+        if (!track._trustSource) {
+          track._trustSource = Array.from(track.children).map(n => n.cloneNode(true));
+        }
+        const source = track._trustSource;
+        if (!source.length) return;
+
+        track.replaceChildren();
+        const styles = getComputedStyle(track);
+        const gap = parseFloat(styles.columnGap || styles.gap) || 12;
+        const minHalf = Math.max(window.innerWidth * 1.15, 960);
+
+        let halfWidth = 0;
+        let added = 0;
+        while (halfWidth < minHalf && added < 48) {
+          source.forEach(node => {
+            const clone = node.cloneNode(true);
+            if (added >= source.length) clone.setAttribute('aria-hidden', 'true');
+            else clone.removeAttribute('aria-hidden');
+            track.appendChild(clone);
+            halfWidth += clone.offsetWidth + gap;
+            added += 1;
+          });
+        }
+
+        const halfCount = track.children.length;
+        for (let i = 0; i < halfCount; i++) {
+          const clone = track.children[i].cloneNode(true);
+          clone.setAttribute('aria-hidden', 'true');
+          track.appendChild(clone);
+        }
+      });
+    }
+
+    function bindTrustRowPause() {
+      document.querySelectorAll('.trust-marquee__row').forEach(row => {
+        if (row._trustPauseBound) return;
+        row._trustPauseBound = true;
+        row.addEventListener('pointerenter', () => row.classList.add('is-paused'));
+        row.addEventListener('pointerleave', () => row.classList.remove('is-paused'));
+      });
+    }
+
+    let trustResizeTimer = 0;
+    window.addEventListener('resize', () => {
+      clearTimeout(trustResizeTimer);
+      trustResizeTimer = setTimeout(() => {
+        buildTrustTracks();
+        bindTrustRowPause();
+        applyLanguage(currentLang);
+      }, 180);
+    });
+
     document.querySelectorAll('[data-set-lang]').forEach(btn => {
       btn.addEventListener('click', () => applyLanguage(btn.getAttribute('data-set-lang')));
     });
+    buildTrustTracks();
+    bindTrustRowPause();
     applyLanguage(detectLang());
 
   </script>
