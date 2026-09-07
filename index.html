@@ -2230,7 +2230,7 @@
           </div>
         </div>
 
-        <p class="course-closer"><span class="course-closer__inner" data-i18n-html="course.closer">Không chỉ là video AI.<br/><span class="mute">Là câu chuyện xây dựng xung quanh sản phẩm.</span></span></span></p>
+        <p class="course-closer"><span class="course-closer__inner" data-i18n-html="course.closer">Không chỉ là video AI.<br/><span class="mute">Là câu chuyện xây dựng xung quanh sản phẩm.</span></span></p>
       </div>
     </section>
 
@@ -2527,7 +2527,7 @@
           </svg>
           <span data-i18n="buy.cta">Mở Messenger</span>
         </a>
-        <p class="messenger-card__legal" data-i18n-html="buy.legal">Khi tiếp tục, bạn đồng ý với <span>Điều khoản dịch vụ</span> và <span>Chính sách bảo mật</span>.</span> and <span>Privacy Policy</span>.</p>
+        <p class="messenger-card__legal" data-i18n-html="buy.legal">Khi tiếp tục, bạn đồng ý với <span>Điều khoản dịch vụ</span> và <span>Chính sách bảo mật</span>.</p>
       </div>
     </div>
   </section>
@@ -2963,10 +2963,14 @@
     function mediaUrl(path) {
       if (!path) return path;
       if (/^https?:\/\//i.test(path) || path.startsWith('blob:')) return path;
-      const clean = String(path).replace(/^\.\//, '').replace(/^\//, '');
-      return MEDIA_BASE ? `${MEDIA_BASE}/${clean}` : clean;
+      const raw = String(path).replace(/^\.\//, '').replace(/^\//, '');
+      const q = raw.indexOf('?');
+      const file = q === -1 ? raw : raw.slice(0, q);
+      const query = q === -1 ? '' : raw.slice(q);
+      const abs = MEDIA_BASE ? `${MEDIA_BASE}/${file}` : file;
+      return abs + query;
     }
-    // Rewrite static poster attrs when CDN is enabled
+    // Rewrite posters + UI images (logo / icons / avatars) when CDN is enabled
     if (MEDIA_BASE) {
       document.querySelectorAll('video[poster], img[src^="media/"]').forEach(el => {
         const attr = el.hasAttribute('poster') ? 'poster' : 'src';
@@ -3046,6 +3050,27 @@
         if (e.target.closest('a, button')) return;
         toggleCoverSound();
       });
+    }
+
+    /* Auto-mute hero when user scrolls past the cover session */
+    function muteCoverSound() {
+      if (!coverVid || coverVid.muted) return;
+      coverVid.muted = true;
+      if (cover) cover.classList.remove('is-sound-on');
+      if (coverSound) coverSound.classList.remove('is-on');
+    }
+
+    if (cover && coverVid && 'IntersectionObserver' in window) {
+      const coverVisIO = new IntersectionObserver((ents) => {
+        ents.forEach((entry) => {
+          if (!entry.isIntersecting) muteCoverSound();
+        });
+      }, { threshold: 0, rootMargin: '0px' });
+      coverVisIO.observe(cover);
+    } else if (cover && coverVid) {
+      window.addEventListener('scroll', () => {
+        if (cover.getBoundingClientRect().bottom <= 0) muteCoverSound();
+      }, { passive: true });
     }
 
     /* ===== "Let me explain" inline video (lazy direct src) ===== */
