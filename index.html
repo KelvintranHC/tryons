@@ -1041,7 +1041,7 @@
     }
 
     /* =========================================================
-       8 · CONSULT (centered lead form)
+       8 · CONSULT (Messenger CTA)
        ========================================================= */
     #buy {
       background: var(--paper-2);
@@ -1052,249 +1052,100 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      max-width: 720px;
+      max-width: 560px;
     }
     .buy__head {
       text-align: center;
       margin: 0 0 28px;
-      max-width: 36ch;
+      max-width: none;
+      width: 100%;
     }
     @media (min-width: 720px) {
       .buy__head { margin-bottom: 36px; }
     }
     .buy__head .label {
       justify-content: center;
-      margin-bottom: 16px;
+      margin-bottom: 18px;
     }
     .buy__title {
-      margin: 0 0 12px;
+      margin: 0 0 14px;
       font-weight: 600;
-      font-size: clamp(32px, 5vw, 44px);
-      letter-spacing: -.026em;
-      line-height: 1.05;
+      font-size: clamp(36px, 6vw, 52px);
+      letter-spacing: -.028em;
+      line-height: 1.02;
       color: var(--ink);
-      text-wrap: balance;
+      white-space: nowrap;
     }
     .buy__sub {
       margin: 0;
-      font-size: clamp(15px, 1.6vw, 17px);
-      line-height: 1.5;
+      font-size: clamp(15px, 1.7vw, 18px);
+      line-height: 1.45;
       letter-spacing: -.005em;
       color: var(--mute);
     }
 
-    .consult-form {
+    .messenger-card {
       width: 100%;
-      max-width: 640px;
+      max-width: 440px;
       display: flex;
       flex-direction: column;
-      gap: 0;
-      padding: 28px 20px 24px;
+      align-items: stretch;
+      gap: 18px;
+      padding: 28px 22px 24px;
       border: 1px solid var(--line);
       background: var(--paper);
+      box-shadow: 0 12px 40px rgba(10, 10, 10, .06);
     }
     @media (min-width: 720px) {
-      .consult-form { padding: 40px 40px 32px; }
-    }
-    .consult-form__body {
-      display: flex;
-      flex-direction: column;
-      gap: 22px;
-    }
-    .consult-field {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    .consult-field__label {
-      margin: 0;
-      font-weight: 700;
-      font-size: 15px;
-      letter-spacing: -.01em;
-      color: var(--ink);
-    }
-    .consult-field__label .req {
-      color: var(--live);
-      margin-left: 1px;
-    }
-    .consult-field__input {
-      width: 100%;
-      appearance: none;
-      background: var(--paper);
-      border: 1px solid var(--line);
-      border-radius: 0;
-      padding: 14px 16px;
-      font: inherit;
-      font-size: 15px;
-      letter-spacing: -.005em;
-      color: var(--ink);
-      transition: border-color .2s var(--ease);
-    }
-    .consult-field__input::placeholder { color: var(--mute-2); }
-    .consult-field__input:focus {
-      outline: none;
-      border-color: var(--ink);
+      .messenger-card { padding: 32px 28px 28px; gap: 20px; }
     }
 
-    .consult-services {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 12px;
-    }
-    @media (min-width: 640px) {
-      .consult-services { grid-template-columns: 1fr 1fr; gap: 14px; }
-    }
-    .consult-service {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      min-height: 88px;
-      padding: 14px 14px;
-      border: 1px solid var(--line);
-      background: var(--paper);
-      cursor: pointer;
-      transition: border-color .2s var(--ease), background .2s var(--ease);
-    }
-    .consult-service:hover { border-color: var(--line-strong); }
-    .consult-service:has(input[type="checkbox"]:checked) {
-      border-color: var(--ink);
-      background: var(--paper-2);
-    }
-    .consult-service input[type="checkbox"] {
-      margin: 4px 0 0;
-      accent-color: var(--ink);
-      flex: 0 0 auto;
-    }
-    .consult-service__main {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      min-width: 0;
-      flex: 1;
-    }
-    .consult-service__icon {
-      width: 28px;
-      height: 28px;
-      color: var(--ink);
-      flex: 0 0 auto;
-    }
-    .consult-service__icon svg {
-      width: 100%;
-      height: 100%;
-      display: block;
-    }
-    .consult-service__text {
-      font-size: 14px;
-      line-height: 1.4;
-      letter-spacing: -.005em;
-      color: var(--ink-2);
-    }
-    .consult-service--other {
-      flex-direction: column;
-      gap: 10px;
-      min-height: 0;
-    }
-    .consult-service--other .consult-service__row {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      width: 100%;
-    }
-    .consult-service--other .consult-other-input {
-      width: 100%;
-      padding: 10px 12px;
-      font-size: 13px;
-    }
-    .consult-service--promo {
-      position: relative;
-      overflow: hidden;
-      border-color: color-mix(in srgb, var(--live) 40%, var(--line));
-    }
-    .consult-service--promo:hover {
-      border-color: color-mix(in srgb, var(--live) 70%, var(--line));
-    }
-    .consult-service--promo:has(input[type="checkbox"]:checked) {
-      border-color: var(--live);
-      background: color-mix(in srgb, var(--live) 6%, var(--paper));
-    }
-    .consult-service__badge {
-      position: absolute;
-      top: 0;
-      right: 0;
-      z-index: 1;
-      padding: 5px 9px;
-      background: var(--live);
-      color: #fff;
-      font-weight: 700;
-      font-size: 10px;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      line-height: 1.2;
-      white-space: nowrap;
-      pointer-events: none;
-    }
-    .consult-service--promo .consult-service__main {
-      padding-right: 8px;
-      padding-top: 2px;
-    }
-
-    .consult-form__cta {
-      width: 100%;
-      margin-top: 6px;
+    .messenger-card__cta {
+      display: inline-flex;
+      align-items: center;
       justify-content: center;
-      min-height: 52px;
-    }
-    .consult-form__cta span {
+      gap: 12px;
+      width: 100%;
+      min-height: 56px;
+      padding: 16px 22px;
+      background: #0084FF;
+      color: #fff;
       font-weight: 600;
-      font-size: 15px;
-      letter-spacing: .04em;
+      font-size: 16px;
+      letter-spacing: -.01em;
+      transition: background .25s var(--ease), color .25s var(--ease);
     }
-    .consult-form__ok {
-      display: none;
-      margin: 0;
-      padding: 8px 0 4px;
+    .messenger-card__cta:hover { background: #006fd6; }
+    .messenger-card__cta svg {
+      width: 20px;
+      height: 20px;
+      flex: 0 0 auto;
+    }
+    .messenger-card__cta span {
       font-weight: 600;
-      font-size: 15px;
-      line-height: 1.5;
-      color: var(--ink);
-      text-align: center;
+      letter-spacing: -.01em;
     }
-    .consult-form.is-sent .consult-form__body { display: none; }
-    .consult-form.is-sent .consult-form__ok { display: block; }
 
-    .buy__legal {
-      margin: 20px 0 0;
-      max-width: 42ch;
+    .messenger-card__legal {
+      margin: 0;
       text-align: center;
-      font-size: 13px;
+      font-size: 12px;
       line-height: 1.55;
       color: var(--mute);
+      max-width: none;
     }
-    .buy__legal a {
+    .messenger-card__legal a,
+    .messenger-card__legal span {
       color: var(--ink-2);
       text-decoration: underline;
       text-underline-offset: 2px;
     }
-    .buy__legal a:hover { color: var(--ink); }
-
-    .consult-field__error {
-      margin: 0;
-      font-size: 12px;
-      color: var(--live);
-      display: none;
-    }
-    .consult-field.is-invalid .consult-field__error { display: block; }
-    .consult-field.is-invalid .consult-field__input {
-      border-color: var(--live);
-    }
-    .consult-field.is-invalid .consult-service {
-      border-color: color-mix(in srgb, var(--live) 55%, var(--line));
-    }
+    .messenger-card__legal a:hover { color: var(--ink); }
 
     @media (max-width: 759px) {
       #buy { padding-top: 56px; padding-bottom: 56px; }
-      .consult-form { padding: 24px 16px 20px; }
-      .consult-form__cta { min-height: 50px; }
+      .messenger-card { padding: 24px 18px 20px; }
+      .messenger-card__cta { min-height: 52px; }
     }
 
     .offer {
@@ -2092,7 +1943,7 @@
 
     <!-- ============ 1 · COVER (magazine) ============ -->
     <section class="cover" id="cover" data-od-id="cover">
-      <video class="cover__video" id="coverVid" poster="media/cover-v2.jpg" autoplay muted loop playsinline webkit-playsinline preload="auto"></video>
+      <video class="cover__video" id="coverVid" autoplay muted loop playsinline webkit-playsinline preload="auto"></video>
       <div class="cover__overlay"></div>
 
       <div class="cover__inner">
@@ -2161,7 +2012,7 @@
               <h3 class="explain__step-title" data-i18n="explain.s1title">Bắt đầu từ hình ảnh sản phẩm.</h3>
             </header>
             <figure class="explain-card-img" style="margin:0;">
-              <img src="media/reference.jpg" alt="Source product image for cinematic production." data-i18n-alt="explain.imgAlt" />
+              <img src="media/dongho.png" alt="Source product image for cinematic production." data-i18n-alt="explain.imgAlt" />
             </figure>
             <p class="explain__credit" style="color: rgba(0,0,0,.38); font-size: 10px;"><span aria-hidden="true" style="margin-right:4px;">*</span><span data-i18n="explain.credit">Process demo — Wave Digital × AI</span></p>
           </div>
@@ -2190,7 +2041,7 @@
               <h3 class="explain__step-title" data-i18n="explain.s3title">Final result.</h3>
             </header>
             <figure class="explain-card-vid" id="explainCard" style="margin:0;">
-              <video id="explainVid" muted loop playsinline webkit-playsinline preload="none" poster="media/cover-v2.jpg"></video>
+              <video id="explainVid" muted loop playsinline webkit-playsinline preload="none"></video>
               <button class="explain-card-vid__sound" id="explainSound" type="button" aria-label="Toggle sound" data-i18n-aria="aria.toggleSound">
                 <svg class="when-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
                   <path d="M11 5L6 9H3v6h3l5 4z" fill="currentColor" stroke="none"/>
@@ -2226,8 +2077,8 @@
       </div>
 
       <div class="examples__scroller" id="examplesScroller">
-        <figure class="ex-card" data-video="media/examples/ex-099.mp4" style="margin:0;">
-          <video muted loop playsinline webkit-playsinline preload="none" poster="media/examples/ex-099.jpg"></video>
+        <figure class="ex-card" data-video="media/examples/short_fashion_02.mp4" style="margin:0;">
+          <video muted loop playsinline webkit-playsinline preload="none" poster="media/examples/short_fashion_02.jpg"></video>
           <span class="ex-card__tag">/ 01</span>
           <button class="ex-card__fs" type="button" aria-label="Open fullscreen" data-i18n-aria="aria.openFullscreen">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 9 4 4 9 4"/><polyline points="20 9 20 4 15 4"/><polyline points="4 15 4 20 9 20"/><polyline points="20 15 20 20 15 20"/></svg>
@@ -2236,8 +2087,8 @@
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
           </button>
         </figure>
-        <figure class="ex-card" data-video="media/examples/ex-001.mp4" style="margin:0;">
-          <video muted loop playsinline webkit-playsinline preload="none" poster="media/examples/ex-001.jpg"></video>
+        <figure class="ex-card" data-video="media/examples/short_fashion_04.mp4" style="margin:0;">
+          <video muted loop playsinline webkit-playsinline preload="none" poster="media/examples/short_fashion_04.jpg"></video>
           <span class="ex-card__tag">/ 02</span>
           <button class="ex-card__fs" type="button" aria-label="Open fullscreen" data-i18n-aria="aria.openFullscreen">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 9 4 4 9 4"/><polyline points="20 9 20 4 15 4"/><polyline points="4 15 4 20 9 20"/><polyline points="20 15 20 20 15 20"/></svg>
@@ -2246,8 +2097,8 @@
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
           </button>
         </figure>
-        <figure class="ex-card" data-video="media/examples/ex-002.mp4" style="margin:0;">
-          <video muted loop playsinline webkit-playsinline preload="none" poster="media/examples/ex-002.jpg"></video>
+        <figure class="ex-card" data-video="media/examples/short_07.mp4" style="margin:0;">
+          <video muted loop playsinline webkit-playsinline preload="none" poster="media/examples/short_07.jpg"></video>
           <span class="ex-card__tag">/ 03</span>
           <button class="ex-card__fs" type="button" aria-label="Open fullscreen" data-i18n-aria="aria.openFullscreen">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 9 4 4 9 4"/><polyline points="20 9 20 4 15 4"/><polyline points="4 15 4 20 9 20"/><polyline points="20 15 20 20 15 20"/></svg>
@@ -2256,8 +2107,8 @@
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
           </button>
         </figure>
-        <figure class="ex-card" data-video="media/examples/ex-003.mp4" style="margin:0;">
-          <video muted loop playsinline webkit-playsinline preload="none" poster="media/examples/ex-003.jpg"></video>
+        <figure class="ex-card" data-video="media/examples/short_05.mp4" style="margin:0;">
+          <video muted loop playsinline webkit-playsinline preload="none" poster="media/examples/short_05.jpg"></video>
           <span class="ex-card__tag">/ 04</span>
           <button class="ex-card__fs" type="button" aria-label="Open fullscreen" data-i18n-aria="aria.openFullscreen">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 9 4 4 9 4"/><polyline points="20 9 20 4 15 4"/><polyline points="4 15 4 20 9 20"/><polyline points="20 15 20 20 15 20"/></svg>
@@ -2266,8 +2117,8 @@
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
           </button>
         </figure>
-        <figure class="ex-card" data-video="media/examples/ex-004.mp4" style="margin:0;">
-          <video muted loop playsinline webkit-playsinline preload="none" poster="media/examples/ex-004.jpg"></video>
+        <figure class="ex-card" data-video="media/examples/short_06.mp4" style="margin:0;">
+          <video muted loop playsinline webkit-playsinline preload="none" poster="media/examples/short_06.jpg"></video>
           <span class="ex-card__tag">/ 05</span>
           <button class="ex-card__fs" type="button" aria-label="Open fullscreen" data-i18n-aria="aria.openFullscreen">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 9 4 4 9 4"/><polyline points="20 9 20 4 15 4"/><polyline points="4 15 4 20 9 20"/><polyline points="20 15 20 20 15 20"/></svg>
@@ -2276,29 +2127,9 @@
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
           </button>
         </figure>
-        <figure class="ex-card" data-video="media/examples/ex-005.mp4" style="margin:0;">
-          <video muted loop playsinline webkit-playsinline preload="none" poster="media/examples/ex-005.jpg"></video>
+        <figure class="ex-card" data-video="media/examples/short_fashion_03.mp4" style="margin:0;">
+          <video muted loop playsinline webkit-playsinline preload="none" poster="media/examples/short_fashion_03.jpg"></video>
           <span class="ex-card__tag">/ 06</span>
-          <button class="ex-card__fs" type="button" aria-label="Open fullscreen" data-i18n-aria="aria.openFullscreen">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 9 4 4 9 4"/><polyline points="20 9 20 4 15 4"/><polyline points="4 15 4 20 9 20"/><polyline points="20 15 20 20 15 20"/></svg>
-          </button>
-          <button class="ex-card__play" type="button" aria-label="Play video" data-i18n-aria="aria.playVideo">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
-          </button>
-        </figure>
-        <figure class="ex-card" data-video="media/examples/ex-006.mp4" style="margin:0;">
-          <video muted loop playsinline webkit-playsinline preload="none" poster="media/examples/ex-006.jpg"></video>
-          <span class="ex-card__tag">/ 07</span>
-          <button class="ex-card__fs" type="button" aria-label="Open fullscreen" data-i18n-aria="aria.openFullscreen">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 9 4 4 9 4"/><polyline points="20 9 20 4 15 4"/><polyline points="4 15 4 20 9 20"/><polyline points="20 15 20 20 15 20"/></svg>
-          </button>
-          <button class="ex-card__play" type="button" aria-label="Play video" data-i18n-aria="aria.playVideo">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
-          </button>
-        </figure>
-        <figure class="ex-card" data-video="media/examples/ex-007.mp4" style="margin:0;">
-          <video muted loop playsinline webkit-playsinline preload="none" poster="media/examples/ex-007.jpg"></video>
-          <span class="ex-card__tag">/ 08</span>
           <button class="ex-card__fs" type="button" aria-label="Open fullscreen" data-i18n-aria="aria.openFullscreen">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 9 4 4 9 4"/><polyline points="20 9 20 4 15 4"/><polyline points="4 15 4 20 9 20"/><polyline points="20 15 20 20 15 20"/></svg>
           </button>
@@ -2469,7 +2300,7 @@
 
     <!-- ============ LIGHTBOX (examples fullscreen slider) ============ -->
     <div class="lightbox" id="exLightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Selected work fullscreen viewer" data-i18n-aria="aria.workViewer">
-      <div class="lightbox__counter"><b id="exLbCur">01</b> <span style="opacity:.55;">/</span> <span id="exLbTotal">08</span></div>
+      <div class="lightbox__counter"><b id="exLbCur">01</b> <span style="opacity:.55;">/</span> <span id="exLbTotal">06</span></div>
       <button class="lightbox__close" id="exLbClose" type="button" aria-label="Close" data-i18n-aria="aria.close">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="5" x2="19" y2="19"></line><line x1="19" y1="5" x2="5" y2="19"></line></svg>
       </button>
@@ -2673,108 +2504,30 @@
   </section>
 
 
-  <!-- ============ 8 · CONSULT ============ -->
+  <!-- ============ 8 · CONSULT / MESSENGER ============ -->
   <section class="s buy" id="buy" data-od-id="buy">
     <div class="container buy__inner">
       <header class="buy__head">
-        <p class="label"><span class="n">08</span><span data-i18n="buy.label">Tư vấn</span></p>
-        <h2 class="buy__title" data-i18n="buy.title">Nhận tư vấn miễn phí</h2>
-        <p class="buy__sub" data-i18n="buy.sub">Điền thông tin, Wave sẽ liên hệ với bạn sớm nhất.</p>
+        <p class="label"><span class="n">08</span><span data-i18n="buy.label">Consultation</span></p>
+        <h2 class="buy__title" data-i18n="buy.title">Say hi to Wave</h2>
+        <p class="buy__sub" data-i18n="buy.sub">It's already in your phone.</p>
       </header>
 
-      <div class="consult-form" id="consultFormWrap">
-        <form class="consult-form__body" id="consultForm" novalidate>
-          <div class="consult-field" data-field="name">
-            <label class="consult-field__label" for="consultName"><span data-i18n="buy.fieldName">1. Họ tên</span><span class="req" aria-hidden="true">*</span></label>
-            <input class="consult-field__input" id="consultName" name="name" type="text" autocomplete="name" required data-i18n-placeholder="buy.phName" placeholder="Nhập họ và tên" />
-            <p class="consult-field__error" data-i18n="buy.errName">Vui lòng nhập họ tên.</p>
-          </div>
-
-          <div class="consult-field" data-field="email">
-            <label class="consult-field__label" for="consultEmail"><span data-i18n="buy.fieldEmail">2. Email</span><span class="req" aria-hidden="true">*</span></label>
-            <input class="consult-field__input" id="consultEmail" name="email" type="email" autocomplete="email" required data-i18n-placeholder="buy.phEmail" placeholder="Nhập email của bạn" />
-            <p class="consult-field__error" data-i18n="buy.errEmail">Vui lòng nhập email hợp lệ.</p>
-          </div>
-
-          <div class="consult-field" data-field="phone">
-            <label class="consult-field__label" for="consultPhone"><span data-i18n="buy.fieldPhone">3. Số điện thoại</span><span class="req" aria-hidden="true">*</span></label>
-            <input class="consult-field__input" id="consultPhone" name="phone" type="tel" autocomplete="tel" required data-i18n-placeholder="buy.phPhone" placeholder="Nhập số điện thoại" />
-            <p class="consult-field__error" data-i18n="buy.errPhone">Vui lòng nhập số điện thoại.</p>
-          </div>
-
-          <div class="consult-field" data-field="service">
-            <p class="consult-field__label" id="consultServiceLabel"><span data-i18n="buy.fieldService">4. Dịch vụ quan tâm</span><span class="req" aria-hidden="true">*</span></p>
-            <div class="consult-services" role="group" aria-labelledby="consultServiceLabel">
-              <label class="consult-service">
-                <input type="checkbox" name="service" value="visual" />
-                <span class="consult-service__main">
-                  <span class="consult-service__icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="miter">
-                      <rect x="3" y="5" width="14" height="12"/>
-                      <path d="M17 9l4-2v10l-4-2"/>
-                      <circle cx="10" cy="11" r="2.2"/>
-                    </svg>
-                  </span>
-                  <span class="consult-service__text" data-i18n="buy.svcVisual">Tạo hình ảnh/ video chuyển đổi với AI</span>
-                </span>
-              </label>
-              <label class="consult-service">
-                <input type="checkbox" name="service" value="team" />
-                <span class="consult-service__main">
-                  <span class="consult-service__icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="miter">
-                      <circle cx="9" cy="8" r="2.5"/>
-                      <circle cx="16.5" cy="9" r="2"/>
-                      <path d="M3.5 18c.6-2.6 2.7-4 5.5-4s4.9 1.4 5.5 4"/>
-                      <path d="M14 18c.4-1.8 1.7-3 3.7-3 1.6 0 2.8.8 3.3 2.2"/>
-                    </svg>
-                  </span>
-                  <span class="consult-service__text" data-i18n="buy.svcTeam">Tư vấn triển khai team AI Marketing</span>
-                </span>
-              </label>
-              <label class="consult-service consult-service--promo">
-                <input type="checkbox" name="service" value="landing" />
-                <span class="consult-service__badge" data-i18n="buy.svcLandingPromo">Ưu đãi 20% (tháng 9)</span>
-                <span class="consult-service__main">
-                  <span class="consult-service__icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="miter">
-                      <rect x="3" y="4" width="18" height="16"/>
-                      <path d="M3 8h18"/>
-                      <path d="M7 12h6"/>
-                      <path d="M7 15h10"/>
-                    </svg>
-                  </span>
-                  <span class="consult-service__text" data-i18n="buy.svcLanding">Thiết kế Landingpage chuyển đổi.</span>
-                </span>
-              </label>
-              <label class="consult-service consult-service--other">
-                <span class="consult-service__row">
-                  <input type="checkbox" name="service" value="other" id="consultServiceOther" />
-                  <span class="consult-service__main">
-                    <span class="consult-service__icon" aria-hidden="true">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="miter">
-                        <path d="M5 19l1.2-4.2L15.8 5.2l3 3L9.2 17.8 5 19z"/>
-                        <path d="M13.8 7.2l3 3"/>
-                      </svg>
-                    </span>
-                    <span class="consult-service__text" data-i18n="buy.svcOther">Khác</span>
-                  </span>
-                </span>
-                <input class="consult-field__input consult-other-input" id="consultOtherText" name="other" type="text" data-i18n-placeholder="buy.phOther" placeholder="Nhập nội dung khác" />
-              </label>
-            </div>
-            <p class="consult-field__error" data-i18n="buy.errService">Vui lòng chọn dịch vụ quan tâm.</p>
-          </div>
-
-          <button type="submit" class="btn-primary consult-form__cta" data-cta="consult">
-            <span data-i18n="buy.cta">Tư vấn 1:1 trong vòng 30 phút.</span>
-          </button>
-        </form>
-
-        <p class="consult-form__ok" data-i18n="buy.formOk">Cảm ơn — Wave đã nhận thông tin và sẽ liên hệ sớm.</p>
+      <div class="messenger-card">
+        <a
+          class="messenger-card__cta"
+          href="https://m.me/911262508728328"
+          target="_blank"
+          rel="noopener noreferrer"
+          data-cta="messenger"
+        >
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 2C6.48 2 2 6.14 2 11.25c0 2.9 1.43 5.48 3.66 7.17V22l3.37-1.85c.93.26 1.92.4 2.97.4 5.52 0 10-4.14 10-9.3S17.52 2 12 2zm1.01 12.47l-2.55-2.72-4.98 2.72 5.48-5.82 2.61 2.72 4.92-2.72-5.48 5.82z"/>
+          </svg>
+          <span data-i18n="buy.cta">Open Messenger</span>
+        </a>
+        <p class="messenger-card__legal" data-i18n-html="buy.legal">By continuing, you agree to our <span>Terms of Service</span> and <span>Privacy Policy</span>.</p>
       </div>
-
-      <p class="buy__legal" data-i18n-html="buy.legal">Bằng việc gửi thông tin, bạn đồng ý với <a href="terms.html" target="_blank" rel="noopener">Điều khoản dịch vụ</a> và <a href="terms.html" target="_blank" rel="noopener">Chính sách bảo mật</a>.</p>
     </div>
   </section>
 
@@ -2928,29 +2681,10 @@
         "course.c6.l7": "Export formats per platform",
         "course.closer": "Not just an AI video.<br/><span class=\"mute\">A story built around the product.</span>",
         "buy.label": "Consultation",
-        "buy.title": "Get a free consultation",
-        "buy.sub": "Fill in your details — Wave will contact you shortly.",
-        "buy.fieldName": "1. Full name",
-        "buy.fieldEmail": "2. Email",
-        "buy.fieldPhone": "3. Phone number",
-        "buy.fieldService": "4. Service of interest",
-        "buy.phName": "Enter your full name",
-        "buy.phEmail": "Enter your email",
-        "buy.phPhone": "Enter your phone number",
-        "buy.phOther": "Enter other details",
-        "buy.svcVisual": "Create conversion images/videos with AI",
-        "buy.svcTeam": "AI Marketing team implementation consulting",
-        "buy.svcLanding": "Conversion landing page design.",
-        "buy.svcLandingPromo": "20% off (Sept)",
-        "buy.svcOther": "Other",
-        "buy.errName": "Please enter your full name.",
-        "buy.errEmail": "Please enter a valid email.",
-        "buy.errPhone": "Please enter your phone number.",
-        "buy.errService": "Please select a service.",
-        "buy.errOther": "Please describe the service you need.",
-        "buy.cta": "1:1 consultation within 30 minutes.",
-        "buy.formOk": "Thanks — Wave received your request and will contact you soon.",
-        "buy.legal": "By submitting, you agree to our <a href=\"terms.html\" target=\"_blank\" rel=\"noopener\">Terms of Service</a> and <a href=\"terms.html\" target=\"_blank\" rel=\"noopener\">Privacy Policy</a>.",
+        "buy.title": "Say hi to Wave",
+        "buy.sub": "It's already in your phone.",
+        "buy.cta": "Open Messenger",
+        "buy.legal": "By continuing, you agree to our <span>Terms of Service</span> and <span>Privacy Policy</span>.",
         "tools.label": "Software",
         "tools.title": "Wave uses.",
         "tools.note": "The workflow matters more than the tools. Wave continuously researches, tests, and adopts the latest tools and technologies to deliver the best results for clients.",
@@ -3089,29 +2823,10 @@
         "course.c6.l7": "Xuất định dạng theo từng nền tảng",
         "course.closer": "Không chỉ là video AI.<br/><span class=\"mute\">Là câu chuyện xây dựng xung quanh sản phẩm.</span>",
         "buy.label": "Tư vấn",
-        "buy.title": "Nhận tư vấn miễn phí",
-        "buy.sub": "Điền thông tin, Wave sẽ liên hệ với bạn sớm nhất.",
-        "buy.fieldName": "1. Họ tên",
-        "buy.fieldEmail": "2. Email",
-        "buy.fieldPhone": "3. Số điện thoại",
-        "buy.fieldService": "4. Dịch vụ quan tâm",
-        "buy.phName": "Nhập họ và tên",
-        "buy.phEmail": "Nhập email của bạn",
-        "buy.phPhone": "Nhập số điện thoại",
-        "buy.phOther": "Nhập nội dung khác",
-        "buy.svcVisual": "Tạo hình ảnh/ video chuyển đổi với AI",
-        "buy.svcTeam": "Tư vấn triển khai team AI Marketing",
-        "buy.svcLanding": "Thiết kế Landingpage chuyển đổi.",
-        "buy.svcLandingPromo": "Ưu đãi 20% (tháng 9)",
-        "buy.svcOther": "Khác",
-        "buy.errName": "Vui lòng nhập họ tên.",
-        "buy.errEmail": "Vui lòng nhập email hợp lệ.",
-        "buy.errPhone": "Vui lòng nhập số điện thoại.",
-        "buy.errService": "Vui lòng chọn dịch vụ quan tâm.",
-        "buy.errOther": "Vui lòng mô tả dịch vụ bạn cần.",
-        "buy.cta": "Tư vấn 1:1 trong vòng 30 phút.",
-        "buy.formOk": "Cảm ơn — Wave đã nhận thông tin và sẽ liên hệ sớm.",
-        "buy.legal": "Bằng việc gửi thông tin, bạn đồng ý với <a href=\"terms.html\" target=\"_blank\" rel=\"noopener\">Điều khoản dịch vụ</a> và <a href=\"terms.html\" target=\"_blank\" rel=\"noopener\">Chính sách bảo mật</a>.",
+        "buy.title": "Chào Wave",
+        "buy.sub": "Messenger đã có sẵn trên điện thoại của bạn.",
+        "buy.cta": "Mở Messenger",
+        "buy.legal": "Khi tiếp tục, bạn đồng ý với <span>Điều khoản dịch vụ</span> và <span>Chính sách bảo mật</span>.",
         "tools.label": "Phần mềm",
         "tools.title": "Wave đang dùng.",
         "tools.note": "Quy trình quan trọng hơn công cụ. Wave luôn nghiên cứu, thử nghiệm và cập nhật các công cụ và công nghệ mới nhất để ra kết quả tốt nhất cho khách hàng.",
@@ -3235,8 +2950,8 @@
     const cover = document.getElementById('cover');
     const coverSound = document.getElementById('coverSound');
     const coverVid = document.getElementById('coverVid');
-    const SRC_MOBILE  = 'media/cover-mobile.mp4';
-    const SRC_DESKTOP = 'media/hero-film-v2.mp4';
+    const SRC_MOBILE  = 'media/hero.mp4';
+    const SRC_DESKTOP = 'media/hero.mp4';
     const mq720 = matchMedia('(min-width: 720px)');
 
     let currentBlobUrl = null;
@@ -3331,14 +3046,14 @@
         if (explainLoaded) return;
         explainLoaded = true;
         try {
-          const resp = await fetch('media/cover-mobile.mp4', { credentials: 'omit' });
+          const resp = await fetch('media/short_01.mp4', { credentials: 'omit' });
           if (!resp.ok) throw new Error('HTTP ' + resp.status);
           const blob = await resp.blob();
           explainVid.src = URL.createObjectURL(blob);
           explainVid.load();
           explainVid.play().catch(()=>{});
         } catch (e) {
-          explainVid.src = 'media/cover-mobile.mp4';
+          explainVid.src = 'media/short_01.mp4';
           explainVid.load();
           explainVid.play().catch(()=>{});
         }
@@ -3777,117 +3492,6 @@
     });
 
     /* ===== i18n init (after all helpers exist) ===== */
-    /* ===== Consultation form ===== */
-    (function initConsultForm() {
-      const wrap = document.getElementById('consultFormWrap');
-      const form = document.getElementById('consultForm');
-      const otherText = document.getElementById('consultOtherText');
-      const otherCheck = document.getElementById('consultServiceOther');
-      if (!wrap || !form) return;
-
-      const serviceField = form.querySelector('[data-field="service"]');
-
-      function selectedServices() {
-        return Array.from(form.querySelectorAll('input[name="service"]:checked'));
-      }
-
-      function syncOther() {
-        const otherOn = !!form.querySelector('#consultServiceOther:checked');
-        otherText.required = otherOn;
-        if (!otherOn) {
-          otherText.value = '';
-          serviceField?.classList.remove('is-invalid');
-        }
-      }
-
-      form.querySelectorAll('input[name="service"]').forEach(input => {
-        input.addEventListener('change', () => {
-          serviceField.classList.remove('is-invalid');
-          const err = serviceField.querySelector('.consult-field__error');
-          const dict = I18N[currentLang] || I18N.vi;
-          if (err && dict['buy.errService']) err.textContent = dict['buy.errService'];
-          syncOther();
-        });
-      });
-
-      if (otherText) {
-        otherText.addEventListener('focus', () => {
-          if (otherCheck) otherCheck.checked = true;
-          syncOther();
-        });
-        otherText.addEventListener('input', () => {
-          if (otherCheck) otherCheck.checked = true;
-          serviceField?.classList.remove('is-invalid');
-          syncOther();
-        });
-      }
-
-      form.querySelectorAll('.consult-field__input:not(.consult-other-input)').forEach(el => {
-        el.addEventListener('input', () => {
-          el.closest('.consult-field')?.classList.remove('is-invalid');
-        });
-      });
-
-      form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        let ok = true;
-        const dict = I18N[currentLang] || I18N.vi;
-
-        const nameEl = form.name;
-        const emailEl = form.email;
-        const phoneEl = form.phone;
-        const services = selectedServices();
-
-        form.querySelectorAll('.consult-field').forEach(f => f.classList.remove('is-invalid'));
-        const errEl = serviceField.querySelector('.consult-field__error');
-        if (errEl && dict['buy.errService']) errEl.textContent = dict['buy.errService'];
-
-        if (!nameEl.value.trim()) {
-          form.querySelector('[data-field="name"]').classList.add('is-invalid');
-          ok = false;
-        }
-        if (!emailEl.value.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailEl.value.trim())) {
-          form.querySelector('[data-field="email"]').classList.add('is-invalid');
-          ok = false;
-        }
-        if (!phoneEl.value.trim()) {
-          form.querySelector('[data-field="phone"]').classList.add('is-invalid');
-          ok = false;
-        }
-        if (!services.length) {
-          serviceField.classList.add('is-invalid');
-          ok = false;
-        } else if (services.some(s => s.value === 'other') && !otherText.value.trim()) {
-          if (errEl && dict['buy.errOther']) errEl.textContent = dict['buy.errOther'];
-          serviceField.classList.add('is-invalid');
-          ok = false;
-        }
-
-        if (!ok) return;
-
-        const serviceDetail = services.map(el => {
-          const label = el.closest('label')?.querySelector('.consult-service__text')?.textContent?.trim() || el.value;
-          return el.value === 'other' ? `${label}: ${otherText.value.trim()}` : label;
-        }).join('; ');
-
-        const subject = encodeURIComponent(`[Wave] Consultation — ${nameEl.value.trim()}`);
-        const body = encodeURIComponent(
-          [
-            `Họ tên / Name: ${nameEl.value.trim()}`,
-            `Email: ${emailEl.value.trim()}`,
-            `Điện thoại / Phone: ${phoneEl.value.trim()}`,
-            `Dịch vụ / Service: ${serviceDetail}`,
-            '',
-            `Lang: ${currentLang}`
-          ].join('\n')
-        );
-
-        wrap.classList.add('is-sent');
-        window.location.href = `mailto:info@waveai.vn?subject=${subject}&body=${body}`;
-      });
-
-      syncOther();
-    })();
 
     /* ===== Trust marquee: phủ kín chiều ngang + loop mượt ===== */
     function buildTrustTracks() {
