@@ -28,6 +28,10 @@
   <meta property="og:locale" content="vi_VN" />
   <meta property="og:locale:alternate" content="en_US" />
 
+  <!-- Optional CDN for video/image (Cloudflare R2 / Bunny). Uncomment after upload:
+  <script>window.WAVE_MEDIA_BASE = 'https://YOUR_PUBLIC_MEDIA_HOST';</script>
+  -->
+
   <!-- Twitter / X -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Wave Digital × AI — Nâng tầm sản phẩm với AI" />
@@ -2041,7 +2045,7 @@
               <h3 class="explain__step-title" data-i18n="explain.s3title">Final result.</h3>
             </header>
             <figure class="explain-card-vid" id="explainCard" style="margin:0;">
-              <video id="explainVid" muted loop playsinline webkit-playsinline preload="none"></video>
+              <video id="explainVid" muted loop playsinline webkit-playsinline preload="none" poster="media/short_01.jpg"></video>
               <button class="explain-card-vid__sound" id="explainSound" type="button" aria-label="Toggle sound" data-i18n-aria="aria.toggleSound">
                 <svg class="when-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
                   <path d="M11 5L6 9H3v6h3l5 4z" fill="currentColor" stroke="none"/>
@@ -2944,9 +2948,30 @@
 
     document.getElementById('yr').textContent = new Date().getFullYear();
 
+    /* ===== media CDN base (step 3) =====
+       Production: set before this script, e.g. in <head>:
+         <script>window.WAVE_MEDIA_BASE = 'https://media.your-cdn.com';</script>
+       Leave empty to serve from same origin (Vercel + Git LFS).
+    */
+    const MEDIA_BASE = String(window.WAVE_MEDIA_BASE || '').replace(/\/$/, '');
+    function mediaUrl(path) {
+      if (!path) return path;
+      if (/^https?:\/\//i.test(path) || path.startsWith('blob:')) return path;
+      const clean = String(path).replace(/^\.\//, '').replace(/^\//, '');
+      return MEDIA_BASE ? `${MEDIA_BASE}/${clean}` : clean;
+    }
+    // Rewrite static poster attrs when CDN is enabled
+    if (MEDIA_BASE) {
+      document.querySelectorAll('video[poster], img[src^="media/"]').forEach(el => {
+        const attr = el.hasAttribute('poster') ? 'poster' : 'src';
+        const val = el.getAttribute(attr);
+        if (val && !/^https?:\/\//i.test(val)) el.setAttribute(attr, mediaUrl(val));
+      });
+    }
+
     /* ===== nav (no scroll state) ===== */
 
-    /* ===== cover video: fetch → blob → assign (iOS-safe, no Range needed) ===== */
+    /* ===== cover video: direct src (Range-friendly for CDN) ===== */
     const cover = document.getElementById('cover');
     const coverSound = document.getElementById('coverSound');
     const coverVid = document.getElementById('coverVid');
@@ -2954,39 +2979,18 @@
     const SRC_DESKTOP = 'media/hero.mp4';
     const mq720 = matchMedia('(min-width: 720px)');
 
-    let currentBlobUrl = null;
     let loadingSrc = null;
 
-    async function loadCoverVideo() {
+    function loadCoverVideo() {
       if (!coverVid) return;
-      const want = mq720.matches ? SRC_DESKTOP : SRC_MOBILE;
-      if (loadingSrc === want) return;
+      const want = mediaUrl(mq720.matches ? SRC_DESKTOP : SRC_MOBILE);
+      if (loadingSrc === want && coverVid.getAttribute('src') === want) return;
       loadingSrc = want;
-      try {
-        const resp = await fetch(want, { credentials: 'omit' });
-        if (!resp.ok) throw new Error('HTTP ' + resp.status);
-        const blob = await resp.blob();
-        // only apply if viewport hasn't changed mid-flight
-        const stillWant = mq720.matches ? SRC_DESKTOP : SRC_MOBILE;
-        if (stillWant !== want) return;
-        const url = URL.createObjectURL(blob);
-        if (currentBlobUrl) URL.revokeObjectURL(currentBlobUrl);
-        currentBlobUrl = url;
-        const wasMuted = coverVid.muted !== false;
-        coverVid.src = url;
-        coverVid.muted = wasMuted;
-        coverVid.load();
-        coverVid.play().catch(()=>{});
-      } catch (e) {
-        // fallback to direct src — works on any normal server
-        try {
-          coverVid.src = want;
-          coverVid.load();
-          coverVid.play().catch(()=>{});
-        } catch (_) {}
-      } finally {
-        loadingSrc = null;
-      }
+      const wasMuted = coverVid.muted !== false;
+      coverVid.src = want;
+      coverVid.muted = wasMuted;
+      coverVid.load();
+      coverVid.play().catch(()=>{});
     }
 
     loadCoverVideo();
@@ -3038,25 +3042,16 @@
       });
     }
 
-    /* ===== "Let me explain" inline video (always 9:16, lazy blob) ===== */
+    /* ===== "Let me explain" inline video (lazy direct src) ===== */
     const explainVid = document.getElementById('explainVid');
     if (explainVid) {
       let explainLoaded = false;
-      async function loadExplain() {
+      function loadExplain() {
         if (explainLoaded) return;
         explainLoaded = true;
-        try {
-          const resp = await fetch('media/short_01.mp4', { credentials: 'omit' });
-          if (!resp.ok) throw new Error('HTTP ' + resp.status);
-          const blob = await resp.blob();
-          explainVid.src = URL.createObjectURL(blob);
-          explainVid.load();
-          explainVid.play().catch(()=>{});
-        } catch (e) {
-          explainVid.src = 'media/short_01.mp4';
-          explainVid.load();
-          explainVid.play().catch(()=>{});
-        }
+        explainVid.src = mediaUrl('media/short_01.mp4');
+        explainVid.load();
+        explainVid.play().catch(()=>{});
       }
       if ('IntersectionObserver' in window) {
         const eIO = new IntersectionObserver((ents) => {
@@ -3091,26 +3086,17 @@
       }
     }
 
-    /* ===== example carousel: lazy blob-preload (no autoplay) + click-to-play-with-sound ===== */
+    /* ===== example carousel: lazy direct src (CDN Range-friendly) + click-to-play ===== */
     const exCards = Array.from(document.querySelectorAll('.ex-card'));
 
-    async function ensureExLoaded(card) {
+    function ensureExLoaded(card) {
       if (card.dataset.loaded) return;
       const src = card.dataset.video;
       const vid = card.querySelector('video');
       if (!src || !vid) return;
       card.dataset.loaded = '1';
-      try {
-        const resp = await fetch(src, { credentials: 'omit' });
-        if (!resp.ok) throw new Error('HTTP ' + resp.status);
-        const blob = await resp.blob();
-        vid.src = URL.createObjectURL(blob);
-        vid.load();
-      } catch (e) {
-        // fallback declarative
-        vid.src = src;
-        vid.load();
-      }
+      vid.src = mediaUrl(src);
+      vid.load();
     }
 
     if ('IntersectionObserver' in window && exCards.length) {
@@ -3223,7 +3209,7 @@
       if (!src) return;
       exLb.classList.add('is-loading');
       try { exLbVideo.pause(); } catch (_) {}
-      exLbVideo.src = src;
+      exLbVideo.src = mediaUrl(src);
       exLbVideo.muted = false;
       exLbVideo.load();
       const onReady = () => {
