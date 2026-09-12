@@ -54,6 +54,29 @@ FILES=(
   media/examples/short_fashion_03.jpg
   media/examples/short_fashion_04.mp4
   media/examples/short_fashion_04.jpg
+  media/gallery/look-1/01.jpg
+  media/gallery/look-1/02.jpg
+  media/gallery/look-1/03.jpg
+  media/gallery/look-1/04.jpg
+  media/gallery/look-1/05.jpg
+  media/gallery/look-2/01.jpg
+  media/gallery/look-2/02.jpg
+  media/gallery/look-2/03.jpg
+  media/gallery/look-2/04.jpg
+  media/gallery/look-2/05.jpg
+  media/gallery/look-3/01.jpg
+  media/gallery/look-3/02.jpg
+  media/gallery/look-3/03.jpg
+  media/gallery/look-3/04.jpg
+  media/gallery/look-3/05.jpg
+  media/gallery/look-4/01.jpg
+  media/gallery/look-4/02.jpg
+  media/gallery/look-4/03.jpg
+  media/gallery/look-4/04.jpg
+  media/gallery/look-4/05.jpg
+  media/gallery/look-4/06.jpg
+  media/gallery/look-5/01.jpg
+  media/gallery/look-5/02.jpg
   media/icons/adobe-premiere.svg
   media/icons/canva.svg
   media/icons/capcut.svg
